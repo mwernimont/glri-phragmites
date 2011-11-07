@@ -26,17 +26,12 @@ Ext.onReady(function() {
 					title: 'About the DSS (FAQs)',
 					contentEl: 'mapper-intro',
 					bodyStyle: 'padding: 5px;',
-					autoScroll: true,
-					listeners: {
-						activate: openFAQ,
-						deactivate: closeFAQ
-					}
+					autoScroll: true
 				},{
 					xtype: 'form',
 					id: 'prediction-form',
 					bodyStyle: 'padding: 10px',
 					title: 'Predicting Concentrations',
-					listeners: {activate: function() { loadHelpTip(1); }},
 					layout: 'column',
 					defaults: {
 						border: false,
@@ -83,14 +78,12 @@ Ext.onReady(function() {
 									Ext.getCmp('wq-benchmark').setValue('Select Benchmark');
 									Ext.getCmp('threshold').setValue(null);
 									appendDataLayer(layerId); 
-								},
-								focus: function() {loadHelpTip(7);}
+								}
 							}
 						},{
 							xtype: 'button',
 							id: 'conc-map-button',
 							text: 'Turn Off Map',
-							handler: removeDataLayer,
 							hidden: true
 						}]
 					},{
@@ -178,7 +171,6 @@ Ext.onReady(function() {
 							xtype: 'button',
 							id: 'prob-map-button',
 							text: 'Turn Off Map',
-							handler: removeDataLayer,
 							hidden: true
 						}]
 					},{
@@ -277,7 +269,6 @@ Ext.onReady(function() {
 				style: 'padding-bottom: 5px'
 			},
 			items: [
-			        new WARP.view.Legend(),
 			        {
 			        	id: 'help-context-panel', 
 			        	title: 'Help Context',
@@ -295,7 +286,4 @@ Ext.onReady(function() {
 			collapsed: true
 		}]
 	});
-});
-
-
 });
