@@ -1,63 +1,17 @@
 <?xml version = '1.0' encoding = 'windows-1252'?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
-  <display-name>WARP Map {Owner: JRH, Coder: JRH}</display-name>
+  <display-name>GLRI Phramites Map {Owner: JL, DB, Coder: PT}</display-name>
   <description>Empty web.xml file for Web Application</description>
-  <servlet>
-    <servlet-name>MVServlet</servlet-name>
-    <servlet-class>gov.usgs.warp.MVServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>IdentifyServlet</servlet-name>
-    <servlet-class>gov.usgs.warp.IdentifyServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>   
-  <servlet>
-    <servlet-name>HelpTipServlet</servlet-name>
-    <servlet-class>gov.usgs.warp.HelpTipServlet</servlet-class>
-  </servlet>   
-  <servlet>
-    <servlet-name>ExportServlet</servlet-name>
-    <servlet-class>gov.usgs.warp.ExportServlet</servlet-class>
-  </servlet> 
-  <servlet>
-    <servlet-name>MVTest</servlet-name>
-    <servlet-class>gov.usgs.warp.MapViewerTest</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MVServlet</servlet-name>
-    <url-pattern>/mvwms</url-pattern>
-  </servlet-mapping>   
-  <servlet-mapping>
-    <servlet-name>MVServlet</servlet-name>
-    <url-pattern>/mvlegend</url-pattern>
-  </servlet-mapping>   
-  <servlet-mapping>
-    <servlet-name>MVTest</servlet-name>
-    <url-pattern>/mapviewertest</url-pattern>
-  </servlet-mapping> 
-  <servlet-mapping>
-    <servlet-name>IdentifyServlet</servlet-name>
-    <url-pattern>/identify</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ExportServlet</servlet-name>
-    <url-pattern>/export</url-pattern>
-  </servlet-mapping>     
-  <servlet-mapping>
-    <servlet-name>HelpTipServlet</servlet-name>
-    <url-pattern>/helptip</url-pattern>
-  </servlet-mapping>
-   
   
   <session-config>
     <session-timeout>1</session-timeout>
   </session-config>
   
-  <resource-ref> 
+  <!-- resource-ref> 
     <res-ref-name>jdbc/warpDS</res-ref-name> 
     <res-type>javax.sql.DataSource</res-type> 
     <res-auth>Container</res-auth>
-  </resource-ref>  
+  </resource-ref-->  
   
   <mime-mapping>
     <extension>html</extension>
