@@ -27,7 +27,7 @@ import javax.servlet.http.*;
 import javax.sql.DataSource;
 
 import oracle.spatial.geometry.JGeometry;
-import oracle.sql.STRUCT;
+//import oracle.sql.STRUCT;
 
 
 public class ExportServlet extends HttpServlet {
@@ -137,120 +137,120 @@ public class ExportServlet extends HttpServlet {
   
   public void exportToKML(ResultSet rset, ServletOutputStream os) throws Exception {
 
-  	String[] binColors = {"gray","blue","light_blue","yellow","orange","red"};
-  	String[] predictedBinVals = {"Model Estimate Unavailable","&lt; 0.001", "0.001 - 0.038", "0.039 - 0.150", "0.151 - 1.026", "&gt; 1.026"};
-  	String[] probabilityBinVals = {"Model Estimate Unavailable",null,"&lt; 5%", "5 - 25%","25 - 50%", "&gt; 50%"};
-  	
-  	ZipOutputStream zos = new ZipOutputStream(os);
-  	zos.putNextEntry(new ZipEntry("warp.kml"));
-    String startKML = "<kml>" + NL + TAB + "<Document>" + NL;
-  	zos.write(startKML.getBytes()); 
-
-    		
-  	
-  	StringBuffer kmlStyles = new StringBuffer();
-  	
-  	
-  	kmlStyles.append(TAB + TAB + "<ScreenOverlay>" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + "<name>Legend</name>" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + "<Icon>" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + TAB + "<href>" + legendUrl.toExternalForm().replaceAll("&","&amp;") + "</href>" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + "</Icon>" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + "<overlayXY x=\"0\" y=\"1\" xunits=\"fraction\" yunits=\"fraction\"/>" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + "<screenXY x=\"0\" y=\"1\" xunits=\"fraction\" yunits=\"fraction\"/>" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + "<rotationXY x=\"0\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + "<size x=\"0\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>" + NL);
-  	kmlStyles.append(TAB + TAB + "</ScreenOverlay>" + NL);     
-  	
-  	
-  	
-  	kmlStyles.append(TAB + TAB + "<Style id=\"black\">" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
-  	kmlStyles.append(TAB + TAB + TAB + TAB + "<color>ff000000</color>" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + TAB + "<width>1</width>" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
-  	kmlStyles.append(TAB + TAB + "</Style>" + NL);
-  	kmlStyles.append(TAB + TAB + "<Style id=\"gray\">" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
-  	kmlStyles.append(TAB + TAB + TAB + TAB + "<color>ff555555</color>" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + TAB + "<width>3</width>" + NL);
-  	kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
-  	kmlStyles.append(TAB + TAB + "</Style>" + NL);
-    kmlStyles.append(TAB + TAB + "<Style id=\"blue\">" + NL);
-    kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
-    kmlStyles.append(TAB + TAB + TAB + TAB + "<color>ffff3300</color>" + NL);
-    kmlStyles.append(TAB + TAB + TAB + TAB + "<width>1</width>" + NL);
-    kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
-    kmlStyles.append(TAB + TAB + "</Style>" + NL);
-    kmlStyles.append(TAB + TAB + "<Style id=\"light_blue\">" + NL);
-    kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
-    kmlStyles.append(TAB + TAB + TAB + TAB + "<color>fff49060</color>" + NL);
-    kmlStyles.append(TAB + TAB + TAB + TAB + "<width>1</width>" + NL);
-    kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
-    kmlStyles.append(TAB + TAB + "</Style>" + NL);
-    kmlStyles.append(TAB + TAB + "<Style id=\"yellow\">" + NL);
-    kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
-    kmlStyles.append(TAB + TAB + TAB + TAB + "<color>ff00ffff</color>" + NL);
-    kmlStyles.append(TAB + TAB + TAB + TAB + "<width>1</width>" + NL);
-    kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
-    kmlStyles.append(TAB + TAB + "</Style>" + NL);    
-    kmlStyles.append(TAB + TAB + "<Style id=\"orange\">" + NL);
-    kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
-    kmlStyles.append(TAB + TAB + TAB + TAB + "<color>ff60a8ff</color>" + NL);
-    kmlStyles.append(TAB + TAB + TAB + TAB + "<width>1</width>" + NL);
-    kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
-    kmlStyles.append(TAB + TAB + "</Style>" + NL);
-    kmlStyles.append(TAB + TAB + "<Style id=\"red\">" + NL);
-    kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
-    kmlStyles.append(TAB + TAB + TAB + TAB + "<color>ff1818d0</color>" + NL);
-    kmlStyles.append(TAB + TAB + TAB + TAB + "<width>1</width>" + NL);
-    kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
-    kmlStyles.append(TAB + TAB + "</Style>" + NL);    
-  	zos.write(kmlStyles.toString().getBytes());
-   	
-
-    while (rset.next()) {
-      STRUCT st = (STRUCT) rset.getObject("geom");
-      JGeometry j_geom = JGeometry.load(st);
-      j_geom.setType(JGeometry.GTYPE_CURVE);
-      double[] points = j_geom.getOrdinatesArray();
-      String name = rset.getString("name");
-      int binIdx = rset.getInt("bin");
-      
-      StringBuffer bw = new StringBuffer();
-      bw.append(TAB + TAB + "<Placemark>" + NL);
-      bw.append(TAB + TAB + TAB + "<name>" + name.replaceAll("&","and") + "</name>" + NL);
-    	if ("_conc".equals(baseQueryPath)) {
-        bw.append(TAB + TAB + TAB + "<description><![CDATA[<b>Range: " + predictedBinVals[binIdx] + "</b><br/>" + mapText + "]]></description>" + NL);
-    	} else if ("_prob".equals(baseQueryPath)) {
-        bw.append(TAB + TAB + TAB + "<description><![CDATA[<b>Range: " + probabilityBinVals[binIdx] + "</b><br/>" + mapText + "]]></description>" + NL);
-    	}
-      bw.append(TAB + TAB + TAB + "<styleUrl>" + binColors[binIdx] + "</styleUrl>" + NL);
-      bw.append(TAB + TAB + TAB + "<LineString>" + NL);
-      bw.append(TAB + TAB + TAB + TAB + "<tessellate>1</tessellate>" + NL);        
-      bw.append(TAB + TAB + TAB + TAB +  "<coordinates>");
-      for (int i = 0; i < points.length; i++) {
-        bw.append(String.valueOf(points[i]));
-        if ((i % 2) == 1) {
-          bw.append(",0");
-        }
-        if (i < points.length - 1) {
-          bw.append(",");
-        }        
-      }     
-      bw.append("</coordinates>" + NL);        
-      bw.append(TAB + TAB + TAB + "</LineString>" + NL);
-      bw.append(TAB + TAB + "</Placemark>" + NL);
-      
-      zos.write(bw.toString().getBytes());
-      
-    }
-  	
-    String endKML = TAB + "</Document>" + NL + "</kml>";
-    zos.write(endKML.getBytes());
-    
-    zos.flush();
-    zos.close();
+//  	String[] binColors = {"gray","blue","light_blue","yellow","orange","red"};
+//  	String[] predictedBinVals = {"Model Estimate Unavailable","&lt; 0.001", "0.001 - 0.038", "0.039 - 0.150", "0.151 - 1.026", "&gt; 1.026"};
+//  	String[] probabilityBinVals = {"Model Estimate Unavailable",null,"&lt; 5%", "5 - 25%","25 - 50%", "&gt; 50%"};
+//  	
+//  	ZipOutputStream zos = new ZipOutputStream(os);
+//  	zos.putNextEntry(new ZipEntry("warp.kml"));
+//    String startKML = "<kml>" + NL + TAB + "<Document>" + NL;
+//  	zos.write(startKML.getBytes()); 
+//
+//    		
+//  	
+//  	StringBuffer kmlStyles = new StringBuffer();
+//  	
+//  	
+//  	kmlStyles.append(TAB + TAB + "<ScreenOverlay>" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + "<name>Legend</name>" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + "<Icon>" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + TAB + "<href>" + legendUrl.toExternalForm().replaceAll("&","&amp;") + "</href>" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + "</Icon>" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + "<overlayXY x=\"0\" y=\"1\" xunits=\"fraction\" yunits=\"fraction\"/>" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + "<screenXY x=\"0\" y=\"1\" xunits=\"fraction\" yunits=\"fraction\"/>" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + "<rotationXY x=\"0\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + "<size x=\"0\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>" + NL);
+//  	kmlStyles.append(TAB + TAB + "</ScreenOverlay>" + NL);     
+//  	
+//  	
+//  	
+//  	kmlStyles.append(TAB + TAB + "<Style id=\"black\">" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
+//  	kmlStyles.append(TAB + TAB + TAB + TAB + "<color>ff000000</color>" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + TAB + "<width>1</width>" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
+//  	kmlStyles.append(TAB + TAB + "</Style>" + NL);
+//  	kmlStyles.append(TAB + TAB + "<Style id=\"gray\">" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
+//  	kmlStyles.append(TAB + TAB + TAB + TAB + "<color>ff555555</color>" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + TAB + "<width>3</width>" + NL);
+//  	kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
+//  	kmlStyles.append(TAB + TAB + "</Style>" + NL);
+//    kmlStyles.append(TAB + TAB + "<Style id=\"blue\">" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
+//    kmlStyles.append(TAB + TAB + TAB + TAB + "<color>ffff3300</color>" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + TAB + "<width>1</width>" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
+//    kmlStyles.append(TAB + TAB + "</Style>" + NL);
+//    kmlStyles.append(TAB + TAB + "<Style id=\"light_blue\">" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
+//    kmlStyles.append(TAB + TAB + TAB + TAB + "<color>fff49060</color>" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + TAB + "<width>1</width>" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
+//    kmlStyles.append(TAB + TAB + "</Style>" + NL);
+//    kmlStyles.append(TAB + TAB + "<Style id=\"yellow\">" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
+//    kmlStyles.append(TAB + TAB + TAB + TAB + "<color>ff00ffff</color>" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + TAB + "<width>1</width>" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
+//    kmlStyles.append(TAB + TAB + "</Style>" + NL);    
+//    kmlStyles.append(TAB + TAB + "<Style id=\"orange\">" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
+//    kmlStyles.append(TAB + TAB + TAB + TAB + "<color>ff60a8ff</color>" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + TAB + "<width>1</width>" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
+//    kmlStyles.append(TAB + TAB + "</Style>" + NL);
+//    kmlStyles.append(TAB + TAB + "<Style id=\"red\">" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + "<LineStyle>" + NL);    
+//    kmlStyles.append(TAB + TAB + TAB + TAB + "<color>ff1818d0</color>" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + TAB + "<width>1</width>" + NL);
+//    kmlStyles.append(TAB + TAB + TAB + "</LineStyle>" + NL);
+//    kmlStyles.append(TAB + TAB + "</Style>" + NL);    
+//  	zos.write(kmlStyles.toString().getBytes());
+//   	
+//
+//    while (rset.next()) {
+//      STRUCT st = (STRUCT) rset.getObject("geom");
+//      JGeometry j_geom = JGeometry.load(st);
+//      j_geom.setType(JGeometry.GTYPE_CURVE);
+//      double[] points = j_geom.getOrdinatesArray();
+//      String name = rset.getString("name");
+//      int binIdx = rset.getInt("bin");
+//      
+//      StringBuffer bw = new StringBuffer();
+//      bw.append(TAB + TAB + "<Placemark>" + NL);
+//      bw.append(TAB + TAB + TAB + "<name>" + name.replaceAll("&","and") + "</name>" + NL);
+//    	if ("_conc".equals(baseQueryPath)) {
+//        bw.append(TAB + TAB + TAB + "<description><![CDATA[<b>Range: " + predictedBinVals[binIdx] + "</b><br/>" + mapText + "]]></description>" + NL);
+//    	} else if ("_prob".equals(baseQueryPath)) {
+//        bw.append(TAB + TAB + TAB + "<description><![CDATA[<b>Range: " + probabilityBinVals[binIdx] + "</b><br/>" + mapText + "]]></description>" + NL);
+//    	}
+//      bw.append(TAB + TAB + TAB + "<styleUrl>" + binColors[binIdx] + "</styleUrl>" + NL);
+//      bw.append(TAB + TAB + TAB + "<LineString>" + NL);
+//      bw.append(TAB + TAB + TAB + TAB + "<tessellate>1</tessellate>" + NL);        
+//      bw.append(TAB + TAB + TAB + TAB +  "<coordinates>");
+//      for (int i = 0; i < points.length; i++) {
+//        bw.append(String.valueOf(points[i]));
+//        if ((i % 2) == 1) {
+//          bw.append(",0");
+//        }
+//        if (i < points.length - 1) {
+//          bw.append(",");
+//        }        
+//      }     
+//      bw.append("</coordinates>" + NL);        
+//      bw.append(TAB + TAB + TAB + "</LineString>" + NL);
+//      bw.append(TAB + TAB + "</Placemark>" + NL);
+//      
+//      zos.write(bw.toString().getBytes());
+//      
+//    }
+//  	
+//    String endKML = TAB + "</Document>" + NL + "</kml>";
+//    zos.write(endKML.getBytes());
+//    
+//    zos.flush();
+//    zos.close();
   
   }
   
