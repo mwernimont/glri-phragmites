@@ -22,11 +22,11 @@ Ext.onReady(function() {
 			bodyBorder: true,
 			items: [{
 					title: 'About the DSS (FAQs)',
+					id: 'about-tab',
 					contentEl: 'mapper-intro',
 					bodyStyle: 'padding: 5px;',
 					autoScroll: true
 				},{
-				id: 'tabs-area',
 				region: 'north',
 				layout: 'border',
 				title: 'Phragmites Corridor Network',
@@ -42,38 +42,45 @@ Ext.onReady(function() {
 					items: [{
 						xtype: 'fieldset',
 						autoHeight: true,
-						columnWidth: 0.5,
+						columnWidth: 0.45,
 						style: 'border-width: 0px',
 						items: [{
 							fieldLabel: 'Corridor Network',
 							id: 'phragmitesNetwork',
 							xtype: 'combo',
-							anchor: '90%',
-							minListWidth: 300,
+							anchor: '.9',
 							triggerAction: 'all',
 							lazyRender:true,
 							forceSelection: true,
-							value: 'none,none',
+							value: 'Map Off',
 							editable: false,
 							mode: 'local',
-							labelWidth: 180,
+							labelWidth: 120,
 							store: new Ext.data.ArrayStore({
 								id: 0,
 								fields: [
-								         'network',
-								         'displayText'
+								         'network'
 								         ],
 								         data: [
-								                ['stuff', 'Network'] //TODO hardcode or load this store
+								                ['Map Off'], //TODO hardcode or load this store
+								                ['Area with no available lidar data'],
+								                ['Vulnerable Corridors from NOAA Bathymetry: 1m Lake Level Drop'],
+								                ['Vulnerable Corridors from Lidar Data: 1m Lake Level Drop'],
+								                ['Vulnerable Corridors from Lidar Data: 50cm Lake Level Drop']
 								                ]	
 							}),
+							listeners: {
+								select: function(a, b, c) {
+									GLRI.ui.turnOnHabitatLayerMap(b[0].data.network, GLRI.ui.map.networkLayers);
+								}
+							},
 							valueField: 'network',
-							displayField: 'displayText'
+							displayField: 'network'
 						}]
 					},{
 						xtype: 'fieldset',
 						autoHeight: true,
-						columnWidth: 0.5,
+						columnWidth: 0.55,
 						style: 'border-width: 0px',
 						items: [{
 							id: 'habitatSuitability',
@@ -81,30 +88,38 @@ Ext.onReady(function() {
 							xtype: 'combo',
 							triggerAction: 'all',
 							forceSelection: true,
-							anchor: '90%',
+							anchor: '91%',
 							minListWidth: 300,
 							lazyRender:true,
 							mode: 'local',
-							value: 'none',
+							value: 'None Mapped',
 							editable: false,
 							labelWidth: 180,
+							listeners: {
+								select: function(a, b, c) {
+									GLRI.ui.turnOnHabitatLayerMap(b[0].data.serviceName, GLRI.ui.map.habitatLayers);
+								}
+							},
 							store: new Ext.data.ArrayStore({
 								id: 0,
 								fields: [
-								         'service',
-								         'displayText'
+								         'serviceName',
 								         ],
 								         data: [
-								                ['none', 'A Service'] //TODO hardcode or load store
+								                ['None Mapped'], //TODO hardcode or load store
+								                ['Monotypic Phragmites Stands'] 
 								         ]
 							}),
-							valueField: 'service',
-							displayField: 'displayText'
+							valueField: 'serviceName',
+							displayField: 'serviceName'
 						},{
 							fieldLabel: 'Show Lidar Availability Layer',
 							xtype: 'checkbox',
 							labelWidth: 180,
-							id: 'showLidarAvailability'
+							id: 'showLidarAvailability',
+							listeners: {
+								change: function() { alert('Function not yet implemented')} //TODO duhhhh
+							}
 						}]
 					}]
 				},{
@@ -151,11 +166,21 @@ Ext.onReady(function() {
 			margin: 3,
 			items: [
 			        {
+			        	xtype: 'panel',
+						title: 'Legend',
+						id: 'legend-panel',
+						height: 200,
+						anchor: '100%',
+						autoScroll: true,
+						bodyStyle: "padding: 5px;",
+						region: 'north',
+						html: '<div id="network-layer-div">Legend box should change dynamically with user selection</div><div id="sustainability-layer-div"></div>'
+					},{
 			        	id: 'help-context-panel', 
 			        	title: 'Help Context',
-			        	bbar: ['->','<a href="#" onclick="Ext.getCmp(' + "'" + 'tabs-area' + "'" + ').activate(0); return false;">Open FAQs</a>'],
-			        	html: 'Watch here for for explanations on various parts of the application.',
-			        	bodyStyle: 'padding: 5px',
+			        	bbar: ['->','<a href="#" onclick="Ext.getCmp(\'map-and-tabs\').setActiveTab(\'about-tab\'); return false;">Open FAQs</a>'],
+			        	html: 'Watch here for for explanations on various parts of the application. Content of this box and its header should change based on user selections.', //TODO
+			        	bodyStyle: "padding: 5px;",
 			        	autoScroll: true,
 			        	region: 'center'
 			        }]
