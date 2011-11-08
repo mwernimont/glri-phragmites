@@ -1,4 +1,17 @@
 Ext.onReady(function() {	
+	
+	var createLayersDropDown = function(emptyOption, layers){
+		var dataArray = [[emptyOption]];
+		for(var i = 0; i < layers.length; i++){
+			dataArray.push([layers[i].name]);
+		}
+		return dataArray;
+	}
+	
+
+	var networkDataArray = createLayersDropDown('Map Off', GLRI.ui.map.networkLayers);
+	var habitatSustainabilityArray = createLayersDropDown('None Mapped', GLRI.ui.map.habitatLayers);
+	
 	Ext.create('Ext.container.Viewport', {
 		layout: 'border',
 		border: false,
@@ -61,13 +74,7 @@ Ext.onReady(function() {
 								fields: [
 								         'network'
 								         ],
-								         data: [
-								                ['Map Off'], //TODO hardcode or load this store
-								                ['Area with no available lidar data'],
-								                ['Vulnerable Corridors from NOAA Bathymetry: 1m Lake Level Drop'],
-								                ['Vulnerable Corridors from Lidar Data: 1m Lake Level Drop'],
-								                ['Vulnerable Corridors from Lidar Data: 50cm Lake Level Drop']
-								                ]	
+								         data: networkDataArray	
 							}),
 							listeners: {
 								select: function(a, b, c) {
@@ -105,10 +112,7 @@ Ext.onReady(function() {
 								fields: [
 								         'serviceName',
 								         ],
-								         data: [
-								                ['None Mapped'], //TODO hardcode or load store
-								                ['Monotypic Phragmites Stands'] 
-								         ]
+								         data: habitatSustainabilityArray
 							}),
 							valueField: 'serviceName',
 							displayField: 'serviceName'
