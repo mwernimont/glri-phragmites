@@ -35,6 +35,7 @@
     
   
   <build>
+  		<finalName>glri-phragmites-map</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
