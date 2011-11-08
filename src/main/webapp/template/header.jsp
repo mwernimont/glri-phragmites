@@ -4,7 +4,7 @@
 				<h1>US Geological Survey</h1><!-- Not actually visible unless printed -->
 				<div id="usgs-header-logo">
 					<a title="Link to the US Geological Survey main web page" href="http://www.usgs.gov">
-						<img src="assets/images/USGS_web_logo.gif" alt="USGS Logo"/>
+						<img src="images/USGS_web_logo.gif" alt="USGS Logo"/>
 					</a>
 				</div>
 				
@@ -47,7 +47,7 @@
 			</div>
 			
 			<h2 id="site-title">
-			  Watershed Regressions for Pesticides (WARP) Atrazine Model
+			  	GLRI Phragmites DSS Mapper
 			</h2>
 		<!--<h3 id="internal-only">For Internal USGS Access Only</h3>-->
 		</div>
