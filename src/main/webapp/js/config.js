@@ -8,7 +8,7 @@ GLRI.ui.map.XYZ_URL_POSTFIX = '${z}/${y}/${x}';
 
 GLRI.ui.map.baseLayers = [
       { 
-      	name: "ESRI Shadedasf Relief World 2D", 
+      	name: "ESRI Shaded Relief World 2D", 
           url: "http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_ShadedRelief_World_2D/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
           type: OpenLayers.Layer.XYZ
       }
