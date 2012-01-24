@@ -17,7 +17,7 @@ GLRI.ui.map.baseLayers = [
 GLRI.ui.map.habitatLayers = [
   	 { 
   	 	name: "Monotypic Phragmites Stands greater than 0.4 ha (0.5 acre)", 
-  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_preliminary_Phragmites_v1_1_mxd/MapServer/WMSServer",
+  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '17'
        }                     
@@ -25,23 +25,23 @@ GLRI.ui.map.habitatLayers = [
 
 GLRI.ui.map.networkLayers = [{ 
   	 	name: 'Area with no available lidar data', 
-  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_preliminary_Phragmites_v1_1_mxd/MapServer/WMSServer",
+  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '12'
+  	 	layers: '14'
        },{ 
   	 	name: 'Vulnerable Corridors from NOAA Bathymetry: 1m Lake Level Drop', 
-  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_preliminary_Phragmites_v1_1_mxd/MapServer/WMSServer",
+  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '2'
+  	 	layers: '4'
        },{ 
   	 	name: 'Vulnerable Corridors from Lidar Data: 1m Lake Level Drop', 
-  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_preliminary_Phragmites_v1_1_mxd/MapServer/WMSServer",
-  	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '9'
-       },{ 
-  	 	name: 'Vulnerable Corridors from Lidar Data: 50cm Lake Level Drop', 
-  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_preliminary_Phragmites_v1_1_mxd/MapServer/WMSServer",
+  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '11'
+       },{ 
+  	 	name: 'Vulnerable Corridors from Lidar Data: 50cm Lake Level Drop', 
+  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+  	 	type: OpenLayers.Layer.WMS,
+  	 	layers: '13'
        }                 
    ];
