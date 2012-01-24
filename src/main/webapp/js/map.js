@@ -41,8 +41,10 @@ GLRI.ui.turnOnHabitatLayerMap = function(name, layers){
 				layers[i].url,
 	            {
 					layers: layers[i].layers,
-					transparent: true,
-					displayInLayerSwitcher: false
+					transparent: true},
+				{	
+					displayInLayerSwitcher: false,
+					singleTile: true
 				}
 	        ));
 		} else {
