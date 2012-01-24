@@ -20,7 +20,13 @@ GLRI.ui.map.habitatLayers = [
   	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '17'
-       }                     
+      },
+  	 {
+  		name: "Ecologocial niche",
+  		url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+  	 	type: OpenLayers.Layer.WMS,
+  	 	layers: '1'
+  	 }
    ];
 
 GLRI.ui.map.networkLayers = [{ 
