@@ -4,7 +4,7 @@
   <artifactId>glri-phragmites-map</artifactId>
   <packaging>war</packaging>
   <name>GLRI Phragmites Map</name>
-  <version>0.0.1</version>
+  <version>0.0.1-SNAPSHOT</version>
   <description>{Owner: Dave Blodgett; Coder: PT}</description>
   
   	<repositories>
