@@ -4,7 +4,7 @@
   <artifactId>glri-phragmites-map</artifactId>
   <packaging>war</packaging>
   <name>GLRI Phragmites Map</name>
-  <version>0.0.1</version>
+  <version>0.0.1-SNAPSHOT</version>
   <description>{Owner: Dave Blodgett; Coder: PT}</description>
   
   	<repositories>
@@ -16,7 +16,7 @@
     </repositories>
     
     <scm>
-	  <developerConnection>scm:svn:https://cida-svn.er.usgs.gov/repos/dev/usgs/usgs/glri-phragmites-map/tags/glri-phragmites-map-0.0.1</developerConnection>
+	  <developerConnection>scm:svn:https://cida-svn.er.usgs.gov/repos/dev/usgs/glri-phragmites-map/tags/glri-phragmites-map-0.0.1</developerConnection>
 	</scm>
 
     <distributionManagement>
@@ -88,7 +88,7 @@
 		      <artifactId>maven-release-plugin</artifactId>
 		      <version>2.1</version>
 		      <configuration>
-		        <tagBase>https://cida-svn.er.usgs.gov/repos/dev/usgs/usgs/glri-phragmites-map/tags</tagBase>
+		        <tagBase>https://cida-svn.er.usgs.gov/repos/dev/usgs/glri-phragmites-map/tags</tagBase>
 		      </configuration>
 		    </plugin>
 		    <plugin>
