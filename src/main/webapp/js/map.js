@@ -15,7 +15,7 @@ GLRI.ui.initMap = function() {
         // Got this number from Hollister, and he's not sure where it came from.
         // Without this line, the esri road and relief layers will not display
         // outside of the upper western hemisphere.
-//        maxResolution: 1.40625/2
+        maxResolution: 1.40625/2
     });
 	
 	for(var i = 0; i < GLRI.ui.map.baseLayers.length; i++){
@@ -25,17 +25,11 @@ GLRI.ui.initMap = function() {
             {
 				isBaseLayer: true,
 				layers: GLRI.ui.map.baseLayers[i].layers,
-                projection : GLRI.ui.map.baseLayers[i].projection,
-                maxResolution: 1.40625/2,
-//                sphericalMercator : true,
-//                                maxResolution: 156543.033928,
-                units: 'm'
 			}
         ));
 	};
 	GLRI.ui.map.mainMap.zoomTo(5);
 	GLRI.ui.map.mainMap.panTo(new OpenLayers.LonLat(-84, 45));
-//	GLRI.ui.map.mainMap.panTo(new OpenLayers.LonLat(-84, 45).transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")));
 }
 GLRI.ui.turnOnHabitatLayerMap = function(name, layers){
 	for(var i = 0; i < layers.length; i++){
