@@ -7,7 +7,13 @@ Ext.ns("GLRI.ui.map");
 GLRI.ui.map.XYZ_URL_POSTFIX = '${z}/${y}/${x}';
 
 GLRI.ui.map.baseLayers = [
-      { 
+//  { 
+//    	name: "USA_Topo_Maps", 
+//      url: "http://services.arcgisonline.com/ArcGIS/rest/services/USA_Topo_Maps/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
+//      type: OpenLayers.Layer.XYZ,
+//		projection: new OpenLayers.Projection("EPSG:900913")
+//    },
+    { 
       	name: "ESRI Shaded Relief World 2D", 
         url: "http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_ShadedRelief_World_2D/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
         type: OpenLayers.Layer.XYZ
