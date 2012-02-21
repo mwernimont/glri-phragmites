@@ -181,7 +181,7 @@ Ext.onReady(function() {
 						autoScroll: true,
 						bodyStyle: "padding: 5px;",
 						region: 'north',
-						html: '<div id="network-layer-div">Legend box should change dynamically with user selection</div><div id="sustainability-layer-div"></div>'
+						html: '<div id="network-layer-div"></div><br/><div id="sustainability-layer-div"></div>'
 					},{
 			        	id: 'help-context-panel', 
 			        	title: 'Help Context',
