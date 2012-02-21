@@ -6,7 +6,7 @@ Ext.onReady(function() {
 			dataArray.push([layers[i].name]);
 		}
 		return dataArray;
-	}
+	};
 	
 
 	var networkDataArray = createLayersDropDown('Map Off', GLRI.ui.map.networkLayers);
@@ -79,6 +79,7 @@ Ext.onReady(function() {
 							listeners: {
 								select: function(a, b, c) {
 									GLRI.ui.turnOnHabitatLayerMap(b[0].data.network, GLRI.ui.map.networkLayers);
+									GLRI.ui.turnOnLegend(b[0].data.network, GLRI.ui.map.networkLayers, 'network-layer-div');
 								}
 							},
 							valueField: 'network',
@@ -105,7 +106,9 @@ Ext.onReady(function() {
 							listeners: {
 								select: function(a, b, c) {
 									GLRI.ui.turnOnHabitatLayerMap(b[0].data.serviceName, GLRI.ui.map.habitatLayers);
+									GLRI.ui.turnOnLegend(b[0].data.serviceName, GLRI.ui.map.habitatLayers, 'sustainability-layer-div');
 								}
+
 							},
 							store: new Ext.data.ArrayStore({
 								id: 0,
@@ -122,7 +125,7 @@ Ext.onReady(function() {
 							labelWidth: 180,
 							id: 'showLidarAvailability',
 							listeners: {
-								change: function() { alert('Function not yet implemented')} //TODO duhhhh
+								change: function() { alert('Function not yet implemented');} //TODO duhhhh
 							}
 						}]
 					}]
@@ -141,7 +144,7 @@ Ext.onReady(function() {
 							if (t.className == 'x-tool-maximize') {
 								t.className ='x-tool-restore';
 							} else {
-								t.className ='x-tool-restore';'x-tool-maximize'
+								t.className ='x-tool-restore';'x-tool-maximize';
 							}
 
 							if (!Ext.getCmp('ext-header-banner').collapsed) {
