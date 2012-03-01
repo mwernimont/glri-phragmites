@@ -23,14 +23,22 @@ GLRI.ui.map.baseLayers = [
     	url: "http://isse.cr.usgs.gov/ArcGIS/services/Combined/SDDS_Imagery/MapServer/WMSServer",
     	type: OpenLayers.Layer.WMS,
     	layers: '0'
-// Removed the wetlands map for now as it doesn't appear to have map data.
+// This is not working well as a base Layer so I'm taking it out for now.
 //      },
+//      {
+//    	  name: "Forecasting Phragmites Study Area",
+//    	  url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+//    	  type: OpenLayers.Layer.WMS,
+//      	  layers: '15'
+      }
+// Removed the wetlands map for now as it doesn't appear to have map data.
+//      
 //      {
 //      	name: "FWS Wetlands",
 //      	url: "http://137.227.242.85/arcGIS/services/FWS_Wetlands_WMS/MapServer/WMSServer",
 //      	type: OpenLayers.Layer.WMS,
 //      	layers: '17'
-        }     
+//       }
   ];
 
 GLRI.ui.map.habitatLayers = [
@@ -38,13 +46,22 @@ GLRI.ui.map.habitatLayers = [
   	 	name: "Monotypic Phragmites Stands greater than 0.4 ha (0.5 acre)", 
   	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '17'
+  	 	layers: '17',
+  	 	legendDivId: 'habitat-layer-17'
       },
   	 {
   		name: "Ecologocial niche",
   		url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '1'
+  	 	layers: '1',
+  	 	legendDivId: 'habitat-layer-1'
+  	 },
+  	 {
+  		name: "Streams Wetlands and Waterbodies",
+  		url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+   	 	type: OpenLayers.Layer.WMS,
+  	 	layers: '0',
+  	 	legendDivId: 'habitat-layer-0'
   	 }
    ];
 

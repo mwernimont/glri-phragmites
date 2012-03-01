@@ -1,16 +1,44 @@
 Ext.onReady(function() {	
 	
 	var createLayersDropDown = function(emptyOption, layers){
+		// Return a list of names to be used for a layers drop down menu.
+		// The emptyOption parameter defines the empty option.
 		var dataArray = [[emptyOption]];
 		for(var i = 0; i < layers.length; i++){
 			dataArray.push([layers[i].name]);
 		}
 		return dataArray;
 	};
-	
 
 	var networkDataArray = createLayersDropDown('Map Off', GLRI.ui.map.networkLayers);
-	var habitatSustainabilityArray = createLayersDropDown('None Mapped', GLRI.ui.map.habitatLayers);
+	
+	var createLayerCheckBoxes = function (layers){
+		var dataArray = [];
+		for (var i = 0; i < layers.length; i++){
+			dataArray.push({
+				boxLabel: layers[i].name,
+				xtype: 'checkbox',
+				listeners: {
+					change: function(checkbox, newValue, oldValue) {
+						GLRI.ui.toggleLayerMap(checkbox.boxLabel, GLRI.ui.map.habitatLayers, newValue);
+						GLRI.ui.toggleLegend(checkbox.boxLabel, GLRI.ui.map.habitatLayers, newValue);
+					}
+				}
+			});
+		};
+		return dataArray;
+	};
+	
+	var createLegendHtml = function (layers) {
+		var html = '';
+		for (var i = 0; i < layers.length; i++){
+			html += '<div id="' + layers[i].legendDivId + '"></div>';
+		}
+		return html;
+	};
+	
+	var habitatCheckBoxes = createLayerCheckBoxes(GLRI.ui.map.habitatLayers);
+	var habitatLegendHTML = createLegendHtml(GLRI.ui.map.habitatLayers);
 	
 	Ext.create('Ext.container.Viewport', {
 		layout: 'border',
@@ -70,7 +98,6 @@ Ext.onReady(function() {
 							mode: 'local',
 							labelWidth: 120,
 							store: new Ext.data.ArrayStore({
-								id: 0,
 								fields: [
 								         'network'
 								         ],
@@ -78,7 +105,7 @@ Ext.onReady(function() {
 							}),
 							listeners: {
 								select: function(a, b, c) {
-									GLRI.ui.turnOnHabitatLayerMap(b[0].data.network, GLRI.ui.map.networkLayers);
+									GLRI.ui.turnOnLayerMap(b[0].data.network, GLRI.ui.map.networkLayers);
 									GLRI.ui.turnOnLegend(b[0].data.network, GLRI.ui.map.networkLayers, 'network-layer-div');
 								}
 							},
@@ -93,32 +120,8 @@ Ext.onReady(function() {
 						items: [{
 							id: 'habitatSuitability',
 							fieldLabel: 'Habitat Suitability',
-							xtype: 'combo',
-							triggerAction: 'all',
-							forceSelection: true,
-							anchor: '91%',
-							minListWidth: 300,
-							lazyRender:true,
-							mode: 'local',
-							value: 'None Mapped',
-							editable: false,
-							labelWidth: 180,
-							listeners: {
-								select: function(a, b, c) {
-									GLRI.ui.turnOnHabitatLayerMap(b[0].data.serviceName, GLRI.ui.map.habitatLayers);
-									GLRI.ui.turnOnLegend(b[0].data.serviceName, GLRI.ui.map.habitatLayers, 'sustainability-layer-div');
-								}
-
-							},
-							store: new Ext.data.ArrayStore({
-								id: 0,
-								fields: [
-								         'serviceName',
-								         ],
-								         data: habitatSustainabilityArray
-							}),
-							valueField: 'serviceName',
-							displayField: 'serviceName'
+							xtype: 'fieldcontainer',
+							items: habitatCheckBoxes
 						},{
 							fieldLabel: 'Show Lidar Availability Layer',
 							xtype: 'checkbox',
@@ -181,7 +184,7 @@ Ext.onReady(function() {
 						autoScroll: true,
 						bodyStyle: "padding: 5px;",
 						region: 'north',
-						html: '<div id="network-layer-div"></div><br/><div id="sustainability-layer-div"></div>'
+						html: '<div id="network-layer-div"></div><br/>' + habitatLegendHTML
 					},{
 			        	id: 'help-context-panel', 
 			        	title: 'Help Context',
