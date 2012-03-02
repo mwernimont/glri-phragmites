@@ -92,9 +92,17 @@ GLRI.ui.turnOnLayerMap = function(name, layers){
 	}
 	return;
 };
-GLRI.ui.getLegendHTML = function(url, layerId){
-	// Return the request string for the map legend at url and the layers identifier.
-	return '<img src=' + url + '?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=' + layerId + '>';
+GLRI.ui.getLegendHTML = function(url, layers){
+	// Return the html representing the layers by retrieving the map legend at url.
+	html = '';
+	listOfLayers = layers.split(',');
+	for (var i = 0;  i < listOfLayers.length; i++){
+		if (i != 0) {
+			html += '<br/>';
+		}
+		html += '<img src=' + url + '?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=' + listOfLayers[i] + '>';
+	}
+	return html;
 };
 GLRI.ui.turnOnLegend = function(name, layers, div_id){
 	// Show the legend information for the layer in layers with a name equal to name in the div element, div_id.
@@ -108,15 +116,18 @@ GLRI.ui.turnOnLegend = function(name, layers, div_id){
 	document.getElementById(div_id).innerHTML='';
 	return;
 };
+
 GLRI.ui.toggleLegend = function(name, layers, on) {
 	// If on is true, retrieve the legend for the layer in layers that matches name, and
 	// assign it to that layer's div element. If false, set the layer's div element to 
 	// the null string.
 	var thisLayer = GLRI.ui.getLayerByName(name, layers);
 	var divEl = document.getElementById(thisLayer.legendDivId);
+	
 	if (on) {
 		divEl.innerHTML = GLRI.ui.getLegendHTML(thisLayer.url, thisLayer.layers);		
-	} else {
+	}
+	else {
 		divEl.innerHTML = '';
 	}
 	return;

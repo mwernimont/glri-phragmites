@@ -59,44 +59,43 @@ Ext.onReady(function() {
 			xtype: 'tabpanel',
 			activeTab: 1,
 			margin: '3 0 3 3',
-			border: false,
-			bodyBorder: true,
+			bodyborder: true,
 			items: [{
-					title: 'About the DSS (FAQs)',
-					id: 'about-tab',
-					contentEl: 'mapper-intro',
-					bodyStyle: 'padding: 5px;',
-					autoScroll: true
-				},{
+				title: 'About the DSS (FAQs)',
+				id: 'about-tab',
+				contentEl: 'mapper-intro',
+				bodyStyle: 'padding: 5px;',
+				autoScroll: true
+				},
+				{
 				region: 'north',
 				layout: 'border',
 				title: 'Phragmites Corridor Network',
-				height: 100,
-				border: false,
 				items: [{
 					xtype: 'form',
-					id: 'prediction-form',
+					id: 'phragmites-map-form',
 					bodyStyle: 'padding: 10px',
 					title: 'Phragmites Corridor Network',
 					layout: 'column',
 					region: 'north',
+					split: true,
+					height: 110,
+					border: 0,
 					items: [{
 						xtype: 'fieldset',
-						autoHeight: true,
 						columnWidth: 0.45,
 						style: 'border-width: 0px',
+						layout: 'fit',
 						items: [{
 							fieldLabel: 'Corridor Network',
 							id: 'phragmitesNetwork',
 							xtype: 'combo',
-							anchor: '.9',
 							triggerAction: 'all',
 							lazyRender:true,
 							forceSelection: true,
 							value: 'Map Off',
 							editable: false,
 							mode: 'local',
-							labelWidth: 120,
 							store: new Ext.data.ArrayStore({
 								fields: [
 								         'network'
@@ -114,7 +113,6 @@ Ext.onReady(function() {
 						}]
 					},{
 						xtype: 'fieldset',
-						autoHeight: true,
 						columnWidth: 0.55,
 						style: 'border-width: 0px',
 						items: [{
@@ -122,14 +120,6 @@ Ext.onReady(function() {
 							fieldLabel: 'Habitat Suitability',
 							xtype: 'fieldcontainer',
 							items: habitatCheckBoxes
-						},{
-							fieldLabel: 'Show Lidar Availability Layer',
-							xtype: 'checkbox',
-							labelWidth: 180,
-							id: 'showLidarAvailability',
-							listeners: {
-								change: function() { alert('Function not yet implemented');} //TODO duhhhh
-							}
 						}]
 					}]
 				},{
@@ -138,7 +128,7 @@ Ext.onReady(function() {
 					title: 'Click and drag the map around.',
 					region: 'center',
 					layout: 'fit',
-					border: false,
+					border: 0,
 					toolTemplate: new Ext.Template('<div title="{title}" class="x-tool x-tool-{id}">&#160;</div>'),
 					tools: [{
 						id: 'maximize',
@@ -146,18 +136,14 @@ Ext.onReady(function() {
 						handler: function(e,t,p,c) {
 							if (t.className == 'x-tool-maximize') {
 								t.className ='x-tool-restore';
-							} else {
-								t.className ='x-tool-restore';'x-tool-maximize';
-							}
-
-							if (!Ext.getCmp('ext-header-banner').collapsed) {
+								Ext.getCmp('ext-header-banner').collapse();
 								Ext.getCmp('ext-footer-banner').collapse();
+								GLRI.ui.map.mainMap.updateSize();
 							} else {
+								t.className ='x-tool-maximize';
+								Ext.getCmp('ext-header-banner').expand();
 								Ext.getCmp('ext-footer-banner').expand();
 							}
-							Ext.getCmp('ext-header-banner').toggleCollapse();
-
-							//Ext.getCmp('ext-footer-banner').toggleCollapse();									
 						}
 					}],
 					listeners: {
@@ -170,7 +156,7 @@ Ext.onReady(function() {
 		},{
 			id: 'sidebar-area',
 			region: 'east',
-			border: false,
+			border: 0,
 			width: 300,
 			layout: 'border',
 			margin: 3,
@@ -181,6 +167,7 @@ Ext.onReady(function() {
 						id: 'legend-panel',
 						height: 200,
 						anchor: '100%',
+						split: true,
 						autoScroll: true,
 						bodyStyle: "padding: 5px;",
 						region: 'north',
@@ -197,8 +184,9 @@ Ext.onReady(function() {
 		},{
 			id: 'ext-footer-banner',
 			contentEl: 'footer',
-			border: false,
+			border: 0,
 			region: 'south'
-		}]
+		  }
+		]
 	});
 });
