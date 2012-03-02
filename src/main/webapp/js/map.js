@@ -18,13 +18,13 @@ GLRI.ui.initMap = function() {
         maxResolution: 1.40625/2
     });
 	
-	for(var i = 0; i < GLRI.ui.map.baseLayers.length; i++){
+	for (var i = 0; i < GLRI.ui.map.baseLayers.length; i++){
 		GLRI.ui.map.mainMap.addLayer(new GLRI.ui.map.baseLayers[i].type(
 			GLRI.ui.map.baseLayers[i].name,
 			GLRI.ui.map.baseLayers[i].url,
             {
 				isBaseLayer: true,
-				layers: GLRI.ui.map.baseLayers[i].layers,
+				layers: GLRI.ui.map.baseLayers[i].layers
 			}
         ));
 	};
@@ -41,7 +41,7 @@ GLRI.ui.initMap = function() {
 				{
 					displayInLayerSwitcher: false,
 					singleTile: true,
-					visibility: false,
+					visibility: false
 				})
 		);
 	}
