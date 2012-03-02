@@ -28,6 +28,23 @@ GLRI.ui.initMap = function() {
 			}
         ));
 	};
+	// Add habitat layers since these are toggled on/off
+	for (var i = 0; i < GLRI.ui.map.habitatLayers.length; i++){
+		var thisLayer = GLRI.ui.map.habitatLayers[i];
+		GLRI.ui.map.mainMap.addLayer(new thisLayer.type(
+				thisLayer.name,
+				thisLayer.url,
+				{
+					layers: thisLayer.layers,
+					transparent: true
+				},
+				{
+					displayInLayerSwitcher: false,
+					singleTile: true,
+					visibility: false,
+				})
+		);
+	}
 	GLRI.ui.map.mainMap.zoomTo(5);
 	GLRI.ui.map.mainMap.panTo(new OpenLayers.LonLat(-84, 45));
 };
@@ -42,35 +59,19 @@ GLRI.ui.getLayerByName = function(name, layers) {
 	return;
 };
 
-GLRI.ui.toggleLayerMap = function(name, layers, on){
-	// If on is true, adds the layer matching layer_name in layer, otherwise
-	// removes the layer from the map.
-	if (on){
-		var thisLayer = GLRI.ui.getLayerByName(name, layers);
-		var mapLayer= new thisLayer.type(
-			thisLayer.name,
-			thisLayer.url,
-			{
-				layers: thisLayer.layers,
-				transparent: true
-			},
-			{
-				displayInLayerSwitcher: false,
-				singleTile: true
-			});
-		GLRI.ui.map.mainMap.addLayer(mapLayer);
-		
-	} else {
-		var map = GLRI.ui.map.mainMap;
-		map.removeLayer(map.getLayersByName(name)[0], false);
+GLRI.ui.toggleLayerMap = function(name, on){
+	// Set the visibility of the layers in mainMap whose name matches "name" to on.
+	layerList = GLRI.ui.map.mainMap.getLayersByName(name);
+	for (var i=0; i < layerList.length; i++){
+		layerList[0].setVisibility(on);
 	}
 	return;
 };
 
 GLRI.ui.turnOnLayerMap = function(name, layers){
 	// Add the layer matching name in layers to the map. 
-	// Remove all other layers from the map.
-	for(var i = 0; i < layers.length; i++){
+	// Remove all other layers from the map that are in the layers array.
+	for (var i = 0; i < layers.length; i++){
 		if(layers[i].name == name){
 			var mapLayer = new layers[i].type(
 					layers[i].name,

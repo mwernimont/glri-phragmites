@@ -13,6 +13,8 @@ Ext.onReady(function() {
 	var networkDataArray = createLayersDropDown('Map Off', GLRI.ui.map.networkLayers);
 	
 	var createLayerCheckBoxes = function (layers){
+		// Return a list of checkbox objects that represent the layers
+		// and can be used to turn on/off the visibility of that layer.
 		var dataArray = [];
 		for (var i = 0; i < layers.length; i++){
 			dataArray.push({
@@ -20,7 +22,7 @@ Ext.onReady(function() {
 				xtype: 'checkbox',
 				listeners: {
 					change: function(checkbox, newValue, oldValue) {
-						GLRI.ui.toggleLayerMap(checkbox.boxLabel, GLRI.ui.map.habitatLayers, newValue);
+						GLRI.ui.toggleLayerMap(checkbox.boxLabel, newValue);
 						GLRI.ui.toggleLegend(checkbox.boxLabel, GLRI.ui.map.habitatLayers, newValue);
 					}
 				}
@@ -29,7 +31,9 @@ Ext.onReady(function() {
 		return dataArray;
 	};
 	
-	var createLegendHtml = function (layers) {
+	var createLegendDiv = function (layers) {
+		// Create the div elements to be used to display legends for each layer in layers.
+		// Assumes that there is a legendDivId property for each object in the layers list.
 		var html = '';
 		for (var i = 0; i < layers.length; i++){
 			html += '<div id="' + layers[i].legendDivId + '"></div>';
@@ -38,12 +42,11 @@ Ext.onReady(function() {
 	};
 	
 	var habitatCheckBoxes = createLayerCheckBoxes(GLRI.ui.map.habitatLayers);
-	var habitatLegendHTML = createLegendHtml(GLRI.ui.map.habitatLayers);
+	var habitatLegendDiv = createLegendDiv(GLRI.ui.map.habitatLayers);
 	
 	Ext.create('Ext.container.Viewport', {
 		layout: 'border',
-		border: false,
-		plain: true,
+		border: 0,
 		listeners: {
 			afterrender: GLRI.ui.initMap
 		},
@@ -52,7 +55,7 @@ Ext.onReady(function() {
 			region: 'north',
 			contentEl: 'header',
 			xtype: 'panel',
-			border: false
+			border: 0
 		},{
 			id: 'map-and-tabs',
 			region: 'center',
@@ -103,9 +106,9 @@ Ext.onReady(function() {
 								         data: networkDataArray	
 							}),
 							listeners: {
-								select: function(a, b, c) {
-									GLRI.ui.turnOnLayerMap(b[0].data.network, GLRI.ui.map.networkLayers);
-									GLRI.ui.turnOnLegend(b[0].data.network, GLRI.ui.map.networkLayers, 'network-layer-div');
+								select: function(combo, records, eOpts) {
+									GLRI.ui.turnOnLayerMap(records[0].data.network, GLRI.ui.map.networkLayers);
+									GLRI.ui.turnOnLegend(records[0].data.network, GLRI.ui.map.networkLayers, 'network-layer-div');
 								}
 							},
 							valueField: 'network',
@@ -134,13 +137,18 @@ Ext.onReady(function() {
 						id: 'maximize',
 						title: 'toggle map area size',
 						handler: function(e,t,p,c) {
+							// Using the toggleCollapse method didn't work because the element
+							// toggled last would be overlaid by the map.
 							if (t.className == 'x-tool-maximize') {
 								t.className ='x-tool-restore';
+								
 								Ext.getCmp('ext-header-banner').collapse();
 								Ext.getCmp('ext-footer-banner').collapse();
+								
 								GLRI.ui.map.mainMap.updateSize();
 							} else {
 								t.className ='x-tool-maximize';
+								
 								Ext.getCmp('ext-header-banner').expand();
 								Ext.getCmp('ext-footer-banner').expand();
 							}
@@ -166,12 +174,11 @@ Ext.onReady(function() {
 						title: 'Legend',
 						id: 'legend-panel',
 						height: 200,
-						anchor: '100%',
 						split: true,
 						autoScroll: true,
 						bodyStyle: "padding: 5px;",
 						region: 'north',
-						html: '<div id="network-layer-div"></div><br/>' + habitatLegendHTML
+						html: '<div id="network-layer-div"></div><br/>' + habitatLegendDiv
 					},{
 			        	id: 'help-context-panel', 
 			        	title: 'Help Context',

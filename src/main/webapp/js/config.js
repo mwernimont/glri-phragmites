@@ -25,7 +25,7 @@ GLRI.ui.map.baseLayers = [
     	layers: '0'
 // This is not working well as a base Layer so I'm taking it out for now.
 //      },
-//      {
+//     {
 //    	  name: "Forecasting Phragmites Study Area",
 //    	  url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
 //    	  type: OpenLayers.Layer.WMS,
