@@ -92,6 +92,7 @@ Ext.onReady(function() {
 						items: [{
 							fieldLabel: 'Corridor Network',
 							id: 'phragmitesNetwork',
+							name: 'phragmitesNetwork', // Test to see if this fixes IE 7 display issues
 							xtype: 'combo',
 							triggerAction: 'all',
 							lazyRender:true,
