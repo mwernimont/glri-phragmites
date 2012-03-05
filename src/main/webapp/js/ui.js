@@ -156,7 +156,9 @@ Ext.onReady(function() {
 					}],
 					listeners: {
 						bodyresize: function(p,w,h) {
-							if (GLRI.ui.map.mainMap) GLRI.ui.map.mainMap.updateSize();
+							if (GLRI.ui.map.mainMap){
+								GLRI.ui.map.mainMap.updateSize();
+							}
 						}
 					}
 				}] // end tabs

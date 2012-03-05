@@ -69,7 +69,7 @@ GLRI.ui.map.networkLayers = [{
   	 	name: 'Vulnerable Corridors from NOAA Bathymetry: 1m Lake Level Drop', 
   	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '4,14'
+  	 	layers: '4'
        },{ 
   	 	name: 'Vulnerable Corridors from Lidar Data: 1m Lake Level Drop', 
   	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",

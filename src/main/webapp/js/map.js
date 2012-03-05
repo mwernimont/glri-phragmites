@@ -1,3 +1,5 @@
+/* global GLRI: true, OpenLayers: false */
+
 GLRI.ui.map.mainMap; //global reference to map, don't know if I like it but I don't care right now
 
 GLRI.ui.initMap = function() {
@@ -27,10 +29,10 @@ GLRI.ui.initMap = function() {
 				layers: GLRI.ui.map.baseLayers[i].layers
 			}
         ));
-	};
+	}
 	// Add habitat layers since these are toggled on/off
-	for (var i = 0; i < GLRI.ui.map.habitatLayers.length; i++){
-		var thisLayer = GLRI.ui.map.habitatLayers[i];
+	for (var j = 0; j < GLRI.ui.map.habitatLayers.length; j++){
+		var thisLayer = GLRI.ui.map.habitatLayers[j];
 		GLRI.ui.map.mainMap.addLayer(new thisLayer.type(
 				thisLayer.name,
 				thisLayer.url,
@@ -61,7 +63,7 @@ GLRI.ui.getLayerByName = function(name, layers) {
 
 GLRI.ui.toggleLayerMap = function(name, on){
 	// Set the visibility of the layers in mainMap whose name matches "name" to on.
-	layerList = GLRI.ui.map.mainMap.getLayersByName(name);
+	var layerList = GLRI.ui.map.mainMap.getLayersByName(name);
 	for (var i=0; i < layerList.length; i++){
 		layerList[0].setVisibility(on);
 	}
@@ -87,16 +89,17 @@ GLRI.ui.turnOnLayerMap = function(name, layers){
 
 		} else {
 			var map = GLRI.ui.map.mainMap;
-			if(map.getLayersByName(layers[i].name)[0])
+			if (map.getLayersByName(layers[i].name)[0]) {
 				map.removeLayer(map.getLayersByName(layers[i].name)[0], false);
+			}
 		}
 	}
 	return;
 };
 GLRI.ui.getLegendHTML = function(url, layers){
 	// Return the html representing the layers by retrieving the map legend at url.
-	html = '';
-	listOfLayers = layers.split(',');
+	var html = '';
+	var listOfLayers = layers.split(',');
 	for (var i = 0;  i < listOfLayers.length; i++){
 		if (i != 0) {
 			html += '<br/>';
@@ -108,7 +111,7 @@ GLRI.ui.getLegendHTML = function(url, layers){
 GLRI.ui.turnOnLegend = function(name, layers, div_id){
 	// Show the legend information for the layer in layers with a name equal to name in the div element, div_id.
 	// If name doesn't exist in layers, then set the div element to null string.
-	for(var i = 0; i < layers.length; i++){
+	for (var i = 0; i < layers.length; i++){
 		if (layers[i].name == name) {
 			document.getElementById(div_id).innerHTML = GLRI.ui.getLegendHTML(layers[i].url, layers[i].layers);
 			return;
