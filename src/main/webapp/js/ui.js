@@ -159,7 +159,7 @@ Ext.onReady(function() {
 							if (GLRI.ui.map.mainMap){
 								GLRI.ui.map.mainMap.updateSize();
 							}
-						}
+						}					
 					}
 				}] // end tabs
 			}]
