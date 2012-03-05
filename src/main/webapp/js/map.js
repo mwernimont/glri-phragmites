@@ -27,6 +27,9 @@ GLRI.ui.initMap = function() {
             {
 				isBaseLayer: true,
 				layers: GLRI.ui.map.baseLayers[i].layers
+			},
+			{
+				singleTile : false
 			}
         ));
 	}
@@ -42,7 +45,7 @@ GLRI.ui.initMap = function() {
 				},
 				{
 					displayInLayerSwitcher: false,
-					singleTile: true,
+					singleTile: false,
 					visibility: false
 				})
 		);
