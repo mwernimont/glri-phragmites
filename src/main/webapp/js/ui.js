@@ -41,7 +41,8 @@ Ext.onReady(function() {
 		return html;
 	};
 	
-	var habitatCheckBoxes = createLayerCheckBoxes(GLRI.ui.map.habitatLayers);
+	var otherCheckBoxes = createLayerCheckBoxes(GLRI.ui.map.habitatLayers.slice(0, 1));
+	var habitatCheckBoxes = createLayerCheckBoxes(GLRI.ui.map.habitatLayers.slice(1));
 	var habitatLegendDiv = createLegendDiv(GLRI.ui.map.habitatLayers);
 	
 	Ext.create('Ext.container.Viewport', {
@@ -73,12 +74,12 @@ Ext.onReady(function() {
 				{
 				region: 'north',
 				layout: 'border',
-				title: 'Phragmites Corridor Network',
+				title: 'Vulnerability Assessment',
 				items: [{
 					xtype: 'form',
 					id: 'phragmites-map-form',
 					bodyStyle: 'padding: 10px',
-					title: 'Phragmites Corridor Network',
+					title: 'Vulnerability Assessment',
 					layout: 'column',
 					region: 'north',
 					split: true,
@@ -86,11 +87,13 @@ Ext.onReady(function() {
 					border: 0,
 					items: [{
 						xtype: 'fieldset',
-						columnWidth: 0.45,
+						columnWidth: 0.50,
 						style: 'border-width: 0px',
-						layout: 'fit',
 						items: [{
-							fieldLabel: 'Corridor Network',
+							anchor: '80% 50%',
+							fieldLabel: 'Reduced Lake Level Corridors',
+							labelStyle: 'text-wrap: none;',
+							labelWidth: 170,
 							id: 'phragmitesNetwork',
 							name: 'phragmitesNetwork', // Test to see if this fixes IE 7 display issues
 							xtype: 'combo',
@@ -114,14 +117,19 @@ Ext.onReady(function() {
 							},
 							valueField: 'network',
 							displayField: 'network'
+						},
+						{
+							style: 'padding-top: 10px',
+							id: 'otherSuitability',
+							xtype: 'fieldcontainer',
+							items: otherCheckBoxes
 						}]
 					},{
 						xtype: 'fieldset',
-						columnWidth: 0.55,
+						columnWidth: 0.50,
 						style: 'border-width: 0px',
 						items: [{
 							id: 'habitatSuitability',
-							fieldLabel: 'Habitat Suitability',
 							xtype: 'fieldcontainer',
 							items: habitatCheckBoxes
 						}]

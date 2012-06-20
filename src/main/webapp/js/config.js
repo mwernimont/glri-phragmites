@@ -13,10 +13,10 @@ GLRI.ui.map.baseLayers = [
 //      type: OpenLayers.Layer.XYZ,
 //		projection: new OpenLayers.Projection("EPSG:900913")
 //    },
-    { 
-      	name: "ESRI Shaded Relief World 2D", 
-        url: "http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_ShadedRelief_World_2D/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
-        type: OpenLayers.Layer.XYZ
+      {
+    	  name: "ESRI Imagery World 2D",
+    	  url: "http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_Imagery_World_2D/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
+    	  type: OpenLayers.Layer.XYZ,
       },
       {
     	name: "SDDS Imagery",
@@ -40,43 +40,51 @@ GLRI.ui.map.baseLayers = [
 //      	layers: '17'
 //       }
   ];
-
+   
 GLRI.ui.map.habitatLayers = [
-  	 { 
-  	 	name: "Monotypic Phragmites Stands greater than 0.4 ha (0.5 acre)", 
+	 {
+  		name: "Streams, wetlands and waterbodies",
+  		url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+   	 	type: OpenLayers.Layer.WMS,
+  	 	layers: '0',
+  	 	legendDivId: 'habitat-layer-0'
+  	 },
+	 { 
+  	 	name: "Phragmites stands > 0.2 ha", 
   	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '17',
   	 	legendDivId: 'habitat-layer-17'
       },
   	 {
-  		name: "Ecologocial niche",
+  		name: "Phragmites habitat",
   		url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '1',
   	 	legendDivId: 'habitat-layer-1'
   	 },
   	 {
-  		name: "Streams Wetlands and Waterbodies",
-  		url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
-   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '0',
-  	 	legendDivId: 'habitat-layer-0'
+  		 name: "Study area",
+  		 url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+   	 	 type: OpenLayers.Layer.WMS,
+   	 	 layers: '15',
+   	 	 legendDivId: 'habitat-layer-15'
   	 }
+
    ];
 
 GLRI.ui.map.networkLayers = [{ 
-  	 	name: 'Vulnerable Corridors from NOAA Bathymetry: 1m Lake Level Drop', 
+  	 	name: 'Contour-based 1 m reduction', 
   	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '4'
        },{ 
-  	 	name: 'Vulnerable Corridors from Lidar Data: 1m Lake Level Drop', 
+  	 	name: 'Lidar-based 1 m reduction', 
   	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '11,14'
        },{ 
-  	 	name: 'Vulnerable Corridors from Lidar Data: 50cm Lake Level Drop', 
+  	 	name: 'Lidar-based 50 cm reduction', 
   	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '13,14'

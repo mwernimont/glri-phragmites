@@ -1,4 +1,3 @@
-/* global GLRI: true, OpenLayers: false */
 
 GLRI.ui.map.mainMap; //global reference to map, don't know if I like it but I don't care right now
 
@@ -21,14 +20,18 @@ GLRI.ui.initMap = function() {
     });
 	
 	for (var i = 0; i < GLRI.ui.map.baseLayers.length; i++){
-		GLRI.ui.map.mainMap.addLayer(new GLRI.ui.map.baseLayers[i].type(
-			GLRI.ui.map.baseLayers[i].name,
-			GLRI.ui.map.baseLayers[i].url,
-            {
-				isBaseLayer: true,
-				layers: GLRI.ui.map.baseLayers[i].layers
-			}
-        ));
+		var baseLayer = new GLRI.ui.map.baseLayers[i].type(
+				GLRI.ui.map.baseLayers[i].name,
+				GLRI.ui.map.baseLayers[i].url,
+	            {
+					isBaseLayer: true,
+					layers: GLRI.ui.map.baseLayers[i].layers
+				},
+				{
+					singleTile: true
+				}
+	        );
+		GLRI.ui.map.mainMap.addLayer(baseLayer);
 	}
 	// Add habitat layers since these are toggled on/off
 	for (var j = 0; j < GLRI.ui.map.habitatLayers.length; j++){
