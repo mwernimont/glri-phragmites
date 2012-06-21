@@ -11,7 +11,7 @@
         <repository>
             <id>cida-nexus</id>
             <name>CIDA Nexus</name>
-            <url>http://internal.cida.usgs.gov/maven/content/groups/public/</url>
+            <url>http://internal.cida.usgs.gov/maven</url>
         </repository>
     </repositories>
     
