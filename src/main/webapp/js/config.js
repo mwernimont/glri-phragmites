@@ -6,6 +6,21 @@ Ext.ns("GLRI.ui.map");
 //base URL.
 GLRI.ui.map.XYZ_URL_POSTFIX = '${z}/${y}/${x}';
 
+GLRI.ui.map.baseUrl = 'http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer';
+
+GLRI.ui.getLegendHTML = function(url, layers){
+	// Return the html representing the layers by retrieving the map legend at url.
+	var html = '';
+	var listOfLayers = layers.split(',');
+	for (var i = 0;  i < listOfLayers.length; i++){
+		if (i != 0) {
+			html += '<br/>';
+		}
+		html += '<img src=' + url + '?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=' + listOfLayers[i] + '>';
+	}
+	return html;
+};
+
 GLRI.ui.map.baseLayers = [
 //  { 
 //    	name: "USA_Topo_Maps", 
@@ -44,30 +59,46 @@ GLRI.ui.map.baseLayers = [
 GLRI.ui.map.habitatLayers = [
 	 {
   		name: "Streams, wetlands and waterbodies",
-  		url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+  		url: GLRI.ui.map.baseUrl,
    	 	type: OpenLayers.Layer.WMS,
   	 	layers: '0',
+  	 	legend: { 
+  	 		name: 'Streams, wetlands, and waterbodies',
+  	 		imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '0')
+  	 	},
   	 	legendDivId: 'habitat-layer-0'
   	 },
 	 { 
   	 	name: "Phragmites stands > 0.2 ha", 
-  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+  	 	url: GLRI.ui.map.baseUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '17',
+  	 	legend: {
+  	 		name: 'Phragmites stands > 0.2 ha',
+  	 		imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '17')
+  	 	}, 
   	 	legendDivId: 'habitat-layer-17'
       },
   	 {
   		name: "Phragmites habitat",
-  		url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+  		url: GLRI.ui.map.baseUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '1',
+  	 	legend: {
+  	 		name: 'Phragmites habitat',
+  	 		imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '1')
+  	 	},
   	 	legendDivId: 'habitat-layer-1'
   	 },
   	 {
   		 name: "Study area",
-  		 url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+  		 url: GLRI.ui.map.baseUrl,
    	 	 type: OpenLayers.Layer.WMS,
    	 	 layers: '15',
+   	 	 legend: {
+   	 		name: 'Study area',
+   	 		imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '15')
+   	 	 },
    	 	 legendDivId: 'habitat-layer-15'
   	 }
 
@@ -75,18 +106,44 @@ GLRI.ui.map.habitatLayers = [
 
 GLRI.ui.map.networkLayers = [{ 
   	 	name: 'Contour-based 1 m reduction', 
-  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+  	 	url: GLRI.ui.map.baseUrl,
   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '4'
+  	 	layers: '4',
+  	 	legend: [
+  	 	         {
+  	 	        	 name: 'Contour-based 1 m reduction',
+  	 	        	 imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '4')
+  	 	         }
+  	 	]
        },{ 
   	 	name: 'Lidar-based 1 m reduction', 
-  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+  	 	url: GLRI.ui.map.baseUrl,
   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '11,14'
+  	 	layers: '11,14',
+  	 	legend:[
+  	 	        {
+  	 	        	name: 'Lidar-based 1 m reduction',
+  	 	        	imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '11')
+  	 	        },
+  	 	        {
+  	 	        	name: 'Lidar unavailable',
+  	 	        	imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '14')
+  	 	        }
+  	 	]
        },{ 
   	 	name: 'Lidar-based 50 cm reduction', 
-  	 	url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
+  	 	url: GLRI.ui.map.baseUrl,
   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '13,14'
+  	 	layers: '13,14',
+  	 	legend:[
+  	 	        {
+  	 	        	name: 'Lidar-based 50 cm reduction',
+  	 	        	imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '13')
+  	 	        },
+  	 	        {
+  	 	        	name: 'Lidar unavailable',
+  	 	        	imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '14')
+  	 	        }
+  	 	]
        }                 
    ];

@@ -99,24 +99,19 @@ GLRI.ui.turnOnLayerMap = function(name, layers){
 	}
 	return;
 };
-GLRI.ui.getLegendHTML = function(url, layers){
-	// Return the html representing the layers by retrieving the map legend at url.
-	var html = '';
-	var listOfLayers = layers.split(',');
-	for (var i = 0;  i < listOfLayers.length; i++){
-		if (i != 0) {
-			html += '<br/>';
-		}
-		html += '<img src=' + url + '?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=' + listOfLayers[i] + '>';
-	}
-	return html;
+GLRI.ui.getLegendWithHeaderHtml = function(legend /* array object with name and imgHtml properties*/) {
+	return '<p><b>' + legend.name + '</b></p>' + legend.imgHtml + '<br />';
 };
 GLRI.ui.turnOnLegend = function(name, layers, div_id){
 	// Show the legend information for the layer in layers with a name equal to name in the div element, div_id.
 	// If name doesn't exist in layers, then set the div element to null string.
 	for (var i = 0; i < layers.length; i++){
 		if (layers[i].name == name) {
-			document.getElementById(div_id).innerHTML = GLRI.ui.getLegendHTML(layers[i].url, layers[i].layers);
+			var legendHtml = '';
+			for (var j = 0; j < layers[i].legend.length; j++){
+				legendHtml = legendHtml + GLRI.ui.getLegendWithHeaderHtml(layers[i].legend[j]) + '<br />';
+			}
+			document.getElementById(div_id).innerHTML = legendHtml;
 			return;
 		}
 	}
@@ -132,7 +127,7 @@ GLRI.ui.toggleLegend = function(name, layers, on) {
 	var divEl = document.getElementById(thisLayer.legendDivId);
 	
 	if (on) {
-		divEl.innerHTML = GLRI.ui.getLegendHTML(thisLayer.url, thisLayer.layers);		
+		divEl.innerHTML = GLRI.ui.getLegendWithHeaderHtml(thisLayer.legend) + '<br />';		
 	}
 	else {
 		divEl.innerHTML = '';

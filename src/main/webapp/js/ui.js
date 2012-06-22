@@ -189,7 +189,7 @@ Ext.onReady(function() {
 						autoScroll: true,
 						bodyStyle: "padding: 5px;",
 						region: 'north',
-						html: '<div id="network-layer-div"></div><br/>' + habitatLegendDiv
+						html: '<div id="network-layer-div"></div>' + habitatLegendDiv
 					},{
 			        	id: 'help-context-panel', 
 			        	title: 'Help Context',
