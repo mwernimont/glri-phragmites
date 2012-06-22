@@ -33,9 +33,22 @@ GLRI.ui.initMap = function() {
 	        );
 		GLRI.ui.map.mainMap.addLayer(baseLayer);
 	}
-	// Add habitat layers since these are toggled on/off
-	for (var j = 0; j < GLRI.ui.map.habitatLayers.length; j++){
-		var thisLayer = GLRI.ui.map.habitatLayers[j];
+	// First sort habitat layers by drawingOrder
+	var layersToAdd = 
+		GLRI.ui.map.habitatLayers.sort(function(a,b){
+			if (a.drawingOrder < b.drawingOrder) {
+				return -1;
+			}
+			else if (a.drawingOrder > b.drawingOrder) {
+				return 1;
+			}
+			else {
+				return 0;
+			}
+		});
+	// Add the sorted habitatLayers
+	for (var j = 0; j < layersToAdd.length; j++){
+		var thisLayer = layersToAdd[j];
 		GLRI.ui.map.mainMap.addLayer(new thisLayer.type(
 				thisLayer.name,
 				thisLayer.url,

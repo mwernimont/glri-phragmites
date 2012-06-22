@@ -36,7 +36,7 @@ Ext.onReady(function() {
 		// Assumes that there is a legendDivId property for each object in the layers list.
 		var html = '';
 		for (var i = 0; i < layers.length; i++){
-			html += '<div id="' + layers[i].legendDivId + '"></div>';
+			html += '<div class="legend-div" id="' + layers[i].legendDivId + '"></div>';
 		}
 		return html;
 	};
@@ -189,7 +189,7 @@ Ext.onReady(function() {
 						autoScroll: true,
 						bodyStyle: "padding: 5px;",
 						region: 'north',
-						html: '<div id="network-layer-div"></div>' + habitatLegendDiv
+						html: '<div class="legend-div" id="network-layer-div"></div>' + habitatLegendDiv
 					},{
 			        	id: 'help-context-panel', 
 			        	title: 'Help Context',

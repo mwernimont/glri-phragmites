@@ -55,7 +55,15 @@ GLRI.ui.map.baseLayers = [
 //      	layers: '17'
 //       }
   ];
-   
+
+/* Each layer should have the following properties:
+      name  - used on the UI
+      url - resource to retrieve the layer from
+      type - the OpenLayers.Layer type 
+      legend - An object with properties for: name - to be used on the legend and imgHtml - the html containing the legend image.
+      legendDivId - The div id where the legend for this layer is placed when visible.
+      drawingOrder - An integer index indicating the order of drawing. Larger indexes will be placed on top of smaller indexes.
+*/
 GLRI.ui.map.habitatLayers = [
 	 {
   		name: "Streams, wetlands and waterbodies",
@@ -66,29 +74,32 @@ GLRI.ui.map.habitatLayers = [
   	 		name: 'Streams, wetlands, and waterbodies',
   	 		imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '0')
   	 	},
-  	 	legendDivId: 'habitat-layer-0'
+  	 	legendDivId: 'habitat-layer-0',
+  	 	drawingOrder: 3
   	 },
 	 { 
-  	 	name: "Phragmites stands > 0.2 ha", 
+  	 	name: "<i>Phragmites</i> stands > 0.2 ha", 
   	 	url: GLRI.ui.map.baseUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '17',
   	 	legend: {
-  	 		name: 'Phragmites stands > 0.2 ha',
+  	 		name: '<i>Phragmites</i> stands > 0.2 ha',
   	 		imgHtml: '<img src=images/legends/phragmites_stands.jpg />'
   	 	}, 
-  	 	legendDivId: 'habitat-layer-17'
+  	 	legendDivId: 'habitat-layer-17',
+  	 	drawingOrder: 4
       },
   	 {
-  		name: "Phragmites habitat",
+  		name: "<i>Phragmites</i> habitat",
   		url: GLRI.ui.map.baseUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '1',
   	 	legend: {
-  	 		name: 'Phragmites habitat',
+  	 		name: '<i>Phragmites</i> habitat',
   	 		imgHtml: '<img src=images/legends/phragmites_habitat.jpg />'
   	 	},
-  	 	legendDivId: 'habitat-layer-1'
+  	 	legendDivId: 'habitat-layer-1',
+  	 	drawingOrder: 2
   	 },
   	 {
   		 name: "Outside study area",
@@ -99,7 +110,8 @@ GLRI.ui.map.habitatLayers = [
    	 		name: 'Outside study area',
    	 		imgHtml: '<img src=images/legends/outside_study_area.jpg />'
    	 	 },
-   	 	 legendDivId: 'habitat-layer-15'
+   	 	 legendDivId: 'habitat-layer-15',
+   	 	 drawingOrder: 1
   	 }
 
    ];

@@ -47,7 +47,7 @@
 			</div>
 			
 			<h2 id="site-title">
-			  	GLRI Phragmites DSS Mapper
+			  	GLRI <i>Phragmites</i> DSS Mapper
 			</h2>
 		<!--<h3 id="internal-only">For Internal USGS Access Only</h3>-->
 		</div>

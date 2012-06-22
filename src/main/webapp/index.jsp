@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="js/ui.js"></script>
 		
 		<link rel="stylesheet" href="css/usgs_style_main.css"/>
+		<link rel="stylesheet" href="css/custom.css"/>
 	
 	</head>
 
