@@ -31,7 +31,7 @@ GLRI.ui.map.baseLayers = [
       {
     	  name: "ESRI Imagery World 2D",
     	  url: "http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_Imagery_World_2D/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
-    	  type: OpenLayers.Layer.XYZ,
+    	  type: OpenLayers.Layer.XYZ
       },
       {
     	name: "SDDS Imagery",
