@@ -91,12 +91,12 @@ GLRI.ui.map.habitatLayers = [
   	 	legendDivId: 'habitat-layer-1'
   	 },
   	 {
-  		 name: "Study area",
+  		 name: "Outside study area",
   		 url: GLRI.ui.map.baseUrl,
    	 	 type: OpenLayers.Layer.WMS,
    	 	 layers: '15',
    	 	 legend: {
-   	 		name: 'Study area',
+   	 		name: 'Outside study area',
    	 		imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '15')
    	 	 },
    	 	 legendDivId: 'habitat-layer-15'
