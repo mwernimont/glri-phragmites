@@ -75,7 +75,7 @@ GLRI.ui.map.habitatLayers = [
   	 	layers: '17',
   	 	legend: {
   	 		name: 'Phragmites stands > 0.2 ha',
-  	 		imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '17')
+  	 		imgHtml: '<img src=images/legends/phragmites_stands.jpg />'
   	 	}, 
   	 	legendDivId: 'habitat-layer-17'
       },
@@ -86,7 +86,7 @@ GLRI.ui.map.habitatLayers = [
   	 	layers: '1',
   	 	legend: {
   	 		name: 'Phragmites habitat',
-  	 		imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '1')
+  	 		imgHtml: '<img src=images/legends/phragmites_habitat.jpg />'
   	 	},
   	 	legendDivId: 'habitat-layer-1'
   	 },
@@ -97,7 +97,7 @@ GLRI.ui.map.habitatLayers = [
    	 	 layers: '15',
    	 	 legend: {
    	 		name: 'Outside study area',
-   	 		imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '15')
+   	 		imgHtml: '<img src=images/legends/outside_study_area.jpg />'
    	 	 },
    	 	 legendDivId: 'habitat-layer-15'
   	 }
@@ -127,7 +127,7 @@ GLRI.ui.map.networkLayers = [{
   	 	        },
   	 	        {
   	 	        	name: 'Lidar unavailable',
-  	 	        	imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '14')
+  	 	        	imgHtml: '<img src=images/legends/lidar_unavailable.jpg />'
   	 	        }
   	 	]
        },{ 
@@ -142,7 +142,7 @@ GLRI.ui.map.networkLayers = [{
   	 	        },
   	 	        {
   	 	        	name: 'Lidar unavailable',
-  	 	        	imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '14')
+  	 	        	imgHtml: '<img src=images/legends/lidar_unavailable.jpg />'
   	 	        }
   	 	]
        }                 
