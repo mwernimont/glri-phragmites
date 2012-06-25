@@ -11,7 +11,8 @@ GLRI.ui.initMap = function() {
             new OpenLayers.Control.LayerSwitcher(),
             new OpenLayers.Control.PanZoomBar(),
             new OpenLayers.Control.MousePosition(),
-            new OpenLayers.Control.ScaleLine()
+            new OpenLayers.Control.ScaleLine(),
+            // Trying new controls ... need to talk to J.L. about this
         ],
         // Got this number from Hollister, and he's not sure where it came from.
         // Without this line, the esri road and relief layers will not display
@@ -25,7 +26,7 @@ GLRI.ui.initMap = function() {
 				GLRI.ui.map.baseLayers[i].url,
 	            {
 					isBaseLayer: true,
-					layers: GLRI.ui.map.baseLayers[i].layers
+					layers: GLRI.ui.map.baseLayers[i].layers,
 				},
 				{
 					singleTile: true
@@ -33,20 +34,21 @@ GLRI.ui.initMap = function() {
 	        );
 		GLRI.ui.map.mainMap.addLayer(baseLayer);
 	}
-	// First sort habitat layers by drawingOrder
-	var layersToAdd = 
-		GLRI.ui.map.habitatLayers.sort(function(a,b){
-			if (a.drawingOrder < b.drawingOrder) {
-				return -1;
-			}
-			else if (a.drawingOrder > b.drawingOrder) {
-				return 1;
-			}
-			else {
-				return 0;
-			}
-		});
-	// Add the sorted habitatLayers
+	// First sort habitat and network layers by drawingOrder
+	var layersToAdd = GLRI.ui.map.habitatLayers.concat(GLRI.ui.map.networkLayers);
+    layersToAdd.sort(function(a,b){
+		if (a.drawingOrder < b.drawingOrder) {
+			return -1;
+		}
+		else if (a.drawingOrder > b.drawingOrder) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	});
+    
+	// Add the sorted layers with visibility off.
 	for (var j = 0; j < layersToAdd.length; j++){
 		var thisLayer = layersToAdd[j];
 		GLRI.ui.map.mainMap.addLayer(new thisLayer.type(
@@ -54,7 +56,7 @@ GLRI.ui.initMap = function() {
 				thisLayer.url,
 				{
 					layers: thisLayer.layers,
-					transparent: true
+					transparent: true,
 				},
 				{
 					displayInLayerSwitcher: false,
@@ -87,34 +89,21 @@ GLRI.ui.toggleLayerMap = function(name, on){
 };
 
 GLRI.ui.turnOnLayerMap = function(name, layers){
-	// Add the layer matching name in layers to the map. 
-	// Remove all other layers from the map that are in the layers array.
+	// Set visibility to on the layer matching name in layers to the map. 
+	// All other layers in should be turned off that are in the layers array.
 	for (var i = 0; i < layers.length; i++){
-		if(layers[i].name == name){
-			var mapLayer = new layers[i].type(
-					layers[i].name,
-					layers[i].url,
-		            {
-						layers: layers[i].layers,
-						transparent: true},
-					{	
-						displayInLayerSwitcher: false,
-						singleTile: true
-					});
-			GLRI.ui.map.mainMap.addLayer(mapLayer);
-
-		} else {
-			var map = GLRI.ui.map.mainMap;
-			if (map.getLayersByName(layers[i].name)[0]) {
-				map.removeLayer(map.getLayersByName(layers[i].name)[0], false);
-			}
+		var layerList = GLRI.ui.map.mainMap.getLayersByName(layers[i].name);
+		for (var j = 0; j < layerList.length; j++) {
+			layerList[j].setVisibility(layers[i].name == name);
 		}
 	}
 	return;
 };
+
 GLRI.ui.getLegendWithHeaderHtml = function(legend /* array object with name and imgHtml properties*/) {
 	return '<p><b>' + legend.name + '</b></p>' + legend.imgHtml + '<br />';
 };
+
 GLRI.ui.turnOnLegend = function(name, layers, div_id){
 	// Show the legend information for the layer in layers with a name equal to name in the div element, div_id.
 	// If name doesn't exist in layers, then set the div element to null string.

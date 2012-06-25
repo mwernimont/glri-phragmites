@@ -24,8 +24,8 @@ GLRI.ui.getLegendHTML = function(url, layers){
 GLRI.ui.map.baseLayers = [
 //  { 
 //    	name: "USA_Topo_Maps", 
-//      url: "http://services.arcgisonline.com/ArcGIS/rest/services/USA_Topo_Maps/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
-//      type: OpenLayers.Layer.XYZ,
+//        url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
+//        type: OpenLayers.Layer.XYZ,
 //		projection: new OpenLayers.Projection("EPSG:900913")
 //    },
       {
@@ -38,13 +38,6 @@ GLRI.ui.map.baseLayers = [
     	url: "http://isse.cr.usgs.gov/ArcGIS/services/Combined/SDDS_Imagery/MapServer/WMSServer",
     	type: OpenLayers.Layer.WMS,
     	layers: '0'
-// This is not working well as a base Layer so I'm taking it out for now.
-//      },
-//     {
-//    	  name: "Forecasting Phragmites Study Area",
-//    	  url: "http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer",
-//    	  type: OpenLayers.Layer.WMS,
-//      	  layers: '15'
       }
 // Removed the wetlands map for now as it doesn't appear to have map data.
 //      
@@ -56,11 +49,11 @@ GLRI.ui.map.baseLayers = [
 //       }
   ];
 
-/* Each layer should have the following properties:
+/* Each habitat or network layer should have the following properties:
       name  - used on the UI
       url - resource to retrieve the layer from
       type - the OpenLayers.Layer type 
-      legend - An object with properties for: name - to be used on the legend and imgHtml - the html containing the legend image.
+      legend - An object (or array of objects) with properties for: name - to be used on the legend and imgHtml - the html containing the legend image.
       legendDivId - The div id where the legend for this layer is placed when visible.
       drawingOrder - An integer index indicating the order of drawing. Larger indexes will be placed on top of smaller indexes.
 */
@@ -87,7 +80,7 @@ GLRI.ui.map.habitatLayers = [
   	 		imgHtml: '<img src=images/legends/phragmites_stands.jpg />'
   	 	}, 
   	 	legendDivId: 'habitat-layer-17',
-  	 	drawingOrder: 4
+  	 	drawingOrder: 5
       },
   	 {
   		name: "<i>Phragmites</i> habitat",
@@ -126,7 +119,8 @@ GLRI.ui.map.networkLayers = [{
   	 	        	 name: 'Contour-based 1 m reduction',
   	 	        	 imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '4')
   	 	         }
-  	 	]
+  	 	],
+  	 	drawingOrder: 4,
        },{ 
   	 	name: 'Lidar-based 1 m reduction', 
   	 	url: GLRI.ui.map.baseUrl,
@@ -141,7 +135,8 @@ GLRI.ui.map.networkLayers = [{
   	 	        	name: 'Lidar unavailable',
   	 	        	imgHtml: '<img src=images/legends/lidar_unavailable.jpg />'
   	 	        }
-  	 	]
+  	 	],
+  	 	drawingOrder: 4,
        },{ 
   	 	name: 'Lidar-based 50 cm reduction', 
   	 	url: GLRI.ui.map.baseUrl,
@@ -156,6 +151,7 @@ GLRI.ui.map.networkLayers = [{
   	 	        	name: 'Lidar unavailable',
   	 	        	imgHtml: '<img src=images/legends/lidar_unavailable.jpg />'
   	 	        }
-  	 	]
+  	 	],
+  	 	drawingOrder: 4,
        }                 
    ];
