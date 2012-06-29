@@ -33,13 +33,12 @@
 							</span>
 						</span><!-- vcard -->
       				</p>
-					<p>USGS General Information Product 59</p>
-					<p id="footer-page-url">URL: http://infotrek.er.usgs.gov/warp/</p>
+					<p id="footer-page-url">URL:<script type="text/javascript">document.write(document.location.href);</script></p>
 					<p id="footer-contact-info">
 						  Page Contact Information:
-						<a href="mailto:nlbooth@usgs.gov?subject=WARP Map Comments" title="Contact Email">webmaster</a>
+						<a href="mailto:jlucido@usgs.gov?subject=WARP Map Comments" title="Contact Email">GLRI Help</a>
 					</p>
-       				<p id="footer-page-modified-info">Page Last modified: <script type="text/javascript">document.write(document.lastModified);</script>07/22/2009 15:17:12</p>
+       				<p id="footer-page-modified-info">Page Last modified: <script type="text/javascript">document.write(document.lastModified);</script></p>
 				</div><!-- /page-info -->
 				<div id="gov-buttons">
 					<a href="http://firstgov.gov/" title="link to the official US Government web portal">
