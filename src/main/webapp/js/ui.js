@@ -57,7 +57,7 @@ Ext.onReady(function() {
 			region: 'north',
 			contentEl: 'header',
 			xtype: 'panel',
-			border: 0
+			border: 0,
 		},{
 			id: 'map-and-tabs',
 			region: 'center',
@@ -65,8 +65,37 @@ Ext.onReady(function() {
 			activeTab: 1,
 			margin: '3 0 3 3',
 			bodyborder: true,
+			listeners: {
+				tabchange: function(tabPanel, newCard, oldCard, eOpts) {
+					if (GLRI.ui.map.mainMap){
+							GLRI.ui.map.mainMap.updateSize();
+					}										
+				}
+			},
+			tools: [{
+				type: 'maximize',
+				tooltip: 'Toggle page header/footer visibility',
+				tooltipType: 'title',
+				handler: function(e,t,p,c) {
+					// Using the toggleCollapse method didn't work because the element
+					// toggled last would be overlaid by the map.
+					if (t.className == 'x-tool-maximize') {
+						t.className ='x-tool-restore';
+						
+						Ext.getCmp('ext-header-banner').collapse();
+						Ext.getCmp('ext-footer-banner').collapse();
+						
+					} else {
+						t.className ='x-tool-maximize';
+						
+						Ext.getCmp('ext-header-banner').expand();
+						Ext.getCmp('ext-footer-banner').expand();
+					}
+					GLRI.ui.map.mainMap.updateSize();
+				}
+			}],
 			items: [{
-				title: 'About the DSS (FAQs)',
+				title: 'About the DST (FAQs)',
 				id: 'about-tab',
 				contentEl: 'mapper-intro',
 				bodyStyle: 'padding: 5px;',
@@ -134,27 +163,33 @@ Ext.onReady(function() {
 							xtype: 'fieldcontainer',
 							items: habitatCheckBoxes
 						}]
-//					},{
-//						xtype: 'fieldset',
-//						columnWidth: 0.20,
-//						style: 'border-width: 0px',
-//						items: [{
-//							id: 'geotiffDownload',
-//							xtype: 'button',
-//							text: 'Download data (geotiff)',
-//							handler : function(button, evt){
-//								var bbox = GLRI.ui.map.mainMap.getExtent();
-//								var width = bbox.getWidth();
-//								var height = bbox.getHeight();
-//								if (width > 1.0 || height > 1.0) {
-//									alert('You must zoom in to a map view that has a width < 1.0 and height < 1.0 degrees. \n'
-//											+ 'Your current map has width = ' + width + ' and height = ' + height + '.');
-//								}
-//								else {
-//									alert ('Download to be added soon for your view ' + bbox);
-//								}							
-//							}
-//						}]						
+					},{
+						xtype: 'fieldset',
+						columnWidth: 0.20,
+						style: 'border-width: 0px',
+						items: [{
+							id: 'geotiffDownload',
+							xtype: 'button',
+							text: 'Download data (geotiff)',
+							handler : function(button, evt){
+								var bbox = GLRI.ui.map.mainMap.getExtent();
+								var width = bbox.getWidth();
+								var height = bbox.getHeight();
+								if (width > 1.0 || height > 1.0) {
+									alert('You must zoom in to a map view that has a width < 1.0 and height < 1.0 degrees. \n'
+											+ 'Your current map has width = ' + width + ' and height = ' + height + '.');
+								}
+								else {
+									alert ('Download to be added soon for your view ' + bbox);
+									var mapExtEl = Ext.ComponentManager.get('ext-map-area');
+									window.open(GLRI.ui.map.baseMapServerUrl + '/WCSServer?service=WCS&version=1.0.0&request=GetCoverage&crs=EPSG:4326&format=GEOTIFF' +
+											'&coverage=7' +
+											'&bbox='+ bbox.toBBOX() + 
+											'&width=' + mapExtEl.getWidth() +
+											'&height=' + mapExtEl.getHeight());
+								}							
+							}
+						}]						
 					}]
 				},{
 					contentEl: 'map-area',
@@ -164,33 +199,33 @@ Ext.onReady(function() {
 					layout: 'fit',
 					border: 0,
 //					toolTemplate: new Ext.Template('<div title="{title}" class="x-tool x-tool-{id}">&#160;</div>'),
-					tools: [{
-						type: 'maximize',
-						title: 'toggle map area size',
-						handler: function(e,t,p,c) {
+//					tools: [{
+//						type: 'maximize',
+//						title: 'toggle map area size',
+//						handler: function(e,t,p,c) {
 							// Using the toggleCollapse method didn't work because the element
 							// toggled last would be overlaid by the map.
-							if (t.className == 'x-tool-maximize') {
-								t.className ='x-tool-restore';
+//							if (t.className == 'x-tool-maximize') {
+//								t.className ='x-tool-restore';
 								
-								Ext.getCmp('ext-header-banner').collapse();
-								Ext.getCmp('ext-footer-banner').collapse();
+//								Ext.getCmp('ext-header-banner').collapse();
+//								Ext.getCmp('ext-footer-banner').collapse();
 								
-								GLRI.ui.map.mainMap.updateSize();
-							} else {
-								t.className ='x-tool-maximize';
+//								GLRI.ui.map.mainMap.updateSize();
+//							} else {
+//								t.className ='x-tool-maximize';
 								
-								Ext.getCmp('ext-header-banner').expand();
-								Ext.getCmp('ext-footer-banner').expand();
-							}
-						}
-					}],
+//								Ext.getCmp('ext-header-banner').expand();
+//								Ext.getCmp('ext-footer-banner').expand();
+//							}
+//						}
+//					}],
 					listeners: {
 						bodyresize: function(p,w,h) {
 							if (GLRI.ui.map.mainMap){
 								GLRI.ui.map.mainMap.updateSize();
 							}
-						}					
+						}
 					}
 				}] // end tabs
 			}]

@@ -6,7 +6,8 @@ Ext.ns("GLRI.ui.map");
 //base URL.
 GLRI.ui.map.XYZ_URL_POSTFIX = '${z}/${y}/${x}';
 
-GLRI.ui.map.baseUrl = 'http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/WMSServer';
+GLRI.ui.map.baseMapServerUrl = 'http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer'
+GLRI.ui.map.baseUrl = GLRI.ui.map.baseMapServerUrl + '/WMSServer';
 
 GLRI.ui.getLegendHTML = function(url, layers){
 	// Return the html representing the layers by retrieving the map legend at url.

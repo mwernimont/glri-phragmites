@@ -6,7 +6,6 @@ GLRI.ui.map.setHTML = function (response) {
 };
 GLRI.ui.initMap = function() {
 	OpenLayers.ProxyHost = "/glri-phragmites-map/proxy?url=";
-//	OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
 	
 	GLRI.ui.map.mainMap = new OpenLayers.Map("map-area", {
         numZoomLevels: 18,

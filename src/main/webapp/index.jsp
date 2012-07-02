@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>GLRI Phragmites DSS Mapper</title>
+		<title>GLRI Phragmites DST Mapper</title>
 
 		<script src="extjs/ext-all.js"></script>
 		<link rel="stylesheet" href="extjs/resources/css/ext-all.css"/>
