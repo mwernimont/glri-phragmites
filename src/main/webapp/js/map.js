@@ -1,7 +1,13 @@
 
 GLRI.ui.map.mainMap; //global reference to map, don't know if I like it but I don't care right now
 
+GLRI.ui.map.setHTML = function (response) {
+    alert(response.responseText);
+};
 GLRI.ui.initMap = function() {
+	OpenLayers.ProxyHost = "/glri-phragmites-map/proxy?url=";
+//	OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
+	
 	GLRI.ui.map.mainMap = new OpenLayers.Map("map-area", {
         numZoomLevels: 18,
         controls: [
@@ -19,7 +25,6 @@ GLRI.ui.initMap = function() {
         // outside of the upper western hemisphere.
         maxResolution: 1.40625/2
     });
-	
 	for (var i = 0; i < GLRI.ui.map.baseLayers.length; i++){
 		var baseLayer = new GLRI.ui.map.baseLayers[i].type(
 				GLRI.ui.map.baseLayers[i].name,
@@ -51,7 +56,7 @@ GLRI.ui.initMap = function() {
 	// Add the sorted layers with visibility off.
 	for (var j = 0; j < layersToAdd.length; j++){
 		var thisLayer = layersToAdd[j];
-		GLRI.ui.map.mainMap.addLayer(new thisLayer.type(
+		var wmsLayer = new thisLayer.type(
 				thisLayer.name,
 				thisLayer.url,
 				{
@@ -61,10 +66,33 @@ GLRI.ui.initMap = function() {
 				{
 					displayInLayerSwitcher: false,
 					singleTile: true,
-					visibility: false
-				})
-		);
+					visibility: thisLayer.initialOn,
+					opacity: thisLayer.opacity
+				});				
+		GLRI.ui.map.mainMap.addLayer(wmsLayer);
 	}
+
+//	var infoControl = new OpenLayers.Control.WMSGetFeatureInfo({
+//    	url: GLRI.ui.map.baseUrl,
+//   	title: 'Identify features by clicking',
+//    	queryVisible: true,
+//    	layers: ['Outside study area'], <!-- this has to be a WMSLayer object array
+//    	eventListeners: {
+//    		getfeatureinfo: function(event) {
+//    			GLRI.ui.map.mainMap.addPopup(new OpenLayers.Popup(
+//    					"Feature Info",
+//    					GLRI.ui.map.mainMap.getLonLatFromPixel(event.xy),
+//    					null,
+//    					event.text,
+//    					true,
+//    					null)
+//    			);
+//    		}
+//    	}
+//	});
+//	GLRI.ui.map.mainMap.addControl(infoControl);
+//	infoControl.activate();
+		
 	GLRI.ui.map.mainMap.zoomTo(5);
 	GLRI.ui.map.mainMap.panTo(new OpenLayers.LonLat(-84, 45));
 };

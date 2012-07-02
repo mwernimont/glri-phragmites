@@ -23,10 +23,9 @@ GLRI.ui.getLegendHTML = function(url, layers){
 
 GLRI.ui.map.baseLayers = [
 //  { 
-//    	name: "USA_Topo_Maps", 
+//    	name: "World_Topo_Maps", 
 //        url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
 //        type: OpenLayers.Layer.XYZ,
-//		projection: new OpenLayers.Projection("EPSG:900913")
 //    },
       {
     	  name: "ESRI Imagery World 2D",
@@ -56,6 +55,8 @@ GLRI.ui.map.baseLayers = [
       legend - An object (or array of objects) with properties for: name - to be used on the legend and imgHtml - the html containing the legend image.
       legendDivId - The div id where the legend for this layer is placed when visible.
       drawingOrder - An integer index indicating the order of drawing. Larger indexes will be placed on top of smaller indexes.
+      initialOn - Boolean indicating whether the layer should initially be turned on
+      opacity - Float value between 0.0 and 1.0 setting the layer's opacity. Normally set to 1.0
 */
 GLRI.ui.map.habitatLayers = [
 	 {
@@ -68,7 +69,9 @@ GLRI.ui.map.habitatLayers = [
   	 		imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '0')
   	 	},
   	 	legendDivId: 'habitat-layer-0',
-  	 	drawingOrder: 3
+  	 	drawingOrder: 2,
+  	 	initialOn: false,
+  	 	opacity: 1.0
   	 },
 	 { 
   	 	name: "<i>Phragmites</i> stands > 0.2 ha", 
@@ -80,7 +83,9 @@ GLRI.ui.map.habitatLayers = [
   	 		imgHtml: '<img src=images/legends/phragmites_stands.jpg />'
   	 	}, 
   	 	legendDivId: 'habitat-layer-17',
-  	 	drawingOrder: 5
+  	 	drawingOrder: 4,
+  	 	initialOn: false,
+  	 	opacity: 1.0
       },
   	 {
   		name: "<i>Phragmites</i> habitat",
@@ -92,7 +97,9 @@ GLRI.ui.map.habitatLayers = [
   	 		imgHtml: '<img src=images/legends/phragmites_habitat.jpg />'
   	 	},
   	 	legendDivId: 'habitat-layer-1',
-  	 	drawingOrder: 2
+  	 	drawingOrder: 1,
+  	 	initialOn: false,
+  	 	opacity: 1.0
   	 },
   	 {
   		 name: "Outside study area",
@@ -104,7 +111,9 @@ GLRI.ui.map.habitatLayers = [
    	 		imgHtml: '<img src=images/legends/outside_study_area.jpg />'
    	 	 },
    	 	 legendDivId: 'habitat-layer-15',
-   	 	 drawingOrder: 1
+   	 	 drawingOrder: 5,
+   	 	 initialOn: true,
+   	 	 opacity: 0.75
   	 }
 
    ];
@@ -120,8 +129,11 @@ GLRI.ui.map.networkLayers = [{
   	 	        	 imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '4')
   	 	         }
   	 	],
-  	 	drawingOrder: 4,
-       },{ 
+  	 	drawingOrder: 3,
+  	 	initialOn: false,
+  	 	opacity: 1.0
+       },
+       { 
   	 	name: 'Lidar-based 1 m reduction', 
   	 	url: GLRI.ui.map.baseUrl,
   	 	type: OpenLayers.Layer.WMS,
@@ -136,8 +148,11 @@ GLRI.ui.map.networkLayers = [{
   	 	        	imgHtml: '<img src=images/legends/lidar_unavailable.jpg />'
   	 	        }
   	 	],
-  	 	drawingOrder: 4,
-       },{ 
+  	 	drawingOrder: 3,
+  	 	initialOn: false,
+  	 	opacity: 1.0
+       },
+       { 
   	 	name: 'Lidar-based 50 cm reduction', 
   	 	url: GLRI.ui.map.baseUrl,
   	 	type: OpenLayers.Layer.WMS,
@@ -152,6 +167,8 @@ GLRI.ui.map.networkLayers = [{
   	 	        	imgHtml: '<img src=images/legends/lidar_unavailable.jpg />'
   	 	        }
   	 	],
-  	 	drawingOrder: 4,
+  	 	drawingOrder: 3,
+  	 	initialOn: false,
+  	 	opacity: 1.0
        }                 
    ];

@@ -20,6 +20,7 @@ Ext.onReady(function() {
 			dataArray.push({
 				boxLabel: layers[i].name,
 				xtype: 'checkbox',
+				checked: layers[i].initialOn,
 				listeners: {
 					change: function(checkbox, newValue, oldValue) {
 						GLRI.ui.toggleLayerMap(checkbox.boxLabel, newValue);
@@ -126,13 +127,34 @@ Ext.onReady(function() {
 						}]
 					},{
 						xtype: 'fieldset',
-						columnWidth: 0.50,
+						columnWidth: 0.30,
 						style: 'border-width: 0px',
 						items: [{
 							id: 'habitatSuitability',
 							xtype: 'fieldcontainer',
 							items: habitatCheckBoxes
 						}]
+//					},{
+//						xtype: 'fieldset',
+//						columnWidth: 0.20,
+//						style: 'border-width: 0px',
+//						items: [{
+//							id: 'geotiffDownload',
+//							xtype: 'button',
+//							text: 'Download data (geotiff)',
+//							handler : function(button, evt){
+//								var bbox = GLRI.ui.map.mainMap.getExtent();
+//								var width = bbox.getWidth();
+//								var height = bbox.getHeight();
+//								if (width > 1.0 || height > 1.0) {
+//									alert('You must zoom in to a map view that has a width < 1.0 and height < 1.0 degrees. \n'
+//											+ 'Your current map has width = ' + width + ' and height = ' + height + '.');
+//								}
+//								else {
+//									alert ('Download to be added soon for your view ' + bbox);
+//								}							
+//							}
+//						}]						
 					}]
 				},{
 					contentEl: 'map-area',
@@ -141,9 +163,9 @@ Ext.onReady(function() {
 					region: 'center',
 					layout: 'fit',
 					border: 0,
-					toolTemplate: new Ext.Template('<div title="{title}" class="x-tool x-tool-{id}">&#160;</div>'),
+//					toolTemplate: new Ext.Template('<div title="{title}" class="x-tool x-tool-{id}">&#160;</div>'),
 					tools: [{
-						id: 'maximize',
+						type: 'maximize',
 						title: 'toggle map area size',
 						handler: function(e,t,p,c) {
 							// Using the toggleCollapse method didn't work because the element
