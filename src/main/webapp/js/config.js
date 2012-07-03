@@ -185,7 +185,7 @@ GLRI.ui.helpContext = {
 			         'on your screen which represents the new location and size of the map once you release the mouse button.</p><br />' +
 			         '<p>Clicking the blue '+' button on the far right of the map will toggle on/off the display of a panel which allows ' +
 			         'you to select a different base layer.</p>',
-			id: 'map-area',
+			id: 'ext-map-area',
 			event: 'click'
 		},
 		layers: {
