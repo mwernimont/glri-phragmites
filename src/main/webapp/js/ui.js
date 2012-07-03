@@ -1,4 +1,10 @@
-Ext.onReady(function() {	
+Ext.onReady(function() {
+	
+	var setHelpContext = function(config/* contains a title and content properties */){
+		// Set the help section title and content
+		Ext.getCmp('help-context-panel').setTitle(config.title);
+		document.getElementById('help-context-content').innerHTML = config.content;
+	};
 	
 	var createLayersDropDown = function(emptyOption, layers){
 		// Return a list of names to be used for a layers drop down menu.
@@ -25,7 +31,7 @@ Ext.onReady(function() {
 					change: function(checkbox, newValue, oldValue) {
 						GLRI.ui.toggleLayerMap(checkbox.boxLabel, newValue);
 						GLRI.ui.toggleLegend(checkbox.boxLabel, GLRI.ui.map.habitatLayers, newValue);
-					}
+					},
 				}
 			});
 		};
@@ -115,6 +121,7 @@ Ext.onReady(function() {
 					split: true,
 					height: 110,
 					border: 0,
+					id: 'map-data-layers-selection',
 					items: [{
 						xtype: 'fieldset',
 						columnWidth: 0.50,
@@ -163,33 +170,33 @@ Ext.onReady(function() {
 							xtype: 'fieldcontainer',
 							items: habitatCheckBoxes
 						}]
-					},{
-						xtype: 'fieldset',
-						columnWidth: 0.20,
-						style: 'border-width: 0px',
-						items: [{
-							id: 'geotiffDownload',
-							xtype: 'button',
-							text: 'Download data (geotiff)',
-							handler : function(button, evt){
-								var bbox = GLRI.ui.map.mainMap.getExtent();
-								var width = bbox.getWidth();
-								var height = bbox.getHeight();
-								if (width > 1.0 || height > 1.0) {
-									alert('You must zoom in to a map view that has a width < 1.0 and height < 1.0 degrees. \n'
-											+ 'Your current map has width = ' + width + ' and height = ' + height + '.');
-								}
-								else {
-									alert ('Download to be added soon for your view ' + bbox);
-									var mapExtEl = Ext.ComponentManager.get('ext-map-area');
-									window.open(GLRI.ui.map.baseMapServerUrl + '/WCSServer?service=WCS&version=1.0.0&request=GetCoverage&crs=EPSG:4326&format=GEOTIFF' +
-											'&coverage=7' +
-											'&bbox='+ bbox.toBBOX() + 
-											'&width=' + mapExtEl.getWidth() +
-											'&height=' + mapExtEl.getHeight());
-								}							
-							}
-						}]						
+//					},{
+//						xtype: 'fieldset',
+//						columnWidth: 0.20,
+//						style: 'border-width: 0px',
+//						items: [{
+//							id: 'geotiffDownload',
+//							xtype: 'button',
+//							text: 'Download data (geotiff)',
+//							handler : function(button, evt){
+//								var bbox = GLRI.ui.map.mainMap.getExtent();
+//								var width = bbox.getWidth();
+//								var height = bbox.getHeight();
+//								if (width > 1.0 || height > 1.0) {
+//									alert('You must zoom in to a map view that has a width < 1.0 and height < 1.0 degrees. \n'
+//											+ 'Your current map has width = ' + width + ' and height = ' + height + '.');
+//								}
+//								else {
+//									alert ('Download to be added soon for your view ' + bbox);
+//									var mapExtEl = Ext.ComponentManager.get('ext-map-area');
+//									window.open(GLRI.ui.map.baseMapServerUrl + '/WCSServer?service=WCS&version=1.0.0&request=GetCoverage&crs=EPSG:4326&format=GEOTIFF' +
+//											'&coverage=7' +
+//											'&bbox='+ bbox.toBBOX() + 
+//											'&width=' + mapExtEl.getWidth() +
+//											'&height=' + mapExtEl.getHeight());
+//								}							
+//							}
+//						}]						
 					}]
 				},{
 					contentEl: 'map-area',
@@ -198,33 +205,14 @@ Ext.onReady(function() {
 					region: 'center',
 					layout: 'fit',
 					border: 0,
-//					toolTemplate: new Ext.Template('<div title="{title}" class="x-tool x-tool-{id}">&#160;</div>'),
-//					tools: [{
-//						type: 'maximize',
-//						title: 'toggle map area size',
-//						handler: function(e,t,p,c) {
-							// Using the toggleCollapse method didn't work because the element
-							// toggled last would be overlaid by the map.
-//							if (t.className == 'x-tool-maximize') {
-//								t.className ='x-tool-restore';
-								
-//								Ext.getCmp('ext-header-banner').collapse();
-//								Ext.getCmp('ext-footer-banner').collapse();
-								
-//								GLRI.ui.map.mainMap.updateSize();
-//							} else {
-//								t.className ='x-tool-maximize';
-								
-//								Ext.getCmp('ext-header-banner').expand();
-//								Ext.getCmp('ext-footer-banner').expand();
-//							}
-//						}
-//					}],
 					listeners: {
 						bodyresize: function(p,w,h) {
 							if (GLRI.ui.map.mainMap){
 								GLRI.ui.map.mainMap.updateSize();
 							}
+						},
+						enable: function() {
+							setHelpContext(GLRI.ui.helpContext.map);
 						}
 					}
 				}] // end tabs
@@ -249,9 +237,9 @@ Ext.onReady(function() {
 						html: '<div class="legend-div" id="network-layer-div"></div>' + habitatLegendDiv
 					},{
 			        	id: 'help-context-panel', 
-			        	title: 'Help Context',
+			        	title: GLRI.ui.helpContext.map.title,
 			        	bbar: ['->','<a href="#" onclick="Ext.getCmp(\'map-and-tabs\').setActiveTab(\'about-tab\'); return false;">Open FAQs</a>'],
-			        	html: 'Watch here for for explanations on various parts of the application. Content of this box and its header should change based on user selections.', //TODO
+			        	html: '<div id=help-context-content>' + GLRI.ui.helpContext.map.content + '</div>',
 			        	bodyStyle: "padding: 5px;",
 			        	autoScroll: true,
 			        	region: 'center'
@@ -264,4 +252,12 @@ Ext.onReady(function() {
 		  }
 		]
 	});
+	// Add event handlers for help context
+	for (var x in GLRI.ui.helpContext){
+		var config = GLRI.ui.helpContext[x];
+		Ext.get(config.id).on(config.event, function() {
+			setHelpContext(this);
+		},
+		config);
+	}
 });

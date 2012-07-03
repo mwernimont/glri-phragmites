@@ -173,3 +173,25 @@ GLRI.ui.map.networkLayers = [{
   	 	opacity: 1.0
        }                 
    ];
+
+// Declare objects which define the title and content for context specific help and the id and event type to add to display the help.
+GLRI.ui.helpContext = {
+		map: {
+			title: 'Map Tools Help',
+			content: '<p>Tools to move and zoom in/out the map are located at the far left of the map view.</p><br/> ' + 
+			 		 '<p>The map can also be moved by holding down the left mouse button and dragging the map.</p><br/>' +
+			         '<p>You can zoom in by double clicking on a location which will center your display at that point while zooming in.</p><br /> ' +
+			         '<p>Another way to zoom in and move the map is by holding down the shift key, hold down and drag the left mouse button. A rectangle will appear ' +
+			         'on your screen which represents the new location and size of the map once you release the mouse button.</p><br />' +
+			         '<p>Clicking the blue '+' button on the far right of the map will toggle on/off the display of a panel which allows ' +
+			         'you to select a different base layer.</p>',
+			id: 'map-area',
+			event: 'click'
+		},
+		layers: {
+			title: 'Data Layer Selection Help',
+			content: '<p>These menus and buttons can be used to select/deselect data layers for viewing on the map viewer.</p>',
+			id: 'map-data-layers-selection',
+			event: 'click'
+		}
+};
