@@ -71,7 +71,7 @@ Ext.onReady(function() {
 			xtype: 'tabpanel',
 			activeTab: 1,
 			margin: '3 0 3 3',
-			bodyborder: true,
+//			bodyborder: true,
 			listeners: {
 				tabchange: function(tabPanel, newCard, oldCard, eOpts) {
 					if (GLRI.ui.map.mainMap){
@@ -79,28 +79,6 @@ Ext.onReady(function() {
 					}										
 				}
 			},
-			tools: [{
-				type: 'maximize',
-				tooltip: 'Toggle page header/footer visibility',
-				tooltipType: 'title',
-				handler: function(e,t,p,c) {
-					// Using the toggleCollapse method didn't work because the element
-					// toggled last would be overlaid by the map.
-					if (t.className == 'x-tool-maximize') {
-						t.className ='x-tool-restore';
-						
-						Ext.getCmp('ext-header-banner').collapse();
-						Ext.getCmp('ext-footer-banner').collapse();
-						
-					} else {
-						t.className ='x-tool-maximize';
-						
-						Ext.getCmp('ext-header-banner').expand();
-						Ext.getCmp('ext-footer-banner').expand();
-					}
-					GLRI.ui.map.mainMap.updateSize();
-				}
-			}],
 			items: [{
 				title: 'About the DST (FAQs)',
 				id: 'about-tab',
@@ -222,11 +200,33 @@ Ext.onReady(function() {
 		},{
 			id: 'sidebar-area',
 			region: 'east',
-			border: 0,
+			border: 1,
 			width: 300,
 			layout: 'border',
 			margin: '3, 0, 0, 0',
 			split: true,
+			tools: [{
+				type: 'maximize',
+				tooltip: 'Toggle page header/footer visibility',
+				tooltipType: 'title',
+				handler: function(e,t,p,c) {
+					// Using the toggleCollapse method didn't work because the element
+					// toggled last would be overlaid by the map.
+					if (t.className == 'x-tool-maximize') {
+						t.className ='x-tool-restore';
+						
+						Ext.getCmp('ext-header-banner').collapse();
+						Ext.getCmp('ext-footer-banner').collapse();
+						
+					} else {
+						t.className ='x-tool-maximize';
+						
+						Ext.getCmp('ext-header-banner').expand();
+						Ext.getCmp('ext-footer-banner').expand();
+					}
+					GLRI.ui.map.mainMap.updateSize();
+				}
+			}],
 			items: [
 			        {
 			        	xtype: 'panel',

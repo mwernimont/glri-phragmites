@@ -1,5 +1,8 @@
 <html>
 	<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+        
 		<title>GLRI Phragmites DST Mapper</title>
 
 		<script src="extjs/ext-all.js"></script>
@@ -14,10 +17,6 @@
 		<link rel="stylesheet" href="css/usgs_style_main.css"/>
 		<link rel="stylesheet" href="css/custom.css"/>
 	
-
-        <meta http-equiv="X-UA-Compatible" content="IE=8" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
-        
         <meta name="description" content ="A concise description of the content and purpose of the page">
         <meta name="author" content="USGS Center for Integrated Data Analytics, USGS Great Lakes Science Center">
         <meta name="keywords" content="invasive Phragmites, coastal corridor, Great Lakes, wetlands ecology, decision support tool,<ACRONYM>USGS</ACRONYM>">
