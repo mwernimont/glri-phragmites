@@ -16,7 +16,7 @@ Ext.onReady(function() {
 		return dataArray;
 	};
 
-	var networkDataArray = createLayersDropDown('Map Off', GLRI.ui.map.networkLayers);
+	var networkDataArray = createLayersDropDown('No reduction', GLRI.ui.map.networkLayers);
 	
 	var createLayerCheckBoxes = function (layers){
 		// Return a list of checkbox objects that represent the layers
@@ -27,6 +27,7 @@ Ext.onReady(function() {
 				boxLabel: layers[i].name,
 				xtype: 'checkbox',
 				checked: layers[i].initialOn,
+				boxLabelAlign: 'before',
 				listeners: {
 					change: function(checkbox, newValue, oldValue) {
 						GLRI.ui.toggleLayerMap(checkbox.boxLabel, newValue);
@@ -50,7 +51,7 @@ Ext.onReady(function() {
 	
 	var otherCheckBoxes = createLayerCheckBoxes(GLRI.ui.map.habitatLayers.slice(0, 1));
 	var habitatCheckBoxes = createLayerCheckBoxes(GLRI.ui.map.habitatLayers.slice(1));
-	var habitatLegendDiv = createLegendDiv(GLRI.ui.map.habitatLayers);
+	var habitatAndStaticLegendDivs = createLegendDiv(GLRI.ui.map.habitatLayers.concat(GLRI.ui.map.staticLayers));
 	
 	Ext.create('Ext.container.Viewport', {
 		layout: 'border',
@@ -115,7 +116,6 @@ Ext.onReady(function() {
 					xtype: 'form',
 					id: 'phragmites-map-form',
 					bodyStyle: 'padding: 10px',
-					title: 'Vulnerability Assessment',
 					layout: 'column',
 					region: 'north',
 					split: true,
@@ -124,20 +124,21 @@ Ext.onReady(function() {
 					id: 'map-data-layers-selection',
 					items: [{
 						xtype: 'fieldset',
+						title: '<span style="font-size: 1.2em;"><b>Distance to <i>Phragmites</i><b></span>',
 						columnWidth: 0.50,
 						style: 'border-width: 0px',
 						items: [{
 							anchor: '80% 50%',
-							fieldLabel: 'Reduced Lake Level Corridors',
-							labelStyle: 'text-wrap: none;',
-							labelWidth: 170,
+							fieldLabel: 'Within reduced lake-level corridors',
+							labelWidth: 200,
+							margin: '0, 0, 0, 15',
 							id: 'phragmitesNetwork',
 							name: 'phragmitesNetwork', // Test to see if this fixes IE 7 display issues
 							xtype: 'combo',
 							triggerAction: 'all',
 							lazyRender:true,
 							forceSelection: true,
-							value: 'Map Off',
+							value: 'No reduction',
 							editable: false,
 							mode: 'local',
 							store: new Ext.data.ArrayStore({
@@ -156,17 +157,19 @@ Ext.onReady(function() {
 							displayField: 'network'
 						},
 						{
-							style: 'padding-top: 10px',
 							id: 'otherSuitability',
 							xtype: 'fieldcontainer',
+							margin: '0, 0, 0, 15',
 							items: otherCheckBoxes
 						}]
 					},{
 						xtype: 'fieldset',
 						columnWidth: 0.30,
+						title: '<span style="font-size: 1.2em;"><b><i>Phragmites</i> and Suitable Habitat</b></span>',
 						style: 'border-width: 0px',
 						items: [{
 							id: 'habitatSuitability',
+							margin: '0, 0, 0, 15',
 							xtype: 'fieldcontainer',
 							items: habitatCheckBoxes
 						}]
@@ -201,7 +204,6 @@ Ext.onReady(function() {
 				},{
 					contentEl: 'map-area',
 					id: 'ext-map-area',
-					title: 'Click and drag the map around.',
 					region: 'center',
 					layout: 'fit',
 					border: 0,
@@ -223,7 +225,8 @@ Ext.onReady(function() {
 			border: 0,
 			width: 300,
 			layout: 'border',
-			margin: 3,
+			margin: '3, 0, 0, 0',
+			split: true,
 			items: [
 			        {
 			        	xtype: 'panel',
@@ -234,7 +237,7 @@ Ext.onReady(function() {
 						autoScroll: true,
 						bodyStyle: "padding: 5px;",
 						region: 'north',
-						html: '<div class="legend-div" id="network-layer-div"></div>' + habitatLegendDiv
+						html: '<div class="legend-div" id="network-layer-div"></div>' + habitatAndStaticLegendDivs
 					},{
 			        	id: 'help-context-panel', 
 			        	title: GLRI.ui.helpContext.map.title,
@@ -259,5 +262,10 @@ Ext.onReady(function() {
 			setHelpContext(this);
 		},
 		config);
+	}
+	
+	// Add staticLayers legends to legend div.
+	for (var i = 0; i < GLRI.ui.map.staticLayers.length; i++) {
+		GLRI.ui.toggleLegend(GLRI.ui.map.staticLayers[i].name, GLRI.ui.map.staticLayers, true);
 	}
 });

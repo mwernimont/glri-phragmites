@@ -61,13 +61,13 @@ GLRI.ui.map.baseLayers = [
 */
 GLRI.ui.map.habitatLayers = [
 	 {
-  		name: "Streams, wetlands and waterbodies",
+  		name: "Within streams, wetlands, and waterbodies",
   		url: GLRI.ui.map.baseUrl,
    	 	type: OpenLayers.Layer.WMS,
   	 	layers: '0',
   	 	legend: { 
   	 		name: 'Streams, wetlands, and waterbodies',
-  	 		imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '0')
+  	 		imgHtml: '<img src=images/legends/corridor_networks.jpg />'
   	 	},
   	 	legendDivId: 'habitat-layer-0',
   	 	drawingOrder: 2,
@@ -89,19 +89,21 @@ GLRI.ui.map.habitatLayers = [
   	 	opacity: 1.0
       },
   	 {
-  		name: "<i>Phragmites</i> habitat",
+  		name: "<i>Phragmites</i> habitat suitability",
   		url: GLRI.ui.map.baseUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '1',
   	 	legend: {
-  	 		name: '<i>Phragmites</i> habitat',
+  	 		name: '<i>Phragmites</i> habitat suitability',
   	 		imgHtml: '<img src=images/legends/phragmites_habitat.jpg />'
   	 	},
   	 	legendDivId: 'habitat-layer-1',
   	 	drawingOrder: 1,
   	 	initialOn: false,
   	 	opacity: 1.0
-  	 },
+  	 }
+   ];
+GLRI.ui.map.staticLayers = [
   	 {
   		 name: "Outside study area",
   		 url: GLRI.ui.map.baseUrl,
@@ -116,7 +118,6 @@ GLRI.ui.map.habitatLayers = [
    	 	 initialOn: true,
    	 	 opacity: 0.75
   	 }
-
    ];
 
 GLRI.ui.map.networkLayers = [{ 
@@ -127,7 +128,7 @@ GLRI.ui.map.networkLayers = [{
   	 	legend: [
   	 	         {
   	 	        	 name: 'Contour-based 1 m reduction',
-  	 	        	 imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '4')
+  	 	        	 imgHtml: '<img src=images/legends/corridor_networks.jpg />'
   	 	         }
   	 	],
   	 	drawingOrder: 3,
@@ -142,7 +143,7 @@ GLRI.ui.map.networkLayers = [{
   	 	legend:[
   	 	        {
   	 	        	name: 'Lidar-based 1 m reduction',
-  	 	        	imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '11')
+  	 	        	imgHtml: '<img src=images/legends/corridor_networks.jpg />'
   	 	        },
   	 	        {
   	 	        	name: 'Lidar unavailable',
@@ -161,7 +162,7 @@ GLRI.ui.map.networkLayers = [{
   	 	legend:[
   	 	        {
   	 	        	name: 'Lidar-based 50 cm reduction',
-  	 	        	imgHtml: GLRI.ui.getLegendHTML(GLRI.ui.map.baseUrl, '13')
+  	 	        	imgHtml: '<img src=images/legends/corridor_networks.jpg />'
   	 	        },
   	 	        {
   	 	        	name: 'Lidar unavailable',

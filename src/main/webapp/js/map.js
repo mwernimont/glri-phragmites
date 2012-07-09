@@ -38,8 +38,8 @@ GLRI.ui.initMap = function() {
 	        );
 		GLRI.ui.map.mainMap.addLayer(baseLayer);
 	}
-	// First sort habitat and network layers by drawingOrder
-	var layersToAdd = GLRI.ui.map.habitatLayers.concat(GLRI.ui.map.networkLayers);
+	// First sort static, habitat and network layers by drawingOrder
+	var layersToAdd = GLRI.ui.map.habitatLayers.concat(GLRI.ui.map.networkLayers, GLRI.ui.map.staticLayers);
     layersToAdd.sort(function(a,b){
 		if (a.drawingOrder < b.drawingOrder) {
 			return -1;

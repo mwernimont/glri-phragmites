@@ -36,7 +36,7 @@
 					<p id="footer-page-url">URL:<script type="text/javascript">document.write(document.location.href);</script></p>
 					<p id="footer-contact-info">
 						  Page Contact Information:
-						<a href="mailto:jlucido@usgs.gov?subject=WARP Map Comments" title="Contact Email">GLRI Help</a>
+						<a href="mailto:glri-database@usgs.gov?subject=GLRI Phragmites DST Mapper Comments" title="Contact Email">GLRI Help</a>
 					</p>
        				<p id="footer-page-modified-info">Page Last modified: <script type="text/javascript">document.write(document.lastModified);</script></p>
 				</div><!-- /page-info -->
