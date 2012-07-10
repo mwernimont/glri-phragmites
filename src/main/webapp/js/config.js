@@ -35,12 +35,12 @@ GLRI.ui.map.baseLayers = [
 		type: OpenLayers.Layer.XYZ,
   },
   { 
-    	name: "World Topo Maps", 
+    	name: "World Topo Map", 
         url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
         type: OpenLayers.Layer.XYZ,
     },
     { 
-    	name: "World Relief Maps", 
+    	name: "World Relief Map", 
         url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
         type: OpenLayers.Layer.XYZ,
     },
