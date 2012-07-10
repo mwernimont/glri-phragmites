@@ -1,28 +1,37 @@
 
 GLRI.ui.map.mainMap; //global reference to map, don't know if I like it but I don't care right now
 
+GLRI.ui.map.mercatorProjection = new OpenLayers.Projection("EPSG:900913"); // Use this projection for transformations
+GLRI.ui.map.wgs84Projection = new OpenLayers.Projection("EPSG:4326");
+
 GLRI.ui.map.setHTML = function (response) {
     alert(response.responseText);
 };
 GLRI.ui.initMap = function() {
 	OpenLayers.ProxyHost = "/glri-phragmites-map/proxy?url=";
 	
+	var initCenter = new OpenLayers.LonLat(-84, 45);
+
 	GLRI.ui.map.mainMap = new OpenLayers.Map("map-area", {
         numZoomLevels: 18,
+        center: initCenter.transform(GLRI.ui.map.wgs84Projection, GLRI.ui.map.mercatorProjection),
+        units: 'm',
+        maxResolution: 156543.0339,
+        maxExtent: new OpenLayers.Bounds(-20037508.34, -20037508.34,20037508.34, 20037508.34),
         controls: [
             new OpenLayers.Control.Navigation(),
             new OpenLayers.Control.ArgParser(),
             new OpenLayers.Control.Attribution(),
             new OpenLayers.Control.LayerSwitcher(),
             new OpenLayers.Control.PanZoomBar(),
-            new OpenLayers.Control.MousePosition(),
+            new OpenLayers.Control.MousePosition(
+            		{formatOutput: function(lonLat){
+            			lonLat.transform(GLRI.ui.map.mercatorProjection, GLRI.ui.map.wgs84Projection);
+            			return lonLat.toShortString();
+            			}
+            		}),
             new OpenLayers.Control.ScaleLine(),
-            // Trying new controls ... need to talk to J.L. about this
         ],
-        // Got this number from Hollister, and he's not sure where it came from.
-        // Without this line, the esri road and relief layers will not display
-        // outside of the upper western hemisphere.
-        maxResolution: 1.40625/2
     });
 	for (var i = 0; i < GLRI.ui.map.baseLayers.length; i++){
 		var baseLayer = new GLRI.ui.map.baseLayers[i].type(
@@ -30,6 +39,10 @@ GLRI.ui.initMap = function() {
 				GLRI.ui.map.baseLayers[i].url,
 	            {
 					isBaseLayer: true,
+			        sphericalMercator : true,
+			        projection: "EPSG:102113",
+			        units: "m",
+			        maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),			        
 					layers: GLRI.ui.map.baseLayers[i].layers,
 				},
 				{
@@ -66,7 +79,7 @@ GLRI.ui.initMap = function() {
 					displayInLayerSwitcher: false,
 					singleTile: true,
 					visibility: thisLayer.initialOn,
-					opacity: thisLayer.opacity
+					opacity: thisLayer.opacity,
 				});				
 		GLRI.ui.map.mainMap.addLayer(wmsLayer);
 	}
@@ -93,7 +106,6 @@ GLRI.ui.initMap = function() {
 //	infoControl.activate();
 		
 	GLRI.ui.map.mainMap.zoomTo(5);
-	GLRI.ui.map.mainMap.panTo(new OpenLayers.LonLat(-84, 45));
 };
 
 GLRI.ui.getLayerByName = function(name, layers) {

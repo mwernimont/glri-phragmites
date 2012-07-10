@@ -6,8 +6,9 @@ Ext.ns("GLRI.ui.map");
 //base URL.
 GLRI.ui.map.XYZ_URL_POSTFIX = '${z}/${y}/${x}';
 
-GLRI.ui.map.baseMapServerUrl = 'http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer'
-GLRI.ui.map.baseUrl = GLRI.ui.map.baseMapServerUrl + '/WMSServer';
+
+GLRI.ui.map.baseMapServerUrl = 'http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer';
+GLRI.ui.map.baseWMSServiceUrl = GLRI.ui.map.baseMapServerUrl + '/WMSServer';
 
 GLRI.ui.getLegendHTML = function(url, layers){
 	// Return the html representing the layers by retrieving the map legend at url.
@@ -23,33 +24,29 @@ GLRI.ui.getLegendHTML = function(url, layers){
 };
 
 GLRI.ui.map.baseLayers = [
-//  { 
-//    	name: "World_Topo_Maps", 
-//        url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
-//        type: OpenLayers.Layer.XYZ,
-//    },
-      {
-    	  name: "ESRI Imagery World 2D",
-    	  url: "http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_Imagery_World_2D/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
-    	  type: OpenLayers.Layer.XYZ
-      },
-      {
-    	name: "SDDS Imagery",
-    	url: "http://isse.cr.usgs.gov/ArcGIS/services/Combined/SDDS_Imagery/MapServer/WMSServer",
-    	type: OpenLayers.Layer.WMS,
-    	layers: '0'
-      }
-// Removed the wetlands map for now as it doesn't appear to have map data.
-//      
-//      {
-//      	name: "FWS Wetlands",
-//      	url: "http://137.227.242.85/arcGIS/services/FWS_Wetlands_WMS/MapServer/WMSServer",
-//      	type: OpenLayers.Layer.WMS,
-//      	layers: '17'
-//       }
+  {
+	  name: 'World Imagery',
+	  url: 'http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/' + GLRI.ui.map.XYZ_URL_POSTFIX,
+	  type: OpenLayers.Layer.XYZ,
+  },
+  {
+		name: 'World Street Map',
+		url: 'http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/' + GLRI.ui.map.XYZ_URL_POSTFIX,
+		type: OpenLayers.Layer.XYZ,
+  },
+  { 
+    	name: "World Topo Maps", 
+        url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
+        type: OpenLayers.Layer.XYZ,
+    },
+    { 
+    	name: "World Relief Maps", 
+        url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
+        type: OpenLayers.Layer.XYZ,
+    },
   ];
 
-/* Each habitat or network layer should have the following properties:
+/* Each habitat, static or network layer should have the following properties:
       name  - used on the UI
       url - resource to retrieve the layer from
       type - the OpenLayers.Layer type 
@@ -62,7 +59,7 @@ GLRI.ui.map.baseLayers = [
 GLRI.ui.map.habitatLayers = [
 	 {
   		name: "Within streams, wetlands, and waterbodies",
-  		url: GLRI.ui.map.baseUrl,
+  		url: GLRI.ui.map.baseWMSServiceUrl,
    	 	type: OpenLayers.Layer.WMS,
   	 	layers: '0',
   	 	legend: { 
@@ -76,7 +73,7 @@ GLRI.ui.map.habitatLayers = [
   	 },
 	 { 
   	 	name: "<i>Phragmites</i> stands > 0.2 ha", 
-  	 	url: GLRI.ui.map.baseUrl,
+  	 	url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '17',
   	 	legend: {
@@ -90,7 +87,7 @@ GLRI.ui.map.habitatLayers = [
       },
   	 {
   		name: "<i>Phragmites</i> habitat suitability",
-  		url: GLRI.ui.map.baseUrl,
+  		url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '1',
   	 	legend: {
@@ -106,7 +103,7 @@ GLRI.ui.map.habitatLayers = [
 GLRI.ui.map.staticLayers = [
   	 {
   		 name: "Outside study area",
-  		 url: GLRI.ui.map.baseUrl,
+  		 url: GLRI.ui.map.baseWMSServiceUrl,
    	 	 type: OpenLayers.Layer.WMS,
    	 	 layers: '15',
    	 	 legend: {
@@ -122,7 +119,7 @@ GLRI.ui.map.staticLayers = [
 
 GLRI.ui.map.networkLayers = [{ 
   	 	name: 'Contour-based 1 m reduction', 
-  	 	url: GLRI.ui.map.baseUrl,
+  	 	url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '4',
   	 	legend: [
@@ -137,7 +134,7 @@ GLRI.ui.map.networkLayers = [{
        },
        { 
   	 	name: 'Lidar-based 1 m reduction', 
-  	 	url: GLRI.ui.map.baseUrl,
+  	 	url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '11,14',
   	 	legend:[
@@ -156,7 +153,7 @@ GLRI.ui.map.networkLayers = [{
        },
        { 
   	 	name: 'Lidar-based 50 cm reduction', 
-  	 	url: GLRI.ui.map.baseUrl,
+  	 	url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '13,14',
   	 	legend:[
