@@ -17,7 +17,12 @@
 		<link rel="stylesheet" href="css/usgs_style_main.css"/>
 		<link rel="stylesheet" href="css/custom.css"/>
 	
-        <meta name="description" content ="A concise description of the content and purpose of the page">
+        <meta name="description" content ="The Phragmites Control Prioritization Decision Support Tool (PCPDST) is intended to provide 
+        	resource managers with information to strategically develop effective Phragmites control and invasion prevention programs. The 
+        	PCPDST consists of three integrated components: 1) a distribution map of large (> 0.2 ha) stands of existing Phragmites, 2) a 
+        	map of estimated Phragmites habitat suitability based on current distribution and environmental conditions, and 3) corridor 
+        	networks including reduced lake level scenarios that are weighted by proximity to existing Phragmites to show likely invasion 
+        	pathways.">
         <meta name="author" content="USGS Center for Integrated Data Analytics, USGS Great Lakes Science Center">
         <meta name="keywords" content="invasive Phragmites, coastal corridor, Great Lakes, wetlands ecology, decision support tool,<ACRONYM>USGS</ACRONYM>">
         <meta name="publisher" content="Center for Integrated Data Analytics, Wisconsin Science Center">

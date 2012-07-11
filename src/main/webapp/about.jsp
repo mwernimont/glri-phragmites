@@ -2,13 +2,13 @@
 <h4>What is <i>Phragmites</i>?  Why is it a problem?</h4>
 <br/>
 <p>
-	Although there are native <a href=http://www.invasivespeciesinfo.gov/aquatics/commonreed.shtml><i>Phragmites</i></a> types 
+	Although there are native <a target="_blank" href=http://www.invasivespeciesinfo.gov/aquatics/commonreed.shtml><i>Phragmites</i></a> types 
 	endemic to North America, a highly invasive Eurasian subspecies 
 	began establishing itself here during the 1800s.  The invasive type can grow up to 5 m in height and form 
 	impenetrable stands that can quickly degrade large areas of highly productive coastal wetlands and shorelines.   
 	<i>Phragmites</i> invasions can hinder access to, and use of, beaches and recreation areas; present a fire hazard; 
 	reduce the property value of coastal homes; physically alter the landscape structure; and impact critical natural habitat 
-	for fish and wildlife.  In the Great Lakes coastal zone, Phragmites has shown that it can rapidly colonize mudflats exposed 
+	for fish and wildlife.  In the Great Lakes coastal zone, <i>Phragmites</i> has shown that it can rapidly colonize mudflats exposed 
 	by low lake levels.  <i>Phragmites</i> management is a common objective of private and public land managers. Current management 
 	efforts include mowing, burning, and herbicide application, but they are very costly and must be repeated to achieve long-term 
 	success (Figure 1).
@@ -16,7 +16,7 @@
 <br />
 <img src="images/faqs/phragmites_photo.png" />
 <p>
-	<b>Figure 1.</b><i>Phragmites</i> regrowth in a coastal marsh after aerial treatment of herbicide (photo courtesy of USGS).
+	<b>Figure 1.&nbsp;</b><i>Phragmites</i> regrowth in a coastal marsh after aerial treatment of herbicide (photo courtesy of USGS).
 </p>
 <br />
 <p>
@@ -35,7 +35,7 @@ The DST is a map-based tool that consists of three integrated components: 1) a b
 <i>Phragmites</i> populations, 2) a habitat suitability index based on current environmental conditions, and 3) a map of 
 potential invasion pathways defined by corridor networks that are weighted by proximity to existing <i>Phragmites</i>.  
 Mapping existing invasive <i>Phragmites</i> utilized remotely sensed imagery and provided the basis for the other two components 
-of the DST (<a href=http://www.mtri.org/phragmites.html>http://www.mtri.org/phragmites.html</a>).  The habitat suitability index 
+of the DST (<a target="_blank" href=http://www.mtri.org/phragmites.html>http://www.mtri.org/phragmites.html</a>).  The habitat suitability index 
 is intended to provide land managers with a general estimation of relative vulnerability to future invasions based on 
 environmental conditions.  It maps the relative habitat quality of the landscape for <i>Phragmites</i> establishment and 
 is broken down into six different classes:  most suitable, more suitable, suitable, unsuitable, more unsuitable, and most 
@@ -107,12 +107,13 @@ areas adjacent to wetland and riparian corridors could minimize the <i>Phragmite
 Small patches of <i>Phragmites</i> lie within networks of riparian, wetland, and offshore areas in northern Lake Huron. 
 </p>
 <br/>
+<a id="how-map-was-developed"></a>
 <h4>How was the distribution map developed?</h4>
 <br />
 <p>
 Cooperative research between the USGS Great Lakes Science Center and Michigan Technical Research Institute (MTRI) led 
 to the development of a distribution map of invasive <i>Phragmites</i> along the U. S. side of the Great Lakes coastal 
-zone.  MTRI scientists used satellite-based radar data and an extensive network of field sites to conduct an unsupervised 
+zone(10 km inland from the shoreline) .  MTRI scientists used satellite-based radar data and an extensive network of field sites to conduct an unsupervised 
 and supervised remote sensing classification exercise and to perform an accuracy assessment of the resulting map.  
 Satellite imagery came from multiple dates throughout the growing seasons of 2008-2010, and a total of 1,145 field sites 
 from 2010 and 2011 were used to train and validate remote sensing classification methods. Mapping efforts identified dense 
@@ -120,6 +121,7 @@ stands that were larger than 0.2 ha (0.5 ac) and erred on the side of inclusion 
 infested by <i>Phragmites</i> as possible (Bourgeau-Chavez et al., in press).
 </p>
 <br />
+<a id="habitat-suitability-estimated"></a>
 <h4>How was habitat suitability estimated?</h4>
 <br />
 <p>
@@ -142,18 +144,19 @@ that are close to development.  Shallow or poorly drained soils and a relatively
 tied closely with <i>Phragmites</i> occurrence (Carlson Mazur et al., in review).
 </p>
 <br />
+<a id="data-to-construct-corridor"></a>
 <h4>What data were used to construct the vulnerable corridor network?</h4>
 <br/>
 <p>
 The corridor network has an inland portion made up of streams and rivers, wetlands, and water bodies, and 
 coastal/offshore portions composed of simulated reduced lake-level scenarios.  Features that comprise the 
-inland portion came from the <a href="http://www.horizon-systems.com/nhdplus/HSC-wth04.php">National Hydrography Dataset</a>
-and the <a href="http://www.fws.gov/wetlands/index.html">National Wetlands Inventory</a>.
+inland portion came from the <a target="_blank" href="http://www.horizon-systems.com/nhdplus/HSC-wth04.php">National Hydrography Dataset</a>
+and the <a target="_blank" href="http://www.fws.gov/wetlands/index.html">National Wetlands Inventory</a>.
 </p>
 <br/>
 <p>
 Simulated offshore corridors of two reduced lake levels came from two data sources.  Where available, recently 
-acquired high resolution LIDAR topo-bathymetric data were used to estimate the areas exposed by 0.5 and 1.0 m 
+acquired high resolution LIDAR topo-bathymetric data were used to estimate the areas exposed by 50 cm and 1.0 m 
 lake-level reductions based on mean 2009 conditions.  Acquisition of LIDAR-based topo-bathymetry is limited 
 in areas of high turbidity and aquatic vegetation.  Therefore, a 1.0 m depth bathymetric contour joined with 
 the shoreline provided a separate estimation of the corridor exposed by a 1.0 m lake-level reduction for three 
@@ -167,6 +170,7 @@ and easily interpretable means for assessing relative vulnerability to future ex
 in addition to the habitat suitability index.
 </p>
 <br/>
+<a id="water-level-fluctuations"></a>
 <h4>Are water level fluctuations tied to <i>Phragmites</i> distribution?</h4>
 <br />
 <p>
@@ -183,7 +187,7 @@ for assessing vulnerable offshore coastal corridors.
 <p>
 Mean 2009 levels were used as a base line for simulating lake-level reductions because the goal of this project 
 was to forecast likely expansion patterns, and 2009 marked the time between which imagery was gathered and 
-ground truthing conducted to establish the current Phragmites extent maps.  It should be noted that 2009 lake 
+ground truthing conducted to establish the current <i>Phragmites</i> extent maps.  It should be noted that 2009 lake 
 levels in Lakes Huron and Michigan were relatively lower than those in the lower Great Lakes based on long-term 
 records, so fixed lake-level reduction scenarios based on 2009 levels also occurred less frequently in the past 
 for Lakes Huron and Michigan.  Lake Superior and Lake Ontario did not experience the degree of low lake levels 
@@ -233,7 +237,7 @@ picture of likely future expansion patterns.
 Habitat suitability estimates were derived from point-specific samples of data sources with multiple original
 scales.  A 100-m spacing of sample points was used to construct a spatially continuous grid surface that 
 depicts the general relative suitability of an area based on environmental conditions. This methodology does 
-not produce a spatially precise determination of whether Phragmites will or will not be capable of colonizing 
+not produce a spatially precise determination of whether <i>Phragmites</i> will or will not be capable of colonizing 
 discrete patches in the absence of control efforts.
 </p>
 <br />

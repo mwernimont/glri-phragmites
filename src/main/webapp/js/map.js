@@ -2,7 +2,7 @@
 GLRI.ui.map.mainMap; //global reference to map, don't know if I like it but I don't care right now
 
 GLRI.ui.map.mercatorProjection = new OpenLayers.Projection("EPSG:900913"); // Use this projection for transformations
-GLRI.ui.map.wgs84Projection = new OpenLayers.Projection("EPSG:4326");
+GLRI.ui.map.wgs84Projection = new OpenLayers.Projection("EPSG:4326"); // Use this projection for transformations
 
 GLRI.ui.map.setHTML = function (response) {
     alert(response.responseText);
@@ -16,6 +16,7 @@ GLRI.ui.initMap = function() {
         numZoomLevels: 18,
         center: initCenter.transform(GLRI.ui.map.wgs84Projection, GLRI.ui.map.mercatorProjection),
         units: 'm',
+        // Set the maxResolutions and maxExtent as indicated in http://docs.openlayers.org/library/spherical_mercator.html
         maxResolution: 156543.0339,
         maxExtent: new OpenLayers.Bounds(-20037508.34, -20037508.34,20037508.34, 20037508.34),
         controls: [
@@ -24,15 +25,18 @@ GLRI.ui.initMap = function() {
             new OpenLayers.Control.Attribution(),
             new OpenLayers.Control.LayerSwitcher(),
             new OpenLayers.Control.PanZoomBar(),
-            new OpenLayers.Control.MousePosition(
-            		{formatOutput: function(lonLat){
-            			lonLat.transform(GLRI.ui.map.mercatorProjection, GLRI.ui.map.wgs84Projection);
-            			return lonLat.toShortString();
-            			}
-            		}),
+            new OpenLayers.Control.MousePosition({
+            	// Defined formatOutput because the displayProjection was not working.
+            	formatOutput: function(lonLat){
+            		lonLat.transform(GLRI.ui.map.mercatorProjection, GLRI.ui.map.wgs84Projection);
+           			return lonLat.toShortString();
+           		}
+           	}),
             new OpenLayers.Control.ScaleLine(),
         ],
     });
+
+	// Add base layers to map. Set the projection to the mercator projection in the data layers.
 	for (var i = 0; i < GLRI.ui.map.baseLayers.length; i++){
 		var baseLayer = new GLRI.ui.map.baseLayers[i].type(
 				GLRI.ui.map.baseLayers[i].name,
@@ -51,6 +55,7 @@ GLRI.ui.initMap = function() {
 	        );
 		GLRI.ui.map.mainMap.addLayer(baseLayer);
 	}
+	
 	// First sort static, habitat and network layers by drawingOrder
 	var layersToAdd = GLRI.ui.map.habitatLayers.concat(GLRI.ui.map.networkLayers, GLRI.ui.map.staticLayers);
     layersToAdd.sort(function(a,b){
@@ -65,7 +70,7 @@ GLRI.ui.initMap = function() {
 		}
 	});
     
-	// Add the sorted layers with visibility off.
+	// Add the sorted layers.
 	for (var j = 0; j < layersToAdd.length; j++){
 		var thisLayer = layersToAdd[j];
 		var wmsLayer = new thisLayer.type(
@@ -104,12 +109,11 @@ GLRI.ui.initMap = function() {
 //	});
 //	GLRI.ui.map.mainMap.addControl(infoControl);
 //	infoControl.activate();
-		
 	GLRI.ui.map.mainMap.zoomTo(5);
 };
 
 GLRI.ui.getLayerByName = function(name, layers) {
-	// Returns the layer in layers that matches name. Return nothing if there is no match
+	// Return the layer in layers that matches name. Return nothing if there is no match
 	for (var i = 0; i < layers.length; i++){
 		if (layers[i].name == name){
 			return layers[i];
@@ -118,11 +122,24 @@ GLRI.ui.getLayerByName = function(name, layers) {
 	return;
 };
 
+GLRI.ui.setHelpContext = function(config/* contains a title and content properties */){
+	// Set the help section title and content. Add a click event handler to any faq links to set the active tab.
+	Ext.getCmp('help-context-panel').setTitle(config.title);
+	document.getElementById('help-context-content').innerHTML = config.content;
+	
+	if (config.faq_link_id) {
+		Ext.get(config.faq_link_id).on('click', function() {
+			Ext.getCmp('map-and-tabs').setActiveTab('about-tab');
+			return true;
+		});
+	}
+};
+
 GLRI.ui.toggleLayerMap = function(name, on){
 	// Set the visibility of the layers in mainMap whose name matches "name" to on.
 	var layerList = GLRI.ui.map.mainMap.getLayersByName(name);
 	for (var i=0; i < layerList.length; i++){
-		layerList[0].setVisibility(on);
+		layerList[i].setVisibility(on);
 	}
 	return;
 };
@@ -139,7 +156,7 @@ GLRI.ui.turnOnLayerMap = function(name, layers){
 	return;
 };
 
-GLRI.ui.getLegendWithHeaderHtml = function(legend /* array object with name and imgHtml properties*/) {
+GLRI.ui.getLegendWithHeaderHtml = function(legend /* object with name and imgHtml properties*/) {
 	return '<p><b>' + legend.name + '</b></p>' + legend.imgHtml + '<br />';
 };
 
@@ -149,10 +166,24 @@ GLRI.ui.turnOnLegend = function(name, layers, div_id){
 	for (var i = 0; i < layers.length; i++){
 		if (layers[i].name == name) {
 			var legendHtml = '';
+			var helpDivs = []; // This collects the divs for which we need to add a click event handler for help
+			
 			for (var j = 0; j < layers[i].legend.length; j++){
-				legendHtml = legendHtml + GLRI.ui.getLegendWithHeaderHtml(layers[i].legend[j]) + '<br />';
+				var thisLegend = layers[i].legend[j];
+				if (thisLegend.helpContext) {
+					helpDivs.push({div: thisLegend.divId, helpContext: thisLegend.helpContext});
+				}
+				legendHtml = legendHtml + '<div id="' + thisLegend.divId + '">' + GLRI.ui.getLegendWithHeaderHtml(thisLegend) + '</div><br />';
 			}
 			document.getElementById(div_id).innerHTML = legendHtml;
+			// Add help click handlers
+			for (var k = 0; k < helpDivs.length; k++){
+				Ext.get(helpDivs[k].div).on('click', function() {
+					GLRI.ui.setHelpContext(GLRI.ui.helpContext[this]);
+				},
+				helpDivs[k].helpContext);
+			}
+			
 			return;
 		}
 	}
@@ -163,12 +194,12 @@ GLRI.ui.turnOnLegend = function(name, layers, div_id){
 GLRI.ui.toggleLegend = function(name, layers, on) {
 	// If on is true, retrieve the legend for the layer in layers that matches name, and
 	// assign it to that layer's div element. If false, set the layer's div element to 
-	// the null string.
+	// the null string. This assumes one legend in legend
 	var thisLayer = GLRI.ui.getLayerByName(name, layers);
-	var divEl = document.getElementById(thisLayer.legendDivId);
+	var divEl = document.getElementById(thisLayer.legend[0].divId);
 	
 	if (on) {
-		divEl.innerHTML = GLRI.ui.getLegendWithHeaderHtml(thisLayer.legend) + '<br />';		
+		divEl.innerHTML = GLRI.ui.getLegendWithHeaderHtml(thisLayer.legend[0]) + '<br />';	
 	}
 	else {
 		divEl.innerHTML = '';

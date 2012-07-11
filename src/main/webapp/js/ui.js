@@ -1,11 +1,5 @@
 Ext.onReady(function() {
 	
-	var setHelpContext = function(config/* contains a title and content properties */){
-		// Set the help section title and content
-		Ext.getCmp('help-context-panel').setTitle(config.title);
-		document.getElementById('help-context-content').innerHTML = config.content;
-	};
-	
 	var createLayersDropDown = function(emptyOption, layers){
 		// Return a list of names to be used for a layers drop down menu.
 		// The emptyOption parameter defines the empty option.
@@ -29,9 +23,17 @@ Ext.onReady(function() {
 				checked: layers[i].initialOn,
 				boxLabelAlign: 'before',
 				listeners: {
-					change: function(checkbox, newValue, oldValue) {
-						GLRI.ui.toggleLayerMap(checkbox.boxLabel, newValue);
-						GLRI.ui.toggleLegend(checkbox.boxLabel, GLRI.ui.map.habitatLayers, newValue);
+					change: {
+						fn: function(checkbox, newValue, oldValue) {
+							GLRI.ui.toggleLayerMap(checkbox.boxLabel, newValue);
+							GLRI.ui.toggleLegend(checkbox.boxLabel, GLRI.ui.map.habitatLayers, newValue);
+							// Set the context sensitive help if the checkbox is turned on.
+							if (newValue) {
+								var helpContext = GLRI.ui.helpContext[this.helpContext];
+								GLRI.ui.setHelpContext(helpContext);
+							}
+						},
+						scope: layers[i]
 					},
 				}
 			});
@@ -41,10 +43,11 @@ Ext.onReady(function() {
 	
 	var createLegendDiv = function (layers) {
 		// Create the div elements to be used to display legends for each layer in layers.
-		// Assumes that there is a legendDivId property for each object in the layers list.
 		var html = '';
 		for (var i = 0; i < layers.length; i++){
-			html += '<div class="legend-div" id="' + layers[i].legendDivId + '"></div>';
+			for (var j = 0; j < layers[i].legend.length; j++) {
+				html += '<div class="legend-div" id="' + layers[i].legend[j].divId + '"></div>';
+			}
 		}
 		return html;
 	};
@@ -57,7 +60,7 @@ Ext.onReady(function() {
 		layout: 'border',
 		border: 0,
 		listeners: {
-			afterrender: GLRI.ui.initMap
+			afterrender: GLRI.ui.initMap,
 		},
 		items: [{
 			id: 'ext-header-banner',
@@ -71,11 +74,10 @@ Ext.onReady(function() {
 			xtype: 'tabpanel',
 			activeTab: 1,
 			margin: '3 0 3 3',
-//			bodyborder: true,
 			listeners: {
 				tabchange: function(tabPanel, newCard, oldCard, eOpts) {
 					if (GLRI.ui.map.mainMap){
-							GLRI.ui.map.mainMap.updateSize();
+						GLRI.ui.map.mainMap.updateSize();
 					}										
 				}
 			},
@@ -97,7 +99,7 @@ Ext.onReady(function() {
 					layout: 'column',
 					region: 'north',
 					split: true,
-					height: 110,
+					height: 85,
 					border: 0,
 					id: 'map-data-layers-selection',
 					items: [{
@@ -106,9 +108,9 @@ Ext.onReady(function() {
 						columnWidth: 0.50,
 						style: 'border-width: 0px',
 						items: [{
-							anchor: '80% 50%',
 							fieldLabel: 'Within reduced lake-level corridors',
 							labelWidth: 200,
+							width: 400,
 							margin: '0, 0, 0, 15',
 							id: 'phragmitesNetwork',
 							name: 'phragmitesNetwork', // Test to see if this fixes IE 7 display issues
@@ -129,6 +131,11 @@ Ext.onReady(function() {
 								select: function(combo, records, eOpts) {
 									GLRI.ui.turnOnLayerMap(records[0].data.network, GLRI.ui.map.networkLayers);
 									GLRI.ui.turnOnLegend(records[0].data.network, GLRI.ui.map.networkLayers, 'network-layer-div');
+									var thisLayer = GLRI.ui.getLayerByName(records[0].data.network, GLRI.ui.map.networkLayers);
+									GLRI.ui.setHelpContext(GLRI.ui.helpContext[thisLayer.helpContext]);
+								},
+								expand: function(combo) {
+									GLRI.ui.setHelpContext(GLRI.ui.helpContext.corridors);
 								}
 							},
 							valueField: 'network',
@@ -192,7 +199,7 @@ Ext.onReady(function() {
 							}
 						},
 						enable: function() {
-							setHelpContext(GLRI.ui.helpContext.map);
+							GLRI.ui.setHelpContext(GLRI.ui.helpContext.map);
 						}
 					}
 				}] // end tabs
@@ -245,7 +252,7 @@ Ext.onReady(function() {
 			        	html: '<div id=help-context-content>' + GLRI.ui.helpContext.map.content + '</div>',
 			        	bodyStyle: "padding: 5px;",
 			        	autoScroll: true,
-			        	region: 'center'
+			        	region: 'center',
 			        }]
 		},{
 			id: 'ext-footer-banner',
@@ -258,13 +265,15 @@ Ext.onReady(function() {
 	// Add event handlers for help context
 	for (var x in GLRI.ui.helpContext){
 		var config = GLRI.ui.helpContext[x];
-		Ext.get(config.id).on(config.event, function() {
-			setHelpContext(this);
-		},
-		config);
+		if (config.event) {
+			Ext.get(config.id).on(config.event, function() {
+			GLRI.ui.setHelpContext(this);
+			},
+			config);
+		}
 	}
 	
-	// Add staticLayers legends to legend div.
+	// Add staticLayers legends to legend area.
 	for (var i = 0; i < GLRI.ui.map.staticLayers.length; i++) {
 		GLRI.ui.toggleLegend(GLRI.ui.map.staticLayers[i].name, GLRI.ui.map.staticLayers, true);
 	}
