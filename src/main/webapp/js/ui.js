@@ -1,5 +1,54 @@
 Ext.onReady(function() {
 	
+	var downloadableLayers = GLRI.ui.map.habitatLayers.concat(GLRI.ui.map.networkLayers);
+	
+	var createDownloadMenu = function(){
+		var downloadLayerGeotiff = function(obj, event){
+			var bbox = GLRI.ui.map.mainMap.getExtent().transform(GLRI.ui.map.mercatorProjection, GLRI.ui.map.wgs84Projection);
+//			bboxLatLon = bbox.transform(GLRI.ui.map.mercatorProjection, GLRI.ui.map.wgs84Projection);
+			var width = bbox.getWidth();
+			var height = bbox.getHeight();
+			if (width > 1.0 || height > 1.0) {
+				alert('You must zoom in to a map view that has a width < 1.0 and height < 1.0 degrees. \n'
+						+ 'Your current map has width = ' + width + ' and height = ' + height + '.');
+			}
+			else {
+				var mapExtEl = Ext.ComponentManager.get('ext-map-area');
+				var bboxstr = bbox.toBBOX();
+				var w = mapExtEl.getWidth();
+				var h = mapExtEl.getHeight();
+				// Note that the url code has not been tested.
+				var url = GLRI.ui.map.baseMapServerUrl + '/WCSServer?service=WCS&version=1.0.0&request=GetCoverage&crs=EPSG:4326&format=GEOTIFF' +
+				'&coverage=' + obj.layer_id +
+				'&bbox='+ bboxstr + 'urn:ogc:def:crs:CPSG::4326' +
+				'&gridBaseCRS=urn:goc:def:crs:EPSG::102039' +
+				'&format=image/GeoTIFF' +
+				'&gridOffsets=' + obj.gridOffset +
+				'&store=true';
+// This will return an XML object. Ivan has a servlet which allows use to parse the xml and then download the file contained in the XML.				
+//				window.open(GLRI.ui.map.baseMapServerUrl + '/WCSServer?service=WCS&version=1.1.1&request=GetCoverage&' +
+//						'&boundingbox=' + bbox.toBBOX() +
+//						'&identifier=' + obj.layer_id
+//						''
+			}									
+		};
+		
+		var items = [];
+		
+		for (var i = 0; i< downloadableLayers.length; i++) {
+			if (downloadableLayers.geotiffLayer){
+				items.push({
+					text: downloadableLayers[i].name,
+					handler: downloadLayerGeotiff,
+					layer_id: downloadableLayers[i].geotiffLayer,
+					gridOffset: downloadableLayers[i].geotiffGridOffset,
+				});
+			}
+		}
+		
+		return items;
+	};
+	
 	var createLayersDropDown = function(emptyOption, layers){
 		// Return a list of names to be used for a layers drop down menu.
 		// The emptyOption parameter defines the empty option.
@@ -51,6 +100,7 @@ Ext.onReady(function() {
 		}
 		return html;
 	};
+
 	
 	var otherCheckBoxes = createLayerCheckBoxes(GLRI.ui.map.habitatLayers.slice(0, 1));
 	var habitatCheckBoxes = createLayerCheckBoxes(GLRI.ui.map.habitatLayers.slice(1));
@@ -158,7 +208,7 @@ Ext.onReady(function() {
 							xtype: 'fieldcontainer',
 							items: habitatCheckBoxes
 						}]
-//					},{
+					},//{
 //						xtype: 'fieldset',
 //						columnWidth: 0.20,
 //						style: 'border-width: 0px',
@@ -166,26 +216,10 @@ Ext.onReady(function() {
 //							id: 'geotiffDownload',
 //							xtype: 'button',
 //							text: 'Download data (geotiff)',
-//							handler : function(button, evt){
-//								var bbox = GLRI.ui.map.mainMap.getExtent();
-//								var width = bbox.getWidth();
-//								var height = bbox.getHeight();
-//								if (width > 1.0 || height > 1.0) {
-//									alert('You must zoom in to a map view that has a width < 1.0 and height < 1.0 degrees. \n'
-//											+ 'Your current map has width = ' + width + ' and height = ' + height + '.');
-//								}
-//								else {
-//									alert ('Download to be added soon for your view ' + bbox);
-//									var mapExtEl = Ext.ComponentManager.get('ext-map-area');
-//									window.open(GLRI.ui.map.baseMapServerUrl + '/WCSServer?service=WCS&version=1.0.0&request=GetCoverage&crs=EPSG:4326&format=GEOTIFF' +
-//											'&coverage=7' +
-//											'&bbox='+ bbox.toBBOX() + 
-//											'&width=' + mapExtEl.getWidth() +
-//											'&height=' + mapExtEl.getHeight());
-//								}							
-//							}
+//							menu: createDownloadMenu(),
 //						}]						
-					}]
+///					}
+				]
 				},{
 					contentEl: 'map-area',
 					id: 'ext-map-area',

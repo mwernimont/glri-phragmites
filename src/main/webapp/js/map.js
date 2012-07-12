@@ -11,7 +11,7 @@ GLRI.ui.initMap = function() {
 	OpenLayers.ProxyHost = "/glri-phragmites-map/proxy?url=";
 	
 	var initCenter = new OpenLayers.LonLat(-84, 45);
-
+	
 	GLRI.ui.map.mainMap = new OpenLayers.Map("map-area", {
         numZoomLevels: 18,
         center: initCenter.transform(GLRI.ui.map.wgs84Projection, GLRI.ui.map.mercatorProjection),
@@ -35,6 +35,7 @@ GLRI.ui.initMap = function() {
             new OpenLayers.Control.ScaleLine(),
         ],
     });
+	
 
 	// Add base layers to map. Set the projection to the mercator projection in the data layers.
 	for (var i = 0; i < GLRI.ui.map.baseLayers.length; i++){

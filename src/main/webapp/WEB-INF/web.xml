@@ -7,6 +7,14 @@
     <session-timeout>1</session-timeout>
   </session-config>
   
+<servlet>
+        <servlet-name>GLRIProxy</servlet-name>
+        <servlet-class>gov.usgs.GLRIProxy</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GLRIProxy</servlet-name>
+        <url-pattern>/proxy</url-pattern>
+    </servlet-mapping>
   <!-- resource-ref> 
     <res-ref-name>jdbc/warpDS</res-ref-name> 
     <res-type>javax.sql.DataSource</res-type> 

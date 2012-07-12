@@ -57,6 +57,9 @@ GLRI.ui.map.baseLayers = [
       initialOn - Boolean indicating whether the layer should initially be turned on
       opacity - Float value between 0.0 and 1.0 setting the layer's opacity. Normally set to 1.0
       helpContext(optional) - An object defining the context sensitive help for the element. Generally used for checkbox or selection elements
+      geotiffLayer - The corresponding name of the layer to get geotiff from WCS and is optional.
+      geotiffGridOffset - the offset to use in the wcs request.
+      The previous two properties where obtained from GLRI.ui.map.baseMapServerUrl/WCSServer?service=wcs&request=describecoverage&version=1.0.0
 */
 GLRI.ui.map.habitatLayers = [
 	 {
@@ -73,7 +76,9 @@ GLRI.ui.map.habitatLayers = [
   	 	drawingOrder: 2,
   	 	initialOn: false,
   	 	opacity: 1.0,
-  	 	helpContext: 'streams_wetlands_waterbodies'
+  	 	helpContext: 'streams_wetlands_waterbodies',
+  	 	geotiffLayer: '9',
+  	 	geotiffGridOffset: '30.0,-30.0'
   	 },
 	 { 
   	 	name: "<i>Phragmites</i> stands > 0.2 ha", 
@@ -90,7 +95,7 @@ GLRI.ui.map.habitatLayers = [
   	 	drawingOrder: 4,
   	 	initialOn: false,
   	 	opacity: 1.0,
-  	 	helpContext: 'phragmites_stands'
+  	 	helpContext: 'phragmites_stands',
       },
   	 {
   		name: "<i>Phragmites</i> habitat suitability",
@@ -106,6 +111,8 @@ GLRI.ui.map.habitatLayers = [
   	 	initialOn: false,
   	 	opacity: 1.0,
   	 	helpContext: 'phragmites_habitat',
+  	   	geotiffLayer: '8',
+  	   	geotiffGridOffset: '0.0012065038948423097,0.0012065038948423097'
   	 }
 ];
 
@@ -143,7 +150,9 @@ GLRI.ui.map.networkLayers = [{
   	 	drawingOrder: 3,
   	 	initialOn: false,
   	 	opacity: 1.0,
-  	 	helpContext: 'contour_corridor'
+  	 	helpContext: 'contour_corridor',
+  	 	geotiffLayer: '7',
+  	 	geotiffOffset: '30.0,-30.0'
        },
        { 
   	 	name: 'Lidar-based 1 m reduction', 
@@ -167,6 +176,8 @@ GLRI.ui.map.networkLayers = [{
   	 	initialOn: false,
   	 	opacity: 1.0,
   	 	helpContext: 'lidar_1m_reduction',
+  	 	geotiffLayer: '2',
+  	 	geotiffOffset: '30.0,-30.0'
        },
        { 
   	 	name: 'Lidar-based 50 cm reduction', 
@@ -190,6 +201,8 @@ GLRI.ui.map.networkLayers = [{
   	 	initialOn: false,
   	 	opacity: 1.0,
   	 	helpContext: 'lidar_50cm_reduction',
+  	 	geotiffLayer: '1',
+  	 	geotiffOffset: '30.0, -30.0',
        }                 
  ];
 
