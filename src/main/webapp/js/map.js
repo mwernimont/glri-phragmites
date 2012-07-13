@@ -32,8 +32,8 @@ GLRI.ui.initMap = function() {
            			return lonLat.toShortString();
            		}
            	}),
-            new OpenLayers.Control.ScaleLine(),
-        ],
+            new OpenLayers.Control.ScaleLine()
+        ]
     });
 	
 

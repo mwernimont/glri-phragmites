@@ -1,4 +1,19 @@
-<div class="faq-section" id="intro-section">
+<div class="faq-section">
+<div class="content-control" id="intro-section" style="margin: 20px; line-height: 125%;">
+	<ul>
+		<li><a href="#what-is-phragmites">What is <i>Phragmites</i>?  Why is it a problem?</a></li>
+		<li><a href="#what-is-dst">What is the <i>Phragmites</i> Decision Support Tool (DST), and how do I use it?</a></li>
+		<li><a href="#how-can-tools-inform">How can these tools inform different management scenarios?</a></li>
+		<li><a href="#how-map-was-developed">How was the distribution map developed?</a></li>
+		<li><a href="#habitat-suitability-estimated">How was habitat suitability estimated?</a></li>
+		<li><a href="#what-environmental-conditions">What environmental conditions most influence current <i>Phragmites</i> distribution at a basin-wide scale?</a></li>
+		<li><a href="#data-to-construct-corridor">What data were used to construct the vulnerable corridor network?</a></li>
+		<li><a href="#water-level-fluctuations">Are water level fluctuations tied to <i>Phragmites</i> distribution?</a></li>
+		<li><a href="#how-climate-change-impact">How might climate change impact the coastal corridors?</a></li>
+		<li><a href="#what-limitations">What are some limitations of the DST?</a>
+	</ul>
+</div>
+<a id="what-is-phragmites"></a>
 <h4>What is <i>Phragmites</i>?  Why is it a problem?</h4>
 <br/>
 <p>
@@ -28,6 +43,7 @@ restoration efforts, identify areas most at risk to future invasions, and highli
 can prevent future expansion.
 </p>
 <br />
+<a id="what-is-dst"></a>
 <h4>What is the <i>Phragmites</i> Decision Support Tool (DST), and how do I use it?</h4>
 <br />
 <p>
@@ -47,6 +63,7 @@ vulnerability to future invasions and provide a spatial framework for planning, 
 restoration projects within the U.S. portion of the Great Lakes coastal zone (10 km inland from the shoreline). 
 </p>
 <br />
+<a id="how-can-tools-inform"></a>
 <h4>How can these tools inform different management scenarios?</h4>
 <br />
 <p>
@@ -135,6 +152,7 @@ candidate variables was reduced to 15 for use as predictors of <i>Phragmites</i>
 a continuous index of habitat suitability which was reclassified to depict six categories of relative quality.
 </p>
 <br />
+<a id="what-environmental-conditions"></a>
 <h4>What environmental conditions most influence current <i>Phragmites</i> distribution at a basin-wide scale?</h4>
 <br />
 <p>
@@ -149,9 +167,15 @@ tied closely with <i>Phragmites</i> occurrence (Carlson Mazur et al., in review)
 <br/>
 <p>
 The corridor network has an inland portion made up of streams and rivers, wetlands, and water bodies, and 
-coastal/offshore portions composed of simulated reduced lake-level scenarios.  Features that comprise the 
+coastal/offshore portions composed of simulated reduced lake-level scenarios.
+</p>
+<br />
+<p>
+Features that comprise the 
 inland portion came from the <a target="_blank" href="http://www.horizon-systems.com/nhdplus/HSC-wth04.php">National Hydrography Dataset</a>
-and the <a target="_blank" href="http://www.fws.gov/wetlands/index.html">National Wetlands Inventory</a>.
+and the <a target="_blank" href="http://www.fws.gov/wetlands/index.html">National Wetlands Inventory</a>. Lines associated 
+with the inland portion of the network that run through connecting channels and in to the open water of Lake St. Clair are due to
+the NHD maintaining network connectivity between the lower Great Lakes.
 </p>
 <br/>
 <p>
@@ -194,6 +218,7 @@ for Lakes Huron and Michigan.  Lake Superior and Lake Ontario did not experience
 seen in the other lakes during the 2000-2010 decade, and this may be related to <i>Phragmites'</i> relative scarcity in those lakes.
 </p>
 <br />
+<a id="how-climate-change-impact"></a>
 <h4>How might climate change impact the coastal corridors?</h4>
 <br />
 <p>
@@ -206,6 +231,7 @@ levels and increase disturbance through extreme precipitation events and floodin
 give <i>Phragmites</i> additional competitive advantages.
 </p>
 <br />
+<a id="what-limitations"></a>
 <h4>What are some limitations of the DST?</h4>
 <br />
 <p>

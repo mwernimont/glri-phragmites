@@ -44,7 +44,7 @@ GLRI.ui.map.baseLayers = [
     	name: "World Relief Map", 
         url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
         type: OpenLayers.Layer.XYZ,
-    },
+    }
   ];
 
 /* Each habitat, static or network layer should have the following properties:
@@ -288,5 +288,5 @@ GLRI.ui.helpContext = {
 				     'offshore islands where satellite imagery was available.</p>',
 		    id: 'habitat-layer-15',
 		    event: 'click',
-		},
+		}
 };
