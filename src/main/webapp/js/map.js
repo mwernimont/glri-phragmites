@@ -48,7 +48,7 @@ GLRI.ui.initMap = function() {
 			        projection: "EPSG:102113",
 			        units: "m",
 			        maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),			        
-					layers: GLRI.ui.map.baseLayers[i].layers,
+					layers: GLRI.ui.map.baseLayers[i].layers
 				},
 				{
 					singleTile: true
@@ -79,13 +79,13 @@ GLRI.ui.initMap = function() {
 				thisLayer.url,
 				{
 					layers: thisLayer.layers,
-					transparent: true,
+					transparent: true
 				},
 				{
 					displayInLayerSwitcher: false,
 					singleTile: true,
 					visibility: thisLayer.initialOn,
-					opacity: thisLayer.opacity,
+					opacity: thisLayer.opacity
 				});				
 		GLRI.ui.map.mainMap.addLayer(wmsLayer);
 	}
@@ -130,7 +130,7 @@ GLRI.ui.setHelpContext = function(config/* contains a title and content properti
 	
 	if (config.faq_link_id) {
 		Ext.get(config.faq_link_id).on('click', function() {
-			Ext.getCmp('map-and-tabs').setActiveTab('about-tab');
+			Ext.getCmp('map-and-tabs').setActiveTab('faqs-tab');
 			return true;
 		});
 	}

@@ -122,7 +122,7 @@ Ext.onReady(function() {
 			id: 'map-and-tabs',
 			region: 'center',
 			xtype: 'tabpanel',
-			activeTab: 1,
+//			activeTab: 0,
 			margin: '3 0 3 3',
 			listeners: {
 				tabchange: function(tabPanel, newCard, oldCard, eOpts) {
@@ -132,7 +132,7 @@ Ext.onReady(function() {
 				}
 			},
 			items: [{
-				title: 'About the DST (FAQs)',
+				title: 'About the DST',
 				id: 'about-tab',
 				contentEl: 'mapper-intro',
 				bodyStyle: 'padding: 5px;',
@@ -141,7 +141,7 @@ Ext.onReady(function() {
 				{
 				region: 'north',
 				layout: 'border',
-				title: 'Vulnerability Assessment',
+				title: 'Vulnerability Assessment Map',
 				items: [{
 					xtype: 'form',
 					id: 'phragmites-map-form',
@@ -231,12 +231,16 @@ Ext.onReady(function() {
 							if (GLRI.ui.map.mainMap){
 								GLRI.ui.map.mainMap.updateSize();
 							}
-						},
-						enable: function() {
-							GLRI.ui.setHelpContext(GLRI.ui.helpContext.map);
-						}
+                        }
 					}
 				}] // end tabs
+			},
+            {
+				title: 'FAQs',
+				id: 'faqs-tab',
+				contentEl: 'mapper-faqs',
+				bodyStyle: 'padding: 5px;',
+				autoScroll: true
 			}]
 		},{
 			id: 'sidebar-area',
@@ -282,7 +286,7 @@ Ext.onReady(function() {
 					},{
 			        	id: 'help-context-panel', 
 			        	title: GLRI.ui.helpContext.map.title,
-			        	bbar: ['->','<a href="#" onclick="Ext.getCmp(\'map-and-tabs\').setActiveTab(\'about-tab\'); return false;">Open FAQs</a>'],
+			        	bbar: ['->','<a href="#" onclick="Ext.getCmp(\'map-and-tabs\').setActiveTab(\'faqs-tab\'); return false;">Open FAQs</a>'],
 			        	html: '<div id=help-context-content>' + GLRI.ui.helpContext.map.content + '</div>',
 			        	bodyStyle: "padding: 5px;",
 			        	autoScroll: true,
@@ -296,19 +300,17 @@ Ext.onReady(function() {
 		  }
 		]
 	});
-	// Add event handlers for help context
-	for (var x in GLRI.ui.helpContext){
-		var config = GLRI.ui.helpContext[x];
-		if (config.event) {
-			Ext.get(config.id).on(config.event, function() {
-			GLRI.ui.setHelpContext(this);
-			},
-			config);
-		}
-	}
-	
-	// Add staticLayers legends to legend area.
-	for (var i = 0; i < GLRI.ui.map.staticLayers.length; i++) {
-		GLRI.ui.toggleLegend(GLRI.ui.map.staticLayers[i].name, GLRI.ui.map.staticLayers, true);
-	}
+
+    var config = GLRI.ui.helpContext.map;
+    var el = Ext.get('map-area');
+    el.on('click', function() {
+        GLRI.ui.setHelpContext(this);
+        },
+        config);
+   // Add staticLayers legends to legend area.
+   for (var i = 0; i < GLRI.ui.map.staticLayers.length; i++) {
+        GLRI.ui.toggleLegend(GLRI.ui.map.staticLayers[i].name, GLRI.ui.map.staticLayers, true);
+   }
+
+   // Add event handler for map-area click
 });

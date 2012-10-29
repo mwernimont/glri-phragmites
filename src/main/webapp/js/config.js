@@ -28,22 +28,22 @@ GLRI.ui.map.baseLayers = [
   {
 	  name: 'World Imagery',
 	  url: 'http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/' + GLRI.ui.map.XYZ_URL_POSTFIX,
-	  type: OpenLayers.Layer.XYZ,
+	  type: OpenLayers.Layer.XYZ
   },
   {
 		name: 'World Street Map',
 		url: 'http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/' + GLRI.ui.map.XYZ_URL_POSTFIX,
-		type: OpenLayers.Layer.XYZ,
+		type: OpenLayers.Layer.XYZ
   },
   { 
     	name: "World Topo Map", 
         url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
-        type: OpenLayers.Layer.XYZ,
+        type: OpenLayers.Layer.XYZ
     },
     { 
     	name: "World Relief Map", 
         url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
-        type: OpenLayers.Layer.XYZ,
+        type: OpenLayers.Layer.XYZ
     }
   ];
 
@@ -70,7 +70,7 @@ GLRI.ui.map.habitatLayers = [
   	 	legend: [{
   	 		name: 'Streams, wetlands, and water bodies',
   	 		imgHtml: '<img src=images/legends/corridor_networks.jpg />',
-  	  	 	divId: 'habitat-layer-0',
+  	  	 	divId: 'habitat-layer-0'
   	 	}],
   	 	inputId: 'id-habitat-layer-0-checkbox',
   	 	drawingOrder: 2,
@@ -88,14 +88,14 @@ GLRI.ui.map.habitatLayers = [
   	 	legend: [{
   	 		name: '<i>Phragmites</i> stands > 0.2 ha',
   	 		imgHtml: '<img src=images/legends/phragmites_stands.jpg />',
-  	 		divId: 'habitat-layer-17',
+  	 		divId: 'habitat-layer-17'
   	 		
   	 	}], 
   	 	
   	 	drawingOrder: 4,
   	 	initialOn: false,
   	 	opacity: 1.0,
-  	 	helpContext: 'phragmites_stands',
+  	 	helpContext: 'phragmites_stands'
       },
   	 {
   		name: "<i>Phragmites</i> habitat suitability",
@@ -105,7 +105,7 @@ GLRI.ui.map.habitatLayers = [
   	 	legend: [{
   	 		name: '<i>Phragmites</i> habitat suitability',
   	 		imgHtml: '<img src=images/legends/phragmites_habitat.jpg />',
-  	 		divId: 'habitat-layer-1',
+  	 		divId: 'habitat-layer-1'
   	 	}],
   	 	drawingOrder: 1,
   	 	initialOn: false,
@@ -125,12 +125,12 @@ GLRI.ui.map.staticLayers = [
    	 	 legend: [{
    	 		name: 'Outside study area',
    	 		imgHtml: '<img src=images/legends/outside_study_area.jpg />',
-   	 		divId: 'habitat-layer-15',
+   	 		divId: 'habitat-layer-15'
    	 	 }],
    	 	 drawingOrder: 5,
    	 	 initialOn: true,
    	 	 opacity: 0.75,
-   	 	 helpContext: 'outside_study_area',
+   	 	 helpContext: 'outside_study_area'
   	 }
 ];
 
@@ -169,7 +169,7 @@ GLRI.ui.map.networkLayers = [{
   	 	        {
   	 	        	name: 'Lidar unavailable',
   	 	        	imgHtml: '<img src=images/legends/lidar_unavailable.jpg />',
-  	 	        	divId: 'legend-lidar-unavailable',
+  	 	        	divId: 'legend-lidar-unavailable'
   	 	        }
   	 	],
   	 	drawingOrder: 3,
@@ -194,7 +194,7 @@ GLRI.ui.map.networkLayers = [{
   	 	        {
   	 	        	name: 'Lidar unavailable',
   	 	        	imgHtml: '<img src=images/legends/lidar_unavailable.jpg />',
-  	 	        	divId: 'legend-lidar-unavailable',
+  	 	        	divId: 'legend-lidar-unavailable'
   	 	        }
   	 	],
   	 	drawingOrder: 3,
@@ -202,12 +202,12 @@ GLRI.ui.map.networkLayers = [{
   	 	opacity: 1.0,
   	 	helpContext: 'lidar_50cm_reduction',
   	 	geotiffLayer: '1',
-  	 	geotiffOffset: '30.0, -30.0',
+  	 	geotiffOffset: '30.0, -30.0'
        }                 
  ];
 
-//Declare objects which define the title and content for context specific help.  The optional id and event type properties are used to add help 
-//events to DOM elements.  The property faq_link_id is used to specify the id of the faq help section to reference and is optional.
+// Declare objects which define the title and content for context specific help.
+// The property faq_link_id is used to specify the id of the faq help section to reference and is optional.
 GLRI.ui.helpContext = {
 		map: {
 			title: 'Map Tools Help',
@@ -220,16 +220,14 @@ GLRI.ui.helpContext = {
 			         'on your screen which represents the new location and size of the map once you release the mouse button.</p><br />' +
 			         '<p>Clicking the blue \'+\' button in the upper right corner of the map will toggle on/off the display of a panel ' +
 			         'which allows you to select a different base layer.</p><br />' +
-			         '<p> The small button above the Legend area can be used to collapse/show the page header and footer.</p>',
-			id: 'ext-map-area',
-			event: 'click'
+			         '<p> The small button above the Legend area can be used to collapse/show the page header and footer.</p>'
 		},
 		corridors: {
 			title: 'Within reduced lake-level corridors',
 			content: '<p>These corridors simulate the coastal areas that emerge during periods of low lake levels.  Corridors are ' + 
 					 'weighted by distance to existing <i>Phragmites</i> stands as a way to assess vulnerability. ' +
 					 '<a id="help-link-corridors" href="#data-to-construct-corridor">[more info]</a></p>',
-			faq_link_id: 'help-link-corridors',
+			faq_link_id: 'help-link-corridors'
 		},
 		contour_corridor: {
 			title: 'Contour-based 1 m reduction',
@@ -237,7 +235,7 @@ GLRI.ui.helpContext = {
 					 'Lake Erie, Lake St. Clair, and most of Lake Huron.  It is defined by the NOAA medium resolution shoreline ' +
 					 'and the 1 m contour from a data base of historic soundings. ' +
 					 '<a id="help-link-contour-corridors" href="#water-level-fluctuations">[more info]</a></p>',
-			faq_link_id: 'help-link-contour-corridors',
+			faq_link_id: 'help-link-contour-corridors'
 		},
 		lidar_1m_reduction: {
 			title: 'Lidar-based 1 m reduction',
@@ -245,7 +243,7 @@ GLRI.ui.helpContext = {
 			         'derived from recently acquired lidar-based topo-bathymetry.  Lidar acquisition was limited by water ' +
 			         'clarity, and the accompanying \'lidar unavailable\' layer shows where corridor extraction was limited by data availability. ' +
 			         '<a id="help-link-lidar-1m-reduction" href="#water-level-fluctuations">[more info]</a></p>',
-			faq_link_id: 'help-link-lidar-1m-reduction',
+			faq_link_id: 'help-link-lidar-1m-reduction'
 		},
 		lidar_50cm_reduction: {
 			title: 'Lidar-based 50 cm reduction',
@@ -253,40 +251,32 @@ GLRI.ui.helpContext = {
 					 'acquired lidar-based topo-bathymetry.  Lidar acquisition was limited by water clarity, and the accompanying ' +
 					 '\'lidar unavailable\' layer shows where corridor extraction was limited by data availability. ' +
 					 '<a id="help-link-lidar-50cm-reduction" href="#water-level-fluctuations">[more info]</a></p>',
-			faq_link_id: 'help-link-lidar-50cm-reduction',
+			faq_link_id: 'help-link-lidar-50cm-reduction'
 		},
 		streams_wetlands_waterbodies: {
 			title: 'Within streams, wetlands, and water bodies',
 			content: '<p>These features make up an inland corridor network to depict possible <i>Phragmites</i> expansion pathways, ' +
 			         'and are coded by distance to existing <i>Phragmites</i>. ' +
 			         '<a id="help-streams-wetlands-waterbodies" href="#data-to-construct-corridor">[more info]</a></p>',
-			id: 'habitat-layer-0',
-			event: 'click',
-			faq_link_id: 'help-streams-wetlands-waterbodies',
+			faq_link_id: 'help-streams-wetlands-waterbodies'
 		},
 		phragmites_stands: {
 			title: '<i>Phragmites</i> stands > 0.2 ha',
 			content: '<p>The existing distribution of invasive <i>Phragmites</i> was mapped through the use of satellite imagery and ground truthing. ' +
 				'<a id="help-link-phragmites-stands" href="#how-map-was-developed">[more info]</a></p>',
-			faq_link_id: 'help-link-phragmites-stands',
-			id: 'habitat-layer-17',
-			event: 'click',
+			faq_link_id: 'help-link-phragmites-stands'
 		},
 		phragmites_habitat: {
 			title: '<i>Phragmites</i> habitat suitability',
 			content: '<p>Statistical models were used to estimate habitat quality for <i>Phragmites</i> based on its current ' +
 			         'distribution and environmental conditions. ' +
 			         '<a id="help-link-phragmites-habitat" href="#habitat-suitability-estimated">[more info]</a></p>',
-			faq_link_id: 'help-link-phragmites-habitat',
-			id: 'habitat-layer-1',
-			event: 'click',
+			faq_link_id: 'help-link-phragmites-habitat'
 		},
 		outside_study_area: {
 			title: 'Outside study area',
 			content: '<p>The study consists of the U. S. side of the Great Lakes coastal zone, and ' +
 				     'is defined by a 10 km inland buffer of the shoreline.  It also includes ' +
-				     'offshore islands where satellite imagery was available.</p>',
-		    id: 'habitat-layer-15',
-		    event: 'click',
+				     'offshore islands where satellite imagery was available.</p>'
 		}
 };

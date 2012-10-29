@@ -4,3 +4,37 @@
 	font-family: "Lucida Grande", sans-serif;
 	font-size: 15px;
 }
+/* Style for intro page */
+.intro-logo {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left : 2px;
+    margin-right: 2px;
+}
+.splash-highlight-boxes {
+    background-color: rgb(79, 98, 40);
+    color: white;
+    border-radius: 1em;
+    padding: 15px;
+    text-align: center;
+}
+#splash-column1 {
+   display: inline-block;
+   float: left;
+   width: 500px;
+   margin: 10px;
+}
+ol.decimal-list {
+    margin: 4px;
+    padding-left: 10px;
+}
+ol.decimal-list li{
+   list-style-type: decimal;
+   padding-left: 4px;
+   margin-left: 10px;
+}
+#splash-column2 {
+    display: inline-block;
+    width: 180px;
+    margin: 10px;
+}
