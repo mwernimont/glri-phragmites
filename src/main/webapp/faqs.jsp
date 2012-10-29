@@ -10,7 +10,8 @@
 		<li><a href="#data-to-construct-corridor">What data were used to construct the vulnerable corridor network?</a></li>
 		<li><a href="#water-level-fluctuations">Are water level fluctuations tied to <i>Phragmites</i> distribution?</a></li>
 		<li><a href="#how-climate-change-impact">How might climate change impact the coastal corridors?</a></li>
-		<li><a href="#what-limitations">What are some limitations of the DST?</a>
+        <li><a href="#what-limitations">What are some limitations of the DST?</a></li>
+        <li><a href="#references">References</a></li>
 	</ul>
 </div>
 <a id="what-is-phragmites"></a>
@@ -277,6 +278,7 @@ alternative means to simulate a reduced lake-level corridor was not available fo
 or northern Lake Huron.
 </p>
 <br />
+<a id="references"></a>
 <h4>References</h4>
 <br />
 <p>

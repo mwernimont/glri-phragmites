@@ -30,7 +30,7 @@
      <div id="splash-content">
          <div id="splash-column1">
              <div class="splash-highlight-boxes">
-                 <p style="font-size: x-large">The GLRI <i>Phragmites</i> Decision Support Tool Mapper</p>
+                 <p style="font-size: xx-large">The GLRI <i>Phragmites</i> Decision Support Tool Mapper</p>
              </div>
              <div style="font-size: medium; margin-top: 10px;">
                  <p>The GLRI <i>Phragmites</i> Decision Support Tool (DST) Mapper is intended to provide resource managers with
