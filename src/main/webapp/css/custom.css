@@ -38,3 +38,18 @@ ol.decimal-list li{
     width: 180px;
     margin: 10px;
 }
+
+#map-area .scale-white{
+    color: white;
+}
+#map-area .scale-white .olControlScaleLineTop{
+    border: solid 2px white;
+    border-top: none;
+}
+#map-area .scale-white .olControlScaleLineBottom {
+    border: solid 2px white;
+    border-bottom: none;
+}
+#map-area .position-white {
+    color: white;
+}

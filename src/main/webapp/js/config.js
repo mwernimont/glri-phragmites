@@ -23,12 +23,14 @@ GLRI.ui.getLegendHTML = function(url, layers/* string containing comma separated
 	return html;
 };
 
-/* Define an object containing all base layers used in the application */
+/* Define an object containing all base layers used in the application.
+ * The use_white property is used to style controls when that base layer is visible */
 GLRI.ui.map.baseLayers = [
   {
 	  name: 'World Imagery',
 	  url: 'http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/' + GLRI.ui.map.XYZ_URL_POSTFIX,
-	  type: OpenLayers.Layer.XYZ
+	  type: OpenLayers.Layer.XYZ,
+      use_white: true
   },
   {
 		name: 'World Street Map',
@@ -220,6 +222,9 @@ GLRI.ui.helpContext = {
 			         'on your screen which represents the new location and size of the map once you release the mouse button.</p><br />' +
 			         '<p>Clicking the blue \'+\' button in the upper right corner of the map will toggle on/off the display of a panel ' +
 			         'which allows you to select a different base layer.</p><br />' +
+                     '<p>Clicking the blue \'+\' button in the lower right corner of the map will toggle on/off the display of an overview map ' +
+                     'which shows you where your map is in a relation to the surrounding area. You can click and drag the red rectangle while holding ' +
+                     'down the left mouse button to move the area shown in the map.</p><br />' +
 			         '<p> The small button above the Legend area can be used to collapse/show the page header and footer.</p>'
 		},
 		corridors: {

@@ -9,33 +9,56 @@ GLRI.ui.map.setHTML = function (response) {
 };
 GLRI.ui.initMap = function() {
 	OpenLayers.ProxyHost = "/glri-phragmites-map/proxy?url=";
-	
+
 	var initCenter = new OpenLayers.LonLat(-84, 45);
-	
+    var restrictedExtent = new OpenLayers.Bounds(-92.5, 41.1, -75.6, 49.0); /* Restricts to show the Great Lakes */
 	GLRI.ui.map.mainMap = new OpenLayers.Map("map-area", {
-        numZoomLevels: 18,
         center: initCenter.transform(GLRI.ui.map.wgs84Projection, GLRI.ui.map.mercatorProjection),
         units: 'm',
         // Set the maxResolutions and maxExtent as indicated in http://docs.openlayers.org/library/spherical_mercator.html
         maxResolution: 156543.0339,
+        numZoomLevels: 12,
         maxExtent: new OpenLayers.Bounds(-20037508.34, -20037508.34,20037508.34, 20037508.34),
+        restrictedExtent: restrictedExtent.transform(GLRI.ui.map.wgs84Projection, GLRI.ui.map.mercatorProjection),
         controls: [
             new OpenLayers.Control.Navigation(),
             new OpenLayers.Control.ArgParser(),
             new OpenLayers.Control.Attribution(),
             new OpenLayers.Control.LayerSwitcher(),
-            new OpenLayers.Control.PanZoomBar(),
+            new OpenLayers.Control.PanZoom(),
+            new OpenLayers.Control.OverviewMap({
+            }),
             new OpenLayers.Control.MousePosition({
+                id: 'map-area-mouse-position',
             	// Defined formatOutput because the displayProjection was not working.
             	formatOutput: function(lonLat){
             		lonLat.transform(GLRI.ui.map.mercatorProjection, GLRI.ui.map.wgs84Projection);
            			return lonLat.toShortString();
            		}
            	}),
-            new OpenLayers.Control.ScaleLine()
-        ]
+            new OpenLayers.Control.ScaleLine({
+                id: 'map-area-scale-line'
+            })
+        ],
+        eventListeners: {
+            'changebaselayer' : function(evt) {
+                // Change style for scale and mouse position based on the baselayer shown.
+                var thisLayer = GLRI.ui.getLayerByName(evt.layer.name, GLRI.ui.map.baseLayers);
+
+                var scaleEl = document.getElementById('map-area-scale-line');;
+                var positionEl = document.getElementById('map-area-mouse-position');;
+ 
+                if (thisLayer.use_white) {
+                    OpenLayers.Element.addClass(scaleEl, 'scale-white');
+                    OpenLayers.Element.addClass(positionEl, 'position-white');
+                }
+                else {
+                    OpenLayers.Element.removeClass(scaleEl, 'scale-white');
+                    OpenLayers.Element.removeClass(positionEl, 'position-white');
+                }
+            }
+        }
     });
-	
 
 	// Add base layers to map. Set the projection to the mercator projection in the data layers.
 	for (var i = 0; i < GLRI.ui.map.baseLayers.length; i++){
@@ -43,11 +66,10 @@ GLRI.ui.initMap = function() {
 				GLRI.ui.map.baseLayers[i].name,
 				GLRI.ui.map.baseLayers[i].url,
 	            {
-					isBaseLayer: true,
+ 					isBaseLayer: true,
 			        sphericalMercator : true,
 			        projection: "EPSG:102113",
 			        units: "m",
-			        maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),			        
 					layers: GLRI.ui.map.baseLayers[i].layers
 				},
 				{
@@ -56,8 +78,8 @@ GLRI.ui.initMap = function() {
 	        );
 		GLRI.ui.map.mainMap.addLayer(baseLayer);
 	}
-	
-	// First sort static, habitat and network layers by drawingOrder
+
+ 	// First sort static, habitat and network layers by drawingOrder
 	var layersToAdd = GLRI.ui.map.habitatLayers.concat(GLRI.ui.map.networkLayers, GLRI.ui.map.staticLayers);
     layersToAdd.sort(function(a,b){
 		if (a.drawingOrder < b.drawingOrder) {
@@ -70,7 +92,7 @@ GLRI.ui.initMap = function() {
 			return 0;
 		}
 	});
-    
+
 	// Add the sorted layers.
 	for (var j = 0; j < layersToAdd.length; j++){
 		var thisLayer = layersToAdd[j];
@@ -86,7 +108,7 @@ GLRI.ui.initMap = function() {
 					singleTile: true,
 					visibility: thisLayer.initialOn,
 					opacity: thisLayer.opacity
-				});				
+				});
 		GLRI.ui.map.mainMap.addLayer(wmsLayer);
 	}
 
@@ -110,7 +132,8 @@ GLRI.ui.initMap = function() {
 //	});
 //	GLRI.ui.map.mainMap.addControl(infoControl);
 //	infoControl.activate();
-	GLRI.ui.map.mainMap.zoomTo(5);
+
+    GLRI.ui.map.mainMap.zoomToExtent(restrictedExtent);
 };
 
 GLRI.ui.getLayerByName = function(name, layers) {
@@ -127,7 +150,7 @@ GLRI.ui.setHelpContext = function(config/* contains a title and content properti
 	// Set the help section title and content. Add a click event handler to any faq links to set the active tab.
 	Ext.getCmp('help-context-panel').setTitle(config.title);
 	document.getElementById('help-context-content').innerHTML = config.content;
-	
+
 	if (config.faq_link_id) {
 		Ext.get(config.faq_link_id).on('click', function() {
 			Ext.getCmp('map-and-tabs').setActiveTab('faqs-tab');
@@ -146,7 +169,7 @@ GLRI.ui.toggleLayerMap = function(name, on){
 };
 
 GLRI.ui.turnOnLayerMap = function(name, layers){
-	// Set visibility to on the layer matching name in layers to the map. 
+	// Set visibility to on the layer matching name in layers to the map.
 	// All other layers in should be turned off that are in the layers array.
 	for (var i = 0; i < layers.length; i++){
 		var layerList = GLRI.ui.map.mainMap.getLayersByName(layers[i].name);
@@ -168,7 +191,7 @@ GLRI.ui.turnOnLegend = function(name, layers, div_id){
 		if (layers[i].name == name) {
 			var legendHtml = '';
 			var helpDivs = []; // This collects the divs for which we need to add a click event handler for help
-			
+
 			for (var j = 0; j < layers[i].legend.length; j++){
 				var thisLegend = layers[i].legend[j];
 				if (thisLegend.helpContext) {
@@ -184,7 +207,7 @@ GLRI.ui.turnOnLegend = function(name, layers, div_id){
 				},
 				helpDivs[k].helpContext);
 			}
-			
+
 			return;
 		}
 	}
@@ -194,13 +217,13 @@ GLRI.ui.turnOnLegend = function(name, layers, div_id){
 
 GLRI.ui.toggleLegend = function(name, layers, on) {
 	// If on is true, retrieve the legend for the layer in layers that matches name, and
-	// assign it to that layer's div element. If false, set the layer's div element to 
+	// assign it to that layer's div element. If false, set the layer's div element to
 	// the null string. This assumes one legend in legend
 	var thisLayer = GLRI.ui.getLayerByName(name, layers);
 	var divEl = document.getElementById(thisLayer.legend[0].divId);
-	
+
 	if (on) {
-		divEl.innerHTML = GLRI.ui.getLegendWithHeaderHtml(thisLayer.legend[0]) + '<br />';	
+		divEl.innerHTML = GLRI.ui.getLegendWithHeaderHtml(thisLayer.legend[0]) + '<br />';
 	}
 	else {
 		divEl.innerHTML = '';
