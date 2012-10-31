@@ -59,6 +59,8 @@
                  <p style="font-size:large">All current browsers are supported. There is a known issue with Internet Explorer 7 and prior.</p>
              </div>
          </div>
-         <img src="images/splash_mapper.png" />
+         <div style="clear:both;">
+            <img src="images/splash_mapper.png" />
+         </div>
      </div>
 </div>
