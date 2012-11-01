@@ -12,6 +12,7 @@
 		
 		<script type="text/javascript" src="js/config.js"></script>
 		<script type="text/javascript" src="js/map.js"></script>
+        <script type="text/javascript" src="js/opacityPanel.js"></script>
 		<script type="text/javascript" src="js/ui.js"></script>
 		
 		<link rel="stylesheet" href="css/usgs_style_main.css"/>
