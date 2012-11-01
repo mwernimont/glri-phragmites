@@ -60,6 +60,11 @@ GLRI.ui.initMap = function() {
         }
     });
 
+    // Add loading panel control
+    var loadingpanel = new OpenLayers.Control.LoadingPanel();
+    GLRI.ui.map.mainMap.addControl(loadingpanel);
+
+
 	// Add base layers to map. Set the projection to the mercator projection in the data layers.
 	for (var i = 0; i < GLRI.ui.map.baseLayers.length; i++){
 		var baseLayer = new GLRI.ui.map.baseLayers[i].type(

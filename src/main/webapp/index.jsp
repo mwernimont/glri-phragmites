@@ -11,6 +11,7 @@
 		<script src="openlayers/OpenLayers.js"></script>
 		
 		<script type="text/javascript" src="js/config.js"></script>
+        <script type="text/javascript" src="js/LoadingPanel.js"></script>
 		<script type="text/javascript" src="js/map.js"></script>
         <script type="text/javascript" src="js/opacityPanel.js"></script>
 		<script type="text/javascript" src="js/ui.js"></script>
