@@ -37,13 +37,13 @@ GLRI.ui.map.baseLayers = [
 		url: 'http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/' + GLRI.ui.map.XYZ_URL_POSTFIX,
 		type: OpenLayers.Layer.XYZ
   },
-  { 
-    	name: "World Topo Map", 
+  {
+    	name: "World Topo Map",
         url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
         type: OpenLayers.Layer.XYZ
     },
-    { 
-    	name: "World Relief Map", 
+    {
+    	name: "World Relief Map",
         url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
         type: OpenLayers.Layer.XYZ
     }
@@ -52,7 +52,7 @@ GLRI.ui.map.baseLayers = [
 /* Each habitat, static or network layer should have the following properties:
       name  - used on the UI
       url - resource to retrieve the layer from
-      type - the OpenLayers.Layer type 
+      type - the OpenLayers.Layer type
       legend - An object (or array of objects) with properties for: name - to be used on the legend, imgHtml - the html containing the legend image, and
                divId - the id of the div to place the legend in, helpContext - optional help that would be associated with that particular div.
       drawingOrder - An integer index indicating the order of drawing. Larger indexes will be placed on top of smaller indexes.
@@ -82,8 +82,8 @@ GLRI.ui.map.habitatLayers = [
   	 	geotiffLayer: '9',
   	 	geotiffGridOffset: '30.0,-30.0'
   	 },
-	 { 
-  	 	name: "<i>Phragmites</i> stands > 0.2 ha", 
+	 {
+  	 	name: "<i>Phragmites</i> stands > 0.2 ha",
   	 	url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '17',
@@ -91,9 +91,9 @@ GLRI.ui.map.habitatLayers = [
   	 		name: '<i>Phragmites</i> stands > 0.2 ha',
   	 		imgHtml: '<img src=images/legends/phragmites_stands.jpg />',
   	 		divId: 'habitat-layer-17'
-  	 		
-  	 	}], 
-  	 	
+
+  	 	}],
+
   	 	drawingOrder: 4,
   	 	initialOn: false,
   	 	opacity: 1.0,
@@ -120,24 +120,24 @@ GLRI.ui.map.habitatLayers = [
 
 GLRI.ui.map.staticLayers = [
   	 {
-  		 name: "Outside study area",
+  		 name: "Study area",
   		 url: GLRI.ui.map.baseWMSServiceUrl,
    	 	 type: OpenLayers.Layer.WMS,
    	 	 layers: '15',
    	 	 legend: [{
-   	 		name: 'Outside study area',
-   	 		imgHtml: '<img src=images/legends/outside_study_area.jpg />',
+   	 		name: 'Study area',
+   	 		imgHtml: '<img src=images/legends/study_area.jpg />',
    	 		divId: 'habitat-layer-15'
    	 	 }],
    	 	 drawingOrder: 5,
    	 	 initialOn: true,
    	 	 opacity: 0.75,
-   	 	 helpContext: 'outside_study_area'
+   	 	 helpContext: 'study_area'
   	 }
 ];
 
-GLRI.ui.map.networkLayers = [{ 
-  	 	name: 'Contour-based 1 m reduction', 
+GLRI.ui.map.networkLayers = [{
+  	 	name: 'Contour-based 1 m reduction',
   	 	url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '4',
@@ -156,8 +156,8 @@ GLRI.ui.map.networkLayers = [{
   	 	geotiffLayer: '7',
   	 	geotiffOffset: '30.0,-30.0'
        },
-       { 
-  	 	name: 'Lidar-based 1 m reduction', 
+       {
+  	 	name: 'Lidar-based 1 m reduction',
   	 	url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '11,14',
@@ -169,8 +169,8 @@ GLRI.ui.map.networkLayers = [{
   	 	        	helpContext: 'lidar_1m_reduction'
   	 	        },
   	 	        {
-  	 	        	name: 'Lidar unavailable',
-  	 	        	imgHtml: '<img src=images/legends/lidar_unavailable.jpg />',
+  	 	        	name: 'Lidar availability',
+  	 	        	imgHtml: '<img src=images/legends/lidar_availability.jpg />',
   	 	        	divId: 'legend-lidar-unavailable'
   	 	        }
   	 	],
@@ -181,8 +181,8 @@ GLRI.ui.map.networkLayers = [{
   	 	geotiffLayer: '2',
   	 	geotiffOffset: '30.0,-30.0'
        },
-       { 
-  	 	name: 'Lidar-based 50 cm reduction', 
+       {
+  	 	name: 'Lidar-based 50 cm reduction',
   	 	url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '13,14',
@@ -194,8 +194,8 @@ GLRI.ui.map.networkLayers = [{
   	 	        	helpContext: 'lidar_50cm_reduction'
   	 	        },
   	 	        {
-  	 	        	name: 'Lidar unavailable',
-  	 	        	imgHtml: '<img src=images/legends/lidar_unavailable.jpg />',
+  	 	        	name: 'Lidar Availability',
+  	 	        	imgHtml: '<img src=images/legends/lidar_availability.jpg />',
   	 	        	divId: 'legend-lidar-unavailable'
   	 	        }
   	 	],
@@ -205,7 +205,7 @@ GLRI.ui.map.networkLayers = [{
   	 	helpContext: 'lidar_50cm_reduction',
   	 	geotiffLayer: '1',
   	 	geotiffOffset: '30.0, -30.0'
-       }                 
+       }
  ];
 
 // Declare objects which define the title and content for context specific help.
@@ -213,7 +213,7 @@ GLRI.ui.map.networkLayers = [{
 GLRI.ui.helpContext = {
 		map: {
 			title: 'Map Tools Help',
-			content: '<p>Tools to move and zoom in/out the map are located at the far left of the map view. ' + 
+			content: '<p>Tools to move and zoom in/out the map are located at the far left of the map view. ' +
 			 		 'You can also move the map by holding down the left mouse button and dragging the map ' +
 			 		 ' and you can zoom in/out the map can by using the scroll wheel on your mouse.</p></br>' +
 			 		 '<p>There are other ways to move and zoom in. You can zoom in by double clicking on a location which ' +
@@ -225,11 +225,13 @@ GLRI.ui.helpContext = {
                      '<p>Clicking the blue \'+\' button in the lower right corner of the map will toggle on/off the display of an overview map ' +
                      'which shows you where your map is in a relation to the surrounding area. You can click and drag the red rectangle while holding ' +
                      'down the left mouse button to move the area shown in the map.</p><br />' +
-			         '<p> The small button above the Legend area can be used to collapse/show the page header and footer.</p>'
-		},
+			         '<p> The small button above the Legend area can be used to collapse/show the page header and footer.</p>',
+            id: 'map-area',
+            event: 'click'
+        },
 		corridors: {
 			title: 'Within reduced lake-level corridors',
-			content: '<p>These corridors simulate the coastal areas that emerge during periods of low lake levels.  Corridors are ' + 
+			content: '<p>These corridors simulate the coastal areas that emerge during periods of low lake levels.  Corridors are ' +
 					 'weighted by distance to existing <i>Phragmites</i> stands as a way to assess vulnerability. ' +
 					 '<a id="help-link-corridors" href="#data-to-construct-corridor">[more info]</a></p>',
 			faq_link_id: 'help-link-corridors'
@@ -263,25 +265,33 @@ GLRI.ui.helpContext = {
 			content: '<p>These features make up an inland corridor network to depict possible <i>Phragmites</i> expansion pathways, ' +
 			         'and are coded by distance to existing <i>Phragmites</i>. ' +
 			         '<a id="help-streams-wetlands-waterbodies" href="#data-to-construct-corridor">[more info]</a></p>',
+			id: 'habitat-layer-0',
+			event: 'click',
 			faq_link_id: 'help-streams-wetlands-waterbodies'
 		},
 		phragmites_stands: {
 			title: '<i>Phragmites</i> stands > 0.2 ha',
 			content: '<p>The existing distribution of invasive <i>Phragmites</i> was mapped through the use of satellite imagery and ground truthing. ' +
 				'<a id="help-link-phragmites-stands" href="#how-map-was-developed">[more info]</a></p>',
-			faq_link_id: 'help-link-phragmites-stands'
+			faq_link_id: 'help-link-phragmites-stands',
+			id: 'habitat-layer-17',
+			event: 'click'
 		},
 		phragmites_habitat: {
 			title: '<i>Phragmites</i> habitat suitability',
 			content: '<p>Statistical models were used to estimate habitat quality for <i>Phragmites</i> based on its current ' +
 			         'distribution and environmental conditions. ' +
 			         '<a id="help-link-phragmites-habitat" href="#habitat-suitability-estimated">[more info]</a></p>',
-			faq_link_id: 'help-link-phragmites-habitat'
+			faq_link_id: 'help-link-phragmites-habitat',
+			id: 'habitat-layer-1',
+			event: 'click'
 		},
-		outside_study_area: {
-			title: 'Outside study area',
+		study_area: {
+			title: 'Study area',
 			content: '<p>The study consists of the U. S. side of the Great Lakes coastal zone, and ' +
 				     'is defined by a 10 km inland buffer of the shoreline.  It also includes ' +
-				     'offshore islands where satellite imagery was available.</p>'
+				     'offshore islands where satellite imagery was available.</p>',
+		    id: 'habitat-layer-15',
+		    event: 'click'
 		}
 };

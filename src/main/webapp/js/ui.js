@@ -183,7 +183,9 @@ Ext.onReady(function() {
 									GLRI.ui.turnOnLayerMap(records[0].data.network, GLRI.ui.map.networkLayers);
 									GLRI.ui.turnOnLegend(records[0].data.network, GLRI.ui.map.networkLayers, 'network-layer-div');
 									var thisLayer = GLRI.ui.getLayerByName(records[0].data.network, GLRI.ui.map.networkLayers);
-									GLRI.ui.setHelpContext(GLRI.ui.helpContext[thisLayer.helpContext]);
+                                    if (thisLayer) {
+                                        GLRI.ui.setHelpContext(GLRI.ui.helpContext[thisLayer.helpContext]);
+                                    }
 								},
 								expand: function(combo) {
 									GLRI.ui.setHelpContext(GLRI.ui.helpContext.corridors);
@@ -309,17 +311,19 @@ Ext.onReady(function() {
 		  }
 		]
 	});
-
-    var config = GLRI.ui.helpContext.map;
-    var el = Ext.get('map-area');
-    el.on('click', function() {
-        GLRI.ui.setHelpContext(this);
-        },
-        config);
+	// Add event handlers for help context
+	for (var x in GLRI.ui.helpContext){
+		var config = GLRI.ui.helpContext[x];
+		if (config.event) {
+			Ext.get(config.id).on(config.event, function() {
+                GLRI.ui.setHelpContext(this);
+            },
+            config);
+        }
+    }
    // Add staticLayers legends to legend area.
    for (var i = 0; i < GLRI.ui.map.staticLayers.length; i++) {
         GLRI.ui.toggleLegend(GLRI.ui.map.staticLayers[i].name, GLRI.ui.map.staticLayers, true);
    }
 
-   // Add event handler for map-area click
 });
