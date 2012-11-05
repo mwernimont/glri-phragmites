@@ -68,7 +68,7 @@ GLRI.ui.map.habitatLayers = [
   		name: "Within streams, wetlands, and water bodies",
   		url: GLRI.ui.map.baseWMSServiceUrl,
    	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '0',
+  	 	layers: '1',
   	 	legend: [{
   	 		name: 'Streams, wetlands, and water bodies',
   	 		imgHtml: '<img src=images/legends/corridor_networks.jpg />',
@@ -79,8 +79,12 @@ GLRI.ui.map.habitatLayers = [
   	 	initialOn: false,
   	 	opacity: 1.0,
   	 	helpContext: 'streams_wetlands_waterbodies',
-  	 	geotiffLayer: '9',
-  	 	geotiffGridOffset: '30.0,-30.0'
+        geotiff : {
+            identifier: '8',
+            gridBaseCRS: 'urn:ogc:def:crs:EPSG::4326',
+            gridOffsets:'0.00036195434560119686 -0.00036195434560119675'
+
+        }
   	 },
 	 {
   	 	name: "<i>Phragmites</i> stands > 0.2 ha",
@@ -103,7 +107,7 @@ GLRI.ui.map.habitatLayers = [
   		name: "<i>Phragmites</i> habitat suitability",
   		url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '1',
+  	 	layers: '0',
   	 	legend: [{
   	 		name: '<i>Phragmites</i> habitat suitability',
   	 		imgHtml: '<img src=images/legends/phragmites_habitat.jpg />',
@@ -112,9 +116,14 @@ GLRI.ui.map.habitatLayers = [
   	 	drawingOrder: 1,
   	 	initialOn: false,
   	 	opacity: 1.0,
-  	 	helpContext: 'phragmites_habitat',
-  	   	geotiffLayer: '8',
-  	   	geotiffGridOffset: '0.0012065038948423097,0.0012065038948423097'
+  	 	helpContext: 'phragmites_habitat'
+        // Data is still under review.
+//        geotiff : {
+//            identifier: '9',
+//            gridBaseCRS: 'urn:ogc:def:crs:EPSG::4326',
+//            gridOffsets: '0.0012065038948423097 -0.0012065038948423097'
+//        }
+// Add this back in when download is approved 	   	geotiffLayer: '8',
   	 }
 ];
 
@@ -131,7 +140,7 @@ GLRI.ui.map.staticLayers = [
    	 	 }],
    	 	 drawingOrder: 5,
    	 	 initialOn: true,
-   	 	 opacity: 0.75,
+   	 	 opacity: 1.0,
    	 	 helpContext: 'study_area'
   	 }
 ];
@@ -153,8 +162,11 @@ GLRI.ui.map.networkLayers = [{
   	 	initialOn: false,
   	 	opacity: 1.0,
   	 	helpContext: 'contour_corridor',
-  	 	geotiffLayer: '7',
-  	 	geotiffOffset: '30.0,-30.0'
+        geotiff: {
+            identifier: '7',
+            gridBaseCRS: 'urn:ogc:def:crs:EPSG::102039',
+            gridOffsets: '30,-30'
+        }
        },
        {
   	 	name: 'Lidar-based 1 m reduction',
@@ -178,8 +190,11 @@ GLRI.ui.map.networkLayers = [{
   	 	initialOn: false,
   	 	opacity: 1.0,
   	 	helpContext: 'lidar_1m_reduction',
-  	 	geotiffLayer: '2',
-  	 	geotiffOffset: '30.0,-30.0'
+  	 	geotiff: {
+            identifier: '2',
+            gridBaseCRS: 'urn:ogc:def:crs:EPSG::102039',
+            gridOffsets: '30 -30'
+        }
        },
        {
   	 	name: 'Lidar-based 50 cm reduction',
@@ -203,8 +218,11 @@ GLRI.ui.map.networkLayers = [{
   	 	initialOn: false,
   	 	opacity: 1.0,
   	 	helpContext: 'lidar_50cm_reduction',
-  	 	geotiffLayer: '1',
-  	 	geotiffOffset: '30.0, -30.0'
+  	 	geotiff: {
+            identifier: '1',
+            gridBaseCRS: 'urn:ogc:def:crs:EPSG::102039',
+            gridOffsets: '30 -30'
+        }
        }
  ];
 

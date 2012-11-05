@@ -4,10 +4,11 @@ Ext.onReady(function() {
 	
 	var createDownloadMenu = function(){
 		var downloadLayerGeotiff = function(obj, event){
-			var bbox = GLRI.ui.map.mainMap.getExtent().transform(GLRI.ui.map.mercatorProjection, GLRI.ui.map.wgs84Projection);
-			bboxLatLon = bbox.transform(GLRI.ui.map.mercatorProjection, GLRI.ui.map.wgs84Projection);
-			var width = bbox.getWidth();
-			var height = bbox.getHeight();
+			var bbox = GLRI.ui.map.mainMap.getExtent();
+            var bboxLatLon = bbox.transform(GLRI.ui.map.mercatorProjection,
+                                            GLRI.ui.map.wgs84Projection);
+			var width = bboxLatLon.getWidth();
+			var height = bboxLatLon.getHeight();
 			if (width > 1.0 || height > 1.0) {
 				alert('You must zoom in to a map view that has a width < 1.0 and height < 1.0 degrees. \n'
 					+ 'Your current map has width = ' + width + ' and height = ' + height + '.');
@@ -17,31 +18,61 @@ Ext.onReady(function() {
 				var bboxstr = bbox.toBBOX();
 				var w = mapExtEl.getWidth();
 				var h = mapExtEl.getHeight();
-				// Note that the url code has not been tested.
-				var url = GLRI.ui.map.baseMapServerUrl + '/WCSServer?service=WCS&version=1.0.0&request=GetCoverage&crs=EPSG:4326&format=GEOTIFF' +
-				'&coverage=' + obj.layer_id +
-				'&bbox='+ bboxstr + 'urn:ogc:def:crs:CPSG::4326' +
-				'&gridBaseCRS=urn:goc:def:crs:EPSG::102039' +
-				'&format=image/GeoTIFF' +
-				'&gridOffsets=' + obj.gridOffset +
-				'&store=true';
-// This will return an XML object. Ivan has a servlet which allows use to parse the xml and then download the file contained in the XML.				
-//				window.open(GLRI.ui.map.baseMapServerUrl + '/WCSServer?service=WCS&version=1.1.1&request=GetCoverage&' +
-//						'&boundingbox=' + bbox.toBBOX() +
-//						'&identifier=' + obj.layer_id
-//						''
+
+                Ext.Ajax.request({
+                    url: 'service/WCSServer',
+                    params: {
+                        service: 'WCS',
+                        version: '1.1.1',
+                        request: 'GetCoverage',
+                        identifier: obj.geotiff.identifier,
+                        boundingbox: bboxstr + ',urn:ogc:def:crs:EPSG::4326',
+                        gridBaseCRS: obj.geotiff.gridBaseCRS,
+                        format: 'image/GeoTIFF',
+                        gridOffsets: obj.geotiff.gridOffsets,
+                        store: true
+                    },
+                    method: 'GET',
+                    success: function(resp, opts) {
+                        var els = resp.responseXML.getElementsByTagName('Reference');
+                        if (els) {
+                            var url = els[0].getAttribute('xlink:href');
+                            var app_location = window.location.toString();
+                        
+                            if (app_location.lastIndexOf('/') < app_location.length - 1) {
+                                app_location = app_location.slice(0, app_location.lastIndexOf('/') + 1);
+                            }
+                            window.location = app_location + url.replace('http://igsarmewfsmap/arcgisoutput', 'file_service');
+
+                        }
+                        else {
+                            alert('Could not parse response');
+                        }
+                    },
+                    failure: function(resp, opts) {
+                        alert ('Unable to retrieve geotiff data.');
+                    }
+                })
+ //               var url = GLRI.ui.map.baseMapServerUrl + '/WCSServer?service=WCS&version=1.1.1' +
+ //                   '&request=GetCoverage' +
+ //                   '&identifier=' + obj.geotiff.identifier +
+ //                   '&boundingbox='+ bboxstr + ',urn:ogc:def:crs:EPSG::4326' +
+ //                   '&gridBaseCRS=' + obj.geotiff.gridBaseCRS + //urn:ogc:def:crs:EPSG::102039' +
+ //                   '&format=image/GeoTIFF' +
+ //                   '&gridOffsets=' + obj.geotiff.gridOffsets +
+ //                   '&store=true';
+ //               window.location = url;
 			}									
 		};
 		
 		var items = [];
 		
 		for (var i = 0; i< downloadableLayers.length; i++) {
-			if (downloadableLayers.geotiffLayer){
+			if (downloadableLayers[i].geotiff){
 				items.push({
 					text: downloadableLayers[i].name,
 					handler: downloadLayerGeotiff,
-					layer_id: downloadableLayers[i].geotiffLayer,
-					gridOffset: downloadableLayers[i].geotiffGridOffset
+                    geotiff: downloadableLayers[i].geotiff
 				});
 			}
 		}
@@ -263,6 +294,7 @@ Ext.onReady(function() {
 			split: true,
 			tools: [{
 				type: 'maximize',
+                width: 20,
 				tooltip: 'Toggle page header/footer visibility',
 				tooltipType: 'title',
 				handler: function(e,t,p,c) {

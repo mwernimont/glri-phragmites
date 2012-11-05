@@ -8,8 +8,7 @@ GLRI.ui.map.setHTML = function (response) {
     alert(response.responseText);
 };
 GLRI.ui.initMap = function() {
-	OpenLayers.ProxyHost = "/glri-phragmites-map/proxy?url=";
-
+//	OpenLayers.ProxyHost = "/glri-phragmites-map/proxy?url=";
 	var initCenter = new OpenLayers.LonLat(-84, 45);
     var restrictedExtent = new OpenLayers.Bounds(-92.5, 41.1, -75.6, 49.0); /* Restricts to show the Great Lakes */
 	GLRI.ui.map.mainMap = new OpenLayers.Map("map-area", {
