@@ -63,4 +63,8 @@ ol.decimal-list li{
     background-repeat:no-repeat;
     display: none;
 }
+/* Move overview map up so as to not interfer with the lat lon indicator */
+#map-area .olControlOverviewMapContainer {
+    bottom: 15px;
+}
 

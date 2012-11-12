@@ -44,8 +44,8 @@ GLRI.ui.initMap = function() {
                 // Change style for scale and mouse position based on the baselayer shown.
                 var thisLayer = GLRI.ui.getLayerByName(evt.layer.name, GLRI.ui.map.baseLayers);
 
-                var scaleEl = document.getElementById('map-area-scale-line');;
-                var positionEl = document.getElementById('map-area-mouse-position');;
+                var scaleEl = document.getElementById('map-area-scale-line');
+                var positionEl = document.getElementById('map-area-mouse-position');
  
                 if (thisLayer.use_white) {
                     OpenLayers.Element.addClass(scaleEl, 'scale-white');
@@ -147,7 +147,7 @@ GLRI.ui.getLayerByName = function(name, layers) {
 			return layers[i];
 		}
 	}
-	return;
+	return null;
 };
 
 GLRI.ui.setHelpContext = function(config/* contains a title and content properties */){

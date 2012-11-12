@@ -145,7 +145,9 @@ Ext.onReady(function() {
 			region: 'center',
 			xtype: 'tabpanel',
 			activeTab: 0,
-			margin: '3 0 3 3',
+            minTabWidth: 110, // Added this to prevent the first tab from showing as a scroll bar on Chrome in Mac OS.
+            plain: true,
+			margin: '3 3 3 3',
 			listeners: {
 				tabchange: function(tabPanel, newCard, oldCard, eOpts) {
 					if (GLRI.ui.map.mainMap){
@@ -173,7 +175,6 @@ Ext.onReady(function() {
 					split: true,
 					height: 85,
 					border: 0,
-					id: 'map-data-layers-selection',
 					items: [{
 						xtype: 'fieldset',
 						title: '<span style="font-size: 1.2em;"><b>Distance to <i>Phragmites</i><b></span>',

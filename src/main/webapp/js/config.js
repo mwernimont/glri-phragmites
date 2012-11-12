@@ -58,10 +58,10 @@ GLRI.ui.map.baseLayers = [
       drawingOrder - An integer index indicating the order of drawing. Larger indexes will be placed on top of smaller indexes.
       initialOn - Boolean indicating whether the layer should initially be turned on
       opacity - Float value between 0.0 and 1.0 setting the layer's opacity. Normally set to 1.0
-      helpContext(optional) - An object defining the context sensitive help for the element. Generally used for checkbox or selection elements
-      geotiffLayer - The corresponding name of the layer to get geotiff from WCS and is optional.
-      geotiffGridOffset - the offset to use in the wcs request.
-      The previous two properties where obtained from GLRI.ui.map.baseMapServerUrl/WCSServer?service=wcs&request=describecoverage&version=1.0.0
+      helpContext(optional) - An object defining the context sensitive help for the element. Generally used for checkbox or selection elements.
+      geotiff - Optional. Specified if we want the user to download this layer's data in geotiff format. This object contains three properties:
+                identifier, gridBaseCRS, and gridOffsets. These values can be obtained from
+                GLRI.ui.map.baseMapServerUrl/WCSServer?service=wcs&request=describecoverage&version=1.1.1
 */
 GLRI.ui.map.habitatLayers = [
 	 {
@@ -269,7 +269,7 @@ GLRI.ui.helpContext = {
 			title: 'Lidar-based 1 m reduction',
 			content: '<p>This corridor depicts a 1 m lake-level reduction based on mean 2009 lake levels and was ' +
 			         'derived from recently acquired lidar-based topo-bathymetry.  Lidar acquisition was limited by water ' +
-			         'clarity, and the accompanying \'lidar unavailable\' layer shows where corridor extraction was limited by data availability. ' +
+			         'clarity, and the accompanying \'lidar availability\' layer shows where corridor extraction was limited by data availability. ' +
 			         '<a id="help-link-lidar-1m-reduction" href="#water-level-fluctuations">[more info]</a></p><br />' +
                      '<p>For more information about the data see ' +
                      '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=b594ec11-3d1f-4a24-9f7b-db9fd6aa367f>' +
@@ -280,7 +280,7 @@ GLRI.ui.helpContext = {
 			title: 'Lidar-based 50 cm reduction',
 			content: '<p>This corridor depicts a 50 cm lake-level reduction based on mean 2009 lake levels and was derived from recently ' +
 					 'acquired lidar-based topo-bathymetry.  Lidar acquisition was limited by water clarity, and the accompanying ' +
-					 '\'lidar unavailable\' layer shows where corridor extraction was limited by data availability. ' +
+					 '\'lidar availability\' layer shows where corridor extraction was limited by data availability. ' +
 					 '<a id="help-link-lidar-50cm-reduction" href="#water-level-fluctuations">[more info]</a></p><br />' +
                      '<p>For more information about the data see ' +
                      '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=b594ec11-3d1f-4a24-9f7b-db9fd6aa367f>' +
