@@ -52,16 +52,7 @@ Ext.onReady(function() {
                     failure: function(resp, opts) {
                         alert ('Unable to retrieve geotiff data.');
                     }
-                })
- //               var url = GLRI.ui.map.baseMapServerUrl + '/WCSServer?service=WCS&version=1.1.1' +
- //                   '&request=GetCoverage' +
- //                   '&identifier=' + obj.geotiff.identifier +
- //                   '&boundingbox='+ bboxstr + ',urn:ogc:def:crs:EPSG::4326' +
- //                   '&gridBaseCRS=' + obj.geotiff.gridBaseCRS + //urn:ogc:def:crs:EPSG::102039' +
- //                   '&format=image/GeoTIFF' +
- //                   '&gridOffsets=' + obj.geotiff.gridOffsets +
- //                   '&store=true';
- //               window.location = url;
+                });
 			}									
 		};
 		
@@ -153,7 +144,7 @@ Ext.onReady(function() {
 			id: 'map-and-tabs',
 			region: 'center',
 			xtype: 'tabpanel',
-//			activeTab: 0,
+			activeTab: 0,
 			margin: '3 0 3 3',
 			listeners: {
 				tabchange: function(tabPanel, newCard, oldCard, eOpts) {
