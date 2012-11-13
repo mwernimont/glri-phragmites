@@ -225,7 +225,7 @@ Ext.onReady(function() {
 						}]
 					},{
 						xtype: 'fieldset',
-						columnWidth: 0.30,
+						columnWidth: 0.25,
 						title: '<span style="font-size: 1.2em;"><b><i>Phragmites</i> and Suitable Habitat</b></span>',
 						style: 'border-width: 0px',
 						items: [{
@@ -238,22 +238,33 @@ Ext.onReady(function() {
 						xtype: 'fieldset',
 						columnWidth: 0.20,
 						style: 'border-width: 0px',
-						items: [{
-							id: 'geotiffDownload',
-							xtype: 'button',
-							text: 'Download data (geotiff)',
-							menu: createDownloadMenu()
-						},{
-                            id: 'transparencyButton',
-                            xtype: 'button',
-                            margin: '10 0 0 0',
-                            text: 'Set layer opacity...',
-                            handler: function() {
-                                opacityPanel.show();
-                            }
+                        items: [{
+                            id: 'otherMapButtons',
+                            margin: '0, 0, 0, 15',
+                            xtype: 'fieldcontainer',
+                            width: 175,
+                            items: [{
+                                id: 'geotiffDownload',
+                                xtype: 'button',
+                                text: 'Download data (geotiff)',
+                                listeners: {
+                                    click: function(button, evt, eOpts) {
+                                        GLRI.ui.setHelpContext(GLRI.ui.helpContext.download_geotiff);
+                                    }
+                                },
+                                menu: createDownloadMenu()
+                            },{
+                                id: 'transparencyButton',
+                                xtype: 'button',
+                                margin: '10 0 0 0',
+                                text: 'Set layer opacity...',
+                                handler: function() {
+                                    GLRI.ui.setHelpContext(GLRI.ui.helpContext.set_layer_opacity);
+                                    opacityPanel.show();
+                                }
+                            }]
                         }]
-					}
-				]
+                    }]
 				},{
 					contentEl: 'map-area',
 					id: 'ext-map-area',

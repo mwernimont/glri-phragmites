@@ -247,89 +247,100 @@ GLRI.ui.helpContext = {
             id: 'map-area',
             event: 'click'
         },
+        download_geotiff: {
+            title: 'Download data help',
+            content: 'You can download the data from a single layer by clicking the download ' +
+                     'data button and selecting the layer you want to download. You must be zoomed into a rectangle ' +
+                     'that has a width and height of no more than 1 degree.'
+        },
+        set_layer_opacity: {
+            title: 'Set layer opacity help',
+            content: 'Each data layer\'s opacity can be set by clicking the Set layer opacity button ' +
+                     'and then selecting the desired opacity (percentage) for each data layer.'
+        },
 		corridors: {
-			title: 'Within reduced lake-level corridors',
+			title: 'Within reduced lake-level corridors help',
 			content: '<p>These corridors simulate the coastal areas that emerge during periods of low lake levels.  Corridors are ' +
 					 'weighted by distance to existing <i>Phragmites</i> stands as a way to assess vulnerability. ' +
 					 '<a id="help-link-corridors" href="#data-to-construct-corridor">[more info]</a></p>',
 			faq_link_id: 'help-link-corridors'
 		},
 		contour_corridor: {
-			title: 'Contour-based 1 m reduction',
+			title: 'Contour-based 1 m reduction help',
 			content: '<p>This corridor depicts a 1 m lake-level reduction based on the low water datum for Lake Ontario, ' +
 					 'Lake Erie, Lake St. Clair, and most of Lake Huron.  It is defined by the NOAA medium resolution shoreline ' +
 					 'and the 1 m contour from a data base of historic soundings. ' +
 					 '<a id="help-link-contour-corridors" href="#water-level-fluctuations">[more info]</a></p><br />' +
-                     '<p>For more information about the data see ' +
+                     '<p>For more information about this data set see its ' +
                      '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=9ff5138c-78d8-4c31-88dc-d7888406bfe3>' +
-                     'metadata</a>.</p>',
+                     'metadata record</a>.</p>',
 			faq_link_id: 'help-link-contour-corridors'
 		},
 		lidar_1m_reduction: {
-			title: 'Lidar-based 1 m reduction',
+			title: 'Lidar-based 1 m reduction help',
 			content: '<p>This corridor depicts a 1 m lake-level reduction based on mean 2009 lake levels and was ' +
 			         'derived from recently acquired lidar-based topo-bathymetry.  Lidar acquisition was limited by water ' +
 			         'clarity, and the accompanying \'lidar availability\' layer shows where corridor extraction was limited by data availability. ' +
 			         '<a id="help-link-lidar-1m-reduction" href="#water-level-fluctuations">[more info]</a></p><br />' +
-                     '<p>For more information about the data see ' +
+                     '<p>For more information about this data set see its ' +
                      '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=b594ec11-3d1f-4a24-9f7b-db9fd6aa367f>' +
-                     'metadata</a>.</p>',
+                     'metadata record</a>.</p>',
 			faq_link_id: 'help-link-lidar-1m-reduction'
 		},
 		lidar_50cm_reduction: {
-			title: 'Lidar-based 50 cm reduction',
+			title: 'Lidar-based 50 cm reduction help',
 			content: '<p>This corridor depicts a 50 cm lake-level reduction based on mean 2009 lake levels and was derived from recently ' +
 					 'acquired lidar-based topo-bathymetry.  Lidar acquisition was limited by water clarity, and the accompanying ' +
 					 '\'lidar availability\' layer shows where corridor extraction was limited by data availability. ' +
 					 '<a id="help-link-lidar-50cm-reduction" href="#water-level-fluctuations">[more info]</a></p><br />' +
-                     '<p>For more information about the data see ' +
+                     '<p>For more information about this data set see its ' +
                      '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=b594ec11-3d1f-4a24-9f7b-db9fd6aa367f>' +
-                     'metadata</a>.</p>',
+                     'metadata record</a>.</p>',
 			faq_link_id: 'help-link-lidar-50cm-reduction'
 		},
 		streams_wetlands_waterbodies: {
-			title: 'Within streams, wetlands, and water bodies',
+			title: 'Within streams, wetlands, and water bodies help',
 			content: '<p>These features make up an inland corridor network to depict possible <i>Phragmites</i> expansion pathways, ' +
 			         'and are coded by distance to existing <i>Phragmites</i>. ' +
 			         '<a id="help-streams-wetlands-waterbodies" href="#data-to-construct-corridor">[more info]</a></p><br />' +
-                     '<p>For more information about the data see ' +
+                     '<p>For more information about this data set see its ' +
                      '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=277034e7-cf3f-4f98-ad62-1280e526887a>' +
-                     'metadata</a>.</p>',
+                     'metadata record</a>.</p>',
 			id: 'habitat-layer-0',
 			event: 'click',
 			faq_link_id: 'help-streams-wetlands-waterbodies'
 		},
 		phragmites_stands: {
-			title: '<i>Phragmites</i> stands > 0.2 ha',
+			title: '<i>Phragmites</i> stands > 0.2 ha help',
 			content: '<p>The existing distribution of invasive <i>Phragmites</i> was mapped through the use of satellite imagery and ground truthing. ' +
                      '<a id="help-link-phragmites-stands" href="#how-map-was-developed">[more info]</a></p><br />' +
-                     '<p>For more information about the data see ' +
+                     '<p>For more information about this data set see its ' +
                      '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=acd54f65-7de0-4772-9c7a-89fd437058f7>' +
-                     'metadata</a>.</p>',
+                     'metadata record</a>.</p>',
 			faq_link_id: 'help-link-phragmites-stands',
 			id: 'habitat-layer-17',
 			event: 'click'
 		},
 		phragmites_habitat: {
-			title: '<i>Phragmites</i> habitat suitability',
+			title: '<i>Phragmites</i> habitat suitability help',
 			content: '<p>Statistical models were used to estimate habitat quality for <i>Phragmites</i> based on its current ' +
 			         'distribution and environmental conditions. ' +
 			         '<a id="help-link-phragmites-habitat" href="#habitat-suitability-estimated">[more info]</a></p><br />' +
-                     '<p>For more information about the data see ' +
+                     '<p>For more information about this data set see its ' +
                      '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=e1ddf058-73a0-4978-b11d-8a889063441f>' +
-                     'metadata</a>.</p>',
+                     'metadata record</a>.</p>',
 			faq_link_id: 'help-link-phragmites-habitat',
 			id: 'habitat-layer-1',
 			event: 'click'
 		},
 		study_area: {
-			title: 'Study area',
+			title: 'Study area help',
 			content: '<p>The study consists of the U. S. side of the Great Lakes coastal zone, and ' +
 				     'is defined by a 10 km inland buffer of the shoreline.  It also includes ' +
 				     'offshore islands where satellite imagery was available.</p><br />' +
-                     '<p>For more information about the data see ' +
+                     '<p>For more information about this data see its ' +
                      '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=33205905-ae6b-416f-9c22-b57a018691b3>' +
-                     'metadata</a>.</p>',
+                     'metadata record</a>.</p>',
 		    id: 'habitat-layer-15',
 		    event: 'click'
 		}
