@@ -62,6 +62,8 @@ GLRI.ui.map.baseLayers = [
       geotiff - Optional. Specified if we want the user to download this layer's data in geotiff format. This object contains three properties:
                 identifier, gridBaseCRS, and gridOffsets. These values can be obtained from
                 GLRI.ui.map.baseMapServerUrl/WCSServer?service=wcs&request=describecoverage&version=1.1.1
+      shp - Optional. Should not specify both geotiff and shp. Specified if we want the user to downlaod this layer's
+            data as a zipped up shapefile. Has a single property, url, to specify where the file is located.
 */
 GLRI.ui.map.habitatLayers = [
 	 {
@@ -82,7 +84,7 @@ GLRI.ui.map.habitatLayers = [
         geotiff : {
             identifier: '8',
             gridBaseCRS: 'urn:ogc:def:crs:EPSG::4326',
-            gridOffsets:'0.00036195434560119686 -0.00036195434560119675'
+            gridOffsets: '0.00036195434560119686 -0.00036195434560119675'
 
         }
   	 },
@@ -97,11 +99,13 @@ GLRI.ui.map.habitatLayers = [
   	 		divId: 'habitat-layer-17'
 
   	 	}],
-
   	 	drawingOrder: 4,
   	 	initialOn: false,
   	 	opacity: 1.0,
-  	 	helpContext: 'phragmites_stands'
+  	 	helpContext: 'phragmites_stands',
+        shp: {
+            url: 'data/PhragmitesExtent.zip'
+        }
       },
   	 {
   		name: "<i>Phragmites</i> habitat suitability",
@@ -250,7 +254,9 @@ GLRI.ui.helpContext = {
         download_geotiff: {
             title: 'Download data help',
             content: 'You can download the data from a single layer by clicking the download ' +
-                     'data button and selecting the layer you want to download. You must be zoomed into a rectangle ' +
+                     'data button and selecting the layer you want to download. The <i>Phragmites</i> stands ' +
+                     'layer is downloaded as a zipped shapefile. The rest of the layers are downloaded in ' +
+                     'geotiff format. For these layers, you must be zoomed in to a rectangle ' +
                      'that has a width and height of no more than 1 degree.'
         },
         set_layer_opacity: {
@@ -283,7 +289,7 @@ GLRI.ui.helpContext = {
 			         'clarity, and the accompanying \'lidar availability\' layer shows where corridor extraction was limited by data availability. ' +
 			         '<a id="help-link-lidar-1m-reduction" href="#water-level-fluctuations">[more info]</a></p><br />' +
                      '<p>For more information about this data set see its ' +
-                     '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=b594ec11-3d1f-4a24-9f7b-db9fd6aa367f>' +
+                     '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=9ff5138c-78d8-4c31-88dc-d7888406bfe3>' +
                      'metadata record</a>.</p>',
 			faq_link_id: 'help-link-lidar-1m-reduction'
 		},
@@ -294,7 +300,7 @@ GLRI.ui.helpContext = {
 					 '\'lidar availability\' layer shows where corridor extraction was limited by data availability. ' +
 					 '<a id="help-link-lidar-50cm-reduction" href="#water-level-fluctuations">[more info]</a></p><br />' +
                      '<p>For more information about this data set see its ' +
-                     '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=b594ec11-3d1f-4a24-9f7b-db9fd6aa367f>' +
+                     '<a target="_blank" href=https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=9ff5138c-78d8-4c31-88dc-d7888406bfe3>' +
                      'metadata record</a>.</p>',
 			faq_link_id: 'help-link-lidar-50cm-reduction'
 		},

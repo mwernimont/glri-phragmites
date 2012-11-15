@@ -55,7 +55,10 @@ Ext.onReady(function() {
                 });
 			}									
 		};
-		
+
+        var downloadLayerShp = function (obj, event) {
+            window.location = obj.shp.url
+        }
 		var items = [];
 		
 		for (var i = 0; i< downloadableLayers.length; i++) {
@@ -66,6 +69,13 @@ Ext.onReady(function() {
                     geotiff: downloadableLayers[i].geotiff
 				});
 			}
+            else if (downloadableLayers[i].shp) {
+                items.push({
+                    text: downloadableLayers[i].name,
+                    handler: downloadLayerShp,
+                    shp: downloadableLayers[i].shp
+                });
+            }
 		}
 		
 		return items;
@@ -246,7 +256,7 @@ Ext.onReady(function() {
                             items: [{
                                 id: 'geotiffDownload',
                                 xtype: 'button',
-                                text: 'Download data (geotiff)',
+                                text: 'Download data',
                                 listeners: {
                                     click: function(button, evt, eOpts) {
                                         GLRI.ui.setHelpContext(GLRI.ui.helpContext.download_geotiff);
