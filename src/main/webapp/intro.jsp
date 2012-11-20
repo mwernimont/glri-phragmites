@@ -35,7 +35,7 @@
              <div style="font-size: medium; margin-top: 10px;">
                  <p>The GLRI <i>Phragmites</i> Decision Support Tool (DST) Mapper is intended to provide resource managers with
                     information to strategically develop effective <i>Phragmites</i> control and invasion prevention programs
-                    in the Great Lakes coastal zone (10 km inland from the shore line). The
+                    in the Great Lakes coastal zone (10 km inland from the shoreline). The
                     Mapper consists of three integrated components:
                  </p>
                  <ol class="decimal-list">

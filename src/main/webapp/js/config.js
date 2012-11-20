@@ -83,8 +83,8 @@ GLRI.ui.map.habitatLayers = [
   	 	helpContext: 'streams_wetlands_waterbodies',
         geotiff : {
             identifier: '8',
-            gridBaseCRS: 'urn:ogc:def:crs:EPSG::4326',
-            gridOffsets: '0.00036195434560119686 -0.00036195434560119675'
+            gridBaseCRS: 'urn:ogc:def:crs:EPSG::102039',
+            gridOffsets: '30 -30'
 
         }
   	 },
@@ -127,7 +127,6 @@ GLRI.ui.map.habitatLayers = [
 //            gridBaseCRS: 'urn:ogc:def:crs:EPSG::4326',
 //            gridOffsets: '0.0012065038948423097 -0.0012065038948423097'
 //        }
-// Add this back in when download is approved 	   	geotiffLayer: '8',
   	 }
 ];
 
