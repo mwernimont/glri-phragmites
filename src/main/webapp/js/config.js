@@ -108,12 +108,12 @@ GLRI.ui.map.habitatLayers = [
         }
       },
   	 {
-  		name: "<i>Phragmites</i> habitat suitability",
+  		name: "Provisional <i>Phragmites</i> habitat suitability",
   		url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
   	 	layers: '0',
   	 	legend: [{
-  	 		name: '<i>Phragmites</i> habitat suitability',
+  	 		name: 'Provisional <i>Phragmites</i> habitat suitability',
   	 		imgHtml: '<img src=images/legends/phragmites_habitat.jpg />',
   	 		divId: 'habitat-layer-1'
   	 	}],
