@@ -235,7 +235,7 @@ Ext.onReady(function() {
 						}]
 					},{
 						xtype: 'fieldset',
-						columnWidth: 0.25,
+						columnWidth: 0.35,
 						title: '<span style="font-size: 1.2em;"><b><i>Phragmites</i> and Suitable Habitat</b></span>',
 						style: 'border-width: 0px',
 						items: [{
@@ -246,7 +246,7 @@ Ext.onReady(function() {
 						}]
 					},{
 						xtype: 'fieldset',
-						columnWidth: 0.20,
+						columnWidth: 0.15,
 						style: 'border-width: 0px',
                         items: [{
                             id: 'otherMapButtons',
