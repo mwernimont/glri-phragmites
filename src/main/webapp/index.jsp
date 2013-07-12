@@ -47,6 +47,25 @@
         <meta name="city" content="Middleton">
         <meta name="zip" content="53562">
 <!--End of meta tags--> 
+
+		<!-- USGS Consolidated Analytics -->
+		<script type="application/javascript" src="http://www.usgs.gov/scripts/analytics/usgs-analytics.js"></script>
+		
+		<!-- Google Analytics -->
+		<script>
+			var _gaq = _gaq || [];
+			_gaq.push (['_setAccount', 'UA-42203160-1']);
+			_gaq.push (['_gat._anonymizeIp']);
+			_gaq.push (['_trackPageview']);
+		
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			
+			ga('create', 'UA-42203160-1', 'usgs.gov');
+			ga('send', 'pageview');
+		</script>
                                 
 	</head>
 
