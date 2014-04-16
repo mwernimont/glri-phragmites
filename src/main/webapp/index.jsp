@@ -5,10 +5,11 @@
         
 		<title>GLRI Phragmites DST Mapper</title>
 
-		<script src="extjs/ext-all.js"></script>
-		<link rel="stylesheet" href="extjs/resources/css/ext-all.css"/>
 		
-		<script src="openlayers/OpenLayers.js"></script>
+		<script src="webjars/extjs/4.1.1a/ext-all.js"></script>
+		<link rel="stylesheet" href="webjars/extjs/4.1.1a/resources/css/ext-all.css"/>
+		
+		<script src="webjars/openlayers/2.12/OpenLayers.js"></script>
 		
 		<script type="text/javascript" src="js/config.js"></script>
         <script type="text/javascript" src="js/LoadingPanel.js"></script>
