@@ -1,41 +1,41 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>gov.usgs.cida</groupId>
-  <artifactId>glri-phragmites-map</artifactId>
-  <packaging>war</packaging>
-  <name>GLRI Phragmites Map</name>
-  <version>0.0.9-SNAPSHOT</version>
-  <description>{Owner: Dave Blodgett; Coder: PT}</description>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>gov.usgs.cida</groupId>
+	<artifactId>glri-phragmites-map</artifactId>
+	<packaging>war</packaging>
+	<name>GLRI Phragmites Map</name>
+	<version>0.0.9-SNAPSHOT</version>
+	<description>{Owner: Dave Blodgett; Coder: PT}</description>
   
-  	<repositories>
-        <repository>
-            <id>cida-nexus</id>
-            <name>CIDA Nexus</name>
-            <url>http://internal.cida.usgs.gov/maven/content/groups/public/</url>
-        </repository>
-    </repositories>
+	<repositories>
+		<repository>
+			<id>cida-nexus</id>
+			<name>CIDA Nexus</name>
+			<url>http://internal.cida.usgs.gov/maven/content/groups/public/</url>
+		</repository>
+	</repositories>
     
-    <scm>
-	  <developerConnection>scm:svn:https://cida-svn.er.usgs.gov/repos/dev/usgs/glri-phragmites-map/trunk</developerConnection>
+	<scm>
+		<developerConnection>scm:svn:https://cida-svn.er.usgs.gov/repos/dev/usgs/glri-phragmites-map/trunk</developerConnection>
 	</scm>
 
-    <distributionManagement>
-	  <repository>
-	    <id>cida-releases</id>
-	    <name>CIDA Releases</name>
-	    <url>http://internal.cida.usgs.gov/maven/content/repositories/cida-releases</url>
-	  </repository>
-	  <snapshotRepository>
-	    <id>cida-snapshots</id>
-	    <name>CIDA Snapshots</name>
-	    <url>http://internal.cida.usgs.gov/maven/content/repositories/cida-snapshots</url>
-	  </snapshotRepository>
+	<distributionManagement>
+		<repository>
+			<id>cida-releases</id>
+			<name>CIDA Releases</name>
+			<url>http://internal.cida.usgs.gov/maven/content/repositories/cida-releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>cida-snapshots</id>
+			<name>CIDA Snapshots</name>
+			<url>http://internal.cida.usgs.gov/maven/content/repositories/cida-snapshots</url>
+		</snapshotRepository>
 	</distributionManagement>
 
     
   
-  <build>
-  		<finalName>glri-phragmites-map</finalName>
+	<build>
+		<finalName>glri-phragmites-map</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -85,13 +85,13 @@
 				</configuration>
 			</plugin>
 			<plugin>
-		      <artifactId>maven-release-plugin</artifactId>
-		      <version>2.1</version>
-		      <configuration>
-		        <tagBase>https://cida-svn.er.usgs.gov/repos/dev/usgs/glri-phragmites-map/tags</tagBase>
-		      </configuration>
-		    </plugin>
-		    <plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<tagBase>https://cida-svn.er.usgs.gov/repos/dev/usgs/glri-phragmites-map/tags</tagBase>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.0.2</version>
@@ -129,22 +129,22 @@
 	</profiles>
 	
 	<dependencies>
-<dependency>
-        <groupId>org.apache.commons</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>1.3.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.2</version>
-        </dependency>
- 		<dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.2</version>
+		</dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
@@ -169,12 +169,12 @@
 			<version>4.4</version>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-                <artifactId>proxy-utils</artifactId>
-                <groupId>gov.usgs.cida</groupId>
-                <type>jar</type>
-                <version>1.0.1</version>
-        </dependency>
+		<dependency>
+			<artifactId>proxy-utils</artifactId>
+			<groupId>gov.usgs.cida</groupId>
+			<type>jar</type>
+			<version>1.0.1</version>
+		</dependency>
 		
 		<!-- WebJars -->
 		<dependency>
@@ -190,7 +190,7 @@
 			<!-- Version was 2.9 prior to switching to webjars (unavailable version) -->
 		</dependency>
 	</dependencies>
-    <properties>
-        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
-    </properties>
+	<properties>
+		<netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
+	</properties>
 </project>
