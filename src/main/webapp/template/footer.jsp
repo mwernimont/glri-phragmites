@@ -38,7 +38,7 @@
 						  Page Contact Information:
 						<a href="mailto:glri-database@usgs.gov?subject=GLRI Phragmites DST Mapper Comments" title="Contact Email">GLRI Help</a>
 					</p>
-       				<p id="footer-page-modified-info">Page Last modified: <script type="text/javascript">document.write(document.lastModified);</script></p>
+					<p id="footer-page-modified-info">Page Last modified: ${timestamp} (version ${project.version})</p>
 				</div><!-- /page-info -->
 				<div id="gov-buttons">
 					<a href="http://firstgov.gov/" title="link to the official US Government web portal">
