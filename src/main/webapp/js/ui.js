@@ -36,14 +36,22 @@ Ext.onReady(function() {
                     success: function(resp, opts) {
                         var els = resp.responseXML.getElementsByTagName('Reference');
                         if (els) {
-                            var url = els[0].getAttribute('xlink:href');
-                            var app_location = window.location.toString();
+							
+							//The response from above encodes the url to download the data from,
+							//but this url is not publically visible.  Replace it with a
+							//relative link to the file_service/ proxy in the app.
+							
+                            var orgDownloadUrl = els[0].getAttribute('xlink:href');
+							var downloadFileName = orgDownloadUrl.substring(orgDownloadUrl.lastIndexOf('/') + 1);
+                            var app_url = window.location.toString();
                         
-                            if (app_location.lastIndexOf('/') < app_location.length - 1) {
-                                app_location = app_location.slice(0, app_location.lastIndexOf('/') + 1);
+                            if (app_url.lastIndexOf('/') < app_url.length - 1) {
+                                app_url = app_url.slice(0, app_url.lastIndexOf('/') + 1);
                             }
-                            window.location = app_location + url.replace('http://igsarmewfsmap/arcgisoutput', 'file_service');
-
+							
+							var downloadUrl = app_url + 'file_service/' + downloadFileName;
+							
+                            window.location = downloadUrl;
                         }
                         else {
                             alert('Could not parse response');
