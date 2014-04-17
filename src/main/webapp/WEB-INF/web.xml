@@ -1,65 +1,59 @@
-<?xml version = '1.0' encoding = 'windows-1252'?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
-  <display-name>GLRI Phramites Map {Owner: JL, DB, Coder: PT}</display-name>
-  <description>Empty web.xml file for Web Application</description>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>GLRI Phramites Map {Owner: JL, DB, Coder: PT}</display-name>
+	<description>Empty web.xml file for Web Application</description>
   
-  <session-config>
-    <session-timeout>1</session-timeout>
-  </session-config>
-  
-<servlet>
-        <servlet-name>GLRIProxy</servlet-name>
-        <servlet-class>gov.usgs.GLRIProxy</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GLRIProxy</servlet-name>
-        <url-pattern>/proxy</url-pattern>
-    </servlet-mapping>
-    <servlet>
+	<session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
+	
+	<!-- Used by ui.js downloadLayerGeotiff to prepare a download --> 
+	<servlet>
         <servlet-name>WCSServiceServlet</servlet-name>
         <servlet-class>gov.usgs.cida.proxy.PathPreservingProxyServlet</servlet-class>
         <init-param>
             <param-name>forward-url</param-name>
-            <param-value>http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/</param-value>
-        </init-param>
- <!--       <init-param>
-            <param-name>readTimeout</param-name>
-            <param-value>300000</param-value>
-        </init-param>
-        <init-param>
-            <param-name>connectTimeout</param-name>
-            <param-value>300000</param-value>
-        </init-param>
- -->
-    </servlet>
-    <servlet>
-        <servlet-name>MapFileServiceServlet</servlet-name>
-        <servlet-class>gov.usgs.cida.proxy.PathPreservingProxyServlet</servlet-class>
-        <init-param>
-            <param-name>forward-url</param-name>
-            <param-value>http://igsarmewfsmap.er.usgs.gov/arcgisoutput/</param-value>
+            <param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/services/GLRI68_Phragmites/MapServer/</param-value>
+            <!-- public url, currently mapped to WISC
+			<param-value>http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/</param-value>
+			-->
         </init-param>
     </servlet>
-    <servlet-mapping>
+	<servlet-mapping>
         <servlet-name>WCSServiceServlet</servlet-name>
         <url-pattern>/service/*</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+	
+	
+	<!-- Used by ui.js downloadLayerGeotiff to do a tiff download --> 
+	<servlet>
+        <servlet-name>MapFileServiceServlet</servlet-name>
+        <servlet-class>gov.usgs.ForceDownloadProxy</servlet-class>
+        <init-param>
+			<param-name>forward-url</param-name>
+			<param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/rest/directories/arcgisoutput/GLRI68_Phragmites_MapServer/</param-value>
+
+			<!-- Org value at WISC
+			<param-value>http://igsarmewfsmap.er.usgs.gov/arcgisoutput/</param-value>
+			-->
+		
+			</init-param>
+    </servlet>
+	<servlet-mapping>
         <servlet-name>MapFileServiceServlet</servlet-name>
         <url-pattern>/file_service/*</url-pattern>
     </servlet-mapping>
-  <!-- resource-ref> 
-    <res-ref-name>jdbc/warpDS</res-ref-name> 
-    <res-type>javax.sql.DataSource</res-type> 
-    <res-auth>Container</res-auth>
-  </resource-ref-->  
+
   
-  <mime-mapping>
-    <extension>html</extension>
-    <mime-type>text/html</mime-type>
-  </mime-mapping>
-  <mime-mapping>
-    <extension>txt</extension>
-    <mime-type>text/plain</mime-type>
-  </mime-mapping>
-</web-app>
+	<mime-mapping>
+        <extension>html</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+	<mime-mapping>
+        <extension>txt</extension>
+        <mime-type>text/plain</mime-type>
+    </mime-mapping>
+
+  
+	&gt;
+	</web-app>
