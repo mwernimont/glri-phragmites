@@ -288,7 +288,7 @@ or northern Lake Huron.
 <br />
 <p>
 Martha L. Carlson Mazur, Kurt P. Kowalski and David Galbraith  2014.
-Assessment of suitable habitat for Phragmites australis (<i>common reed</i>) in the Great Lakes coastal zone.
+Assessment of suitable habitat for <i>Phragmites australis</i> (common reed) in the Great Lakes coastal zone.
 Aquatic Invasions (2014) Volume 9, Issue 1: 1-19
 </p>
 <br />
