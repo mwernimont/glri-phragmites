@@ -144,7 +144,7 @@ infested by <i>Phragmites</i> as possible (Bourgeau-Chavez et al., in press).
 <br />
 <p>
 A Geographic Information System (GIS) was used to sample environmental conditions and the newly developed 
-<i>Phragmites</i> map across the study area.  Existing GIS data were gathered and processed to produce a set 
+<i>Phragmites</i> map across the study area (Mazur et al. 2014).  Existing GIS data were gathered and processed to produce a set 
 of 87 candidate variables describing environmental conditions.  These variables were hypothesized to directly 
 influence <i>Phragmites</i> distribution or to serve as surrogates for processes or conditions that are direct 
 influences based on a conceptual model of <i>Phragmites'</i> biological requirements.  The initial set of 87 
@@ -152,6 +152,11 @@ candidate variables was reduced to 15 for use as predictors of <i>Phragmites</i>
 (boosted regression trees) were used to estimate the ecological niche of <i>Phragmites</i>.  These models produced 
 a continuous index of habitat suitability which was reclassified to depict six categories of relative quality.
 </p>
+<br />
+<p><i>The Phragmites habitat suitability</i> map layer is a dataset published with the paper
+<a target="_blank" href="http://www.aquaticinvasions.net/2014/AI_2014_CarlsonMazur_etal.pdf">
+	Assessment of suitable habitat for Phragmites australis (common reed) in the Great Lakes coastal zone</a>,
+	which is available for download.</p>
 <br />
 <a id="what-environmental-conditions"></a>
 <h4>What environmental conditions most influence current <i>Phragmites</i> distribution at a basin-wide scale?</h4>
@@ -280,6 +285,12 @@ or northern Lake Huron.
 <br />
 <a id="references"></a>
 <h4>References</h4>
+<br />
+<p>
+Martha L. Carlson Mazur, Kurt P. Kowalski and David Galbraith  2014.
+Assessment of suitable habitat for Phragmites australis (<i>common reed</i>) in the Great Lakes coastal zone.
+Aquatic Invasions (2014) Volume 9, Issue 1: 1-19
+</p>
 <br />
 <p>
 Anderson, R. P., A. T. Peterson, and S. L. Egbert.  2006.  Vegetation-index models predict areas vulnerable to 
