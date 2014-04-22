@@ -197,13 +197,13 @@ Ext.onReady(function() {
 						xtype: 'fieldset',
 						title: '<span style="font-size: 1.2em;"><b>Distance to <i>Phragmites</i><b></span>',
 						columnWidth: 0.50,
-                        padding: '0, 0, 0, 5',
+                        padding: 0,
 						style: 'border-width: 0px',
 						items: [{
 							fieldLabel: 'Within reduced lake-level corridors',
 							labelWidth: 200,
 							width: 400,
-							margin: '0, 0, 0, 15',
+							margin: 0,
 							id: 'phragmitesNetwork',
 							name: 'phragmitesNetwork', // Test to see if this fixes IE 7 display issues
 							xtype: 'combo',
@@ -238,7 +238,7 @@ Ext.onReady(function() {
 						{
 							id: 'otherSuitability',
 							xtype: 'fieldcontainer',
-							margin: '0, 0, 0, 15',
+							margin: 0,
 							items: otherCheckBoxes
 						}]
 					},{
@@ -256,9 +256,11 @@ Ext.onReady(function() {
 						xtype: 'fieldset',
 						columnWidth: 0.15,
 						style: 'border-width: 0px',
+						padding: '10, 0, 10, 0',
                         items: [{
                             id: 'otherMapButtons',
-                            margin: '0, 0, 0, 15',
+                            margin: '0, 0, 0, 0',
+							padding: 0,
                             xtype: 'fieldcontainer',
                             width: 175,
                             items: [{
