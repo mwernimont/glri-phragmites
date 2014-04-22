@@ -68,3 +68,7 @@ ol.decimal-list li{
     bottom: 15px;
 }
 
+/* Override some EXT styles */
+fieldset.x-fieldset {
+	border: none;
+}
