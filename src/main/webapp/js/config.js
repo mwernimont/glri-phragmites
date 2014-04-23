@@ -7,8 +7,9 @@ Ext.ns("GLRI.ui.map");
 GLRI.ui.map.XYZ_URL_POSTFIX = '${z}/${y}/${x}';
 
 // define urls for map server services
-//GLRI.ui.map.baseMapServerUrl = 'http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer';
-GLRI.ui.map.baseMapServerUrl = 'http://igskmncwfsmap.er.usgs.gov:6080/arcgis/services/GLRI68_Phragmites/MapServer';
+GLRI.ui.map.baseMapServerUrlWisc = 'http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer';
+GLRI.ui.map.baseMapServerUrlEros = 'http://igskmncwfsmap.er.usgs.gov:6080/arcgis/services/GLRI68_Phragmites/MapServer';
+GLRI.ui.map.baseMapServerUrl = GLRI.ui.map.baseMapServerUrlWisc;
 GLRI.ui.map.baseWMSServiceUrl = GLRI.ui.map.baseMapServerUrl + '/WMSServer';
 
 
