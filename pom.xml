@@ -5,16 +5,14 @@
 	<packaging>war</packaging>
 	<name>GLRI Phragmites Map</name>
 	<version>0.0.14-SNAPSHOT</version>
-	<description>{Owner: Dave Blodgett; Coder: PT}</description>
-	
-	<properties>
-		<netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<cida.maven.url>http://internal.cida.usgs.gov/maven</cida.maven.url>
-		<timestamp>${maven.build.timestamp}</timestamp>
-		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
-    	<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-	</properties>
+	<description>
+		The GLRI Phragmites Decision Support Tool (DST) Mapper is intended to provide resource managers
+		with information to strategically develop effective Phragmites control and invasion prevention 
+		programs in the Great Lakes coastal zone (10 km inland from the shoreline).
+		
+		It consists of a static webpage w/ map and data services provided by an Arc instance.
+	</description>
+	<inceptionYear>2012</inceptionYear>
 	
 	<organization>
 		<name>CIDA</name>
@@ -22,14 +20,40 @@
 	</organization>
 	<developers>
 		<developer>
-			<name>Phethala Thongsavanh</name>
-			<email>thongsav@usgs.gov</email>
+			<name>Jessica Lucido</name>
+			<email>jlucido@usgs.gov</email>
+			<organization>USGS / CIDA</organization>
+			<roles>
+				<role>project manager</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>Mary Bucknell</name>
+			<email>mbucknell@usgs.gov</email>
+			<organization>USGS / CIDA</organization>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>Eric Everman</name>
+			<email>eeverman@usgs.gov</email>
 			<organization>USGS / CIDA</organization>
 			<roles>
 				<role>developer</role>
 			</roles>
 		</developer>
 	</developers>
+	
+	<properties>
+		<netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<cida.maven.url>http://internal.cida.usgs.gov/maven</cida.maven.url>
+		<maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyy/MM/dd 'at' HH:mm z</maven.build.timestamp.format>
+    	<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+	</properties>
 	
 	<scm>
 		<connection>scm:git:http://github.com/USGS-CIDA/glri-phragmites.git</connection>
