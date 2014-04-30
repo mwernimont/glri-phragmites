@@ -156,7 +156,7 @@ a continuous index of habitat suitability which was reclassified to depict six c
 <p><i>The Phragmites habitat suitability</i> map layer is a dataset published with the paper
 <a target="_blank" href="http://www.aquaticinvasions.net/2014/AI_2014_CarlsonMazur_etal.pdf">
 	Assessment of suitable habitat for Phragmites australis (common reed) in the Great Lakes coastal zone</a>,
-	which is available for download.</p>
+	which is available for download.  The <a href="http://cida.usgs.gov/glri/documents/Appendix_PhragAndHabSuitWithOffshoreByCountyv11dec2012.xlsx" taget="_blank">appendix</a> is also available.</p>
 <br />
 <a id="what-environmental-conditions"></a>
 <h4>What environmental conditions most influence current <i>Phragmites</i> distribution at a basin-wide scale?</h4>

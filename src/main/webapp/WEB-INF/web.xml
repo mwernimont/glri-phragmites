@@ -14,10 +14,10 @@
         <init-param>
             <param-name>forward-url</param-name>
 			<!-- EROS Value -->
-            <!-- <param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/services/GLRI68_Phragmites/MapServer/</param-value> -->
+            <param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/services/GLRI68_Phragmites/MapServer/</param-value>
 			
             <!-- WISC Value -->
-			<param-value>http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/</param-value>
+			<!-- <param-value>http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/</param-value> -->
         </init-param>
     </servlet>
 	<servlet-mapping>
@@ -33,10 +33,10 @@
         <init-param>
 			<param-name>forward-url</param-name>
 			<!-- EROS Value -->
-			<!-- <param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/rest/directories/arcgisoutput/GLRI68_Phragmites_MapServer/</param-value> -->
+			<param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/rest/directories/arcgisoutput/GLRI68_Phragmites_MapServer/</param-value>
 
 			<!-- WISC Value -->
-			<param-value>http://igsarmewfsmap.er.usgs.gov/arcgisoutput/</param-value>
+			<!-- <param-value>http://igsarmewfsmap.er.usgs.gov/arcgisoutput/</param-value> -->
 			</init-param>
     </servlet>
 	<servlet-mapping>
