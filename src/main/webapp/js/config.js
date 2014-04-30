@@ -9,7 +9,7 @@ GLRI.ui.map.XYZ_URL_POSTFIX = '${z}/${y}/${x}';
 // define urls for map server services
 GLRI.ui.map.baseMapServerUrlWisc = 'http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer';
 GLRI.ui.map.baseMapServerUrlEros = 'http://igskmncwfsmap.er.usgs.gov:6080/arcgis/services/GLRI68_Phragmites/MapServer';
-GLRI.ui.map.baseMapServerUrl = GLRI.ui.map.baseMapServerUrlWisc;
+GLRI.ui.map.baseMapServerUrl = GLRI.ui.map.baseMapServerUrlEros;
 GLRI.ui.map.baseWMSServiceUrl = GLRI.ui.map.baseMapServerUrl + '/WMSServer';
 
 
@@ -95,7 +95,7 @@ GLRI.ui.map.habitatLayers = [
   	 	name: "<i>Phragmites</i> stands > 0.2 ha",
   	 	url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '17',
+  	 	layers: '29',
   	 	legend: [{
   	 		name: '<i>Phragmites</i> stands > 0.2 ha',
   	 		imgHtml: '<img src=images/legends/phragmites_stands.jpg />',
@@ -137,7 +137,7 @@ GLRI.ui.map.staticLayers = [
   		 name: "Study area",
   		 url: GLRI.ui.map.baseWMSServiceUrl,
    	 	 type: OpenLayers.Layer.WMS,
-   	 	 layers: '15',
+   	 	 layers: '27',
    	 	 legend: [{
    	 		name: 'Study area',
    	 		imgHtml: '<img src=images/legends/study_area.jpg />',
@@ -177,7 +177,7 @@ GLRI.ui.map.networkLayers = [{
   	 	name: 'Lidar-based 1 m reduction',
   	 	url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '11,14',
+  	 	layers: '23,26',
   	 	legend:[
   	 	        {
   	 	        	name: 'Lidar-based 1 m reduction',
@@ -205,7 +205,7 @@ GLRI.ui.map.networkLayers = [{
   	 	name: 'Lidar-based 50 cm reduction',
   	 	url: GLRI.ui.map.baseWMSServiceUrl,
   	 	type: OpenLayers.Layer.WMS,
-  	 	layers: '13,14',
+  	 	layers: '25,26',
   	 	legend:[
   	 	        {
   	 	        	name: 'Lidar-based 50 cm reduction',
