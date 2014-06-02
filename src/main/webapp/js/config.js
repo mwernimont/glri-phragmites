@@ -126,8 +126,8 @@ GLRI.ui.map.habitatLayers = [
   	 	helpContext: 'phragmites_habitat',
         geotiff : {
             identifier: '9',
-            gridBaseCRS: 'urn:ogc:def:crs:EPSG::4326',
-            gridOffsets: '0.0012065038948423097 -0.0012065038948423097'
+			gridBaseCRS: 'urn:ogc:def:crs:EPSG::102039',
+            gridOffsets: '100 -100'
         }
   	 }
 ];
