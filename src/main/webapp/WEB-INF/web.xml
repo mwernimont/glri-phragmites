@@ -13,11 +13,11 @@
         <servlet-class>gov.usgs.cida.proxy.PathPreservingProxyServlet</servlet-class>
         <init-param>
             <param-name>forward-url</param-name>
-			<!-- EROS Value -->
-            <param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/services/GLRI68_Phragmites/MapServer/</param-value>
+			<!-- internal url -->
+            <!-- <param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/services/GLRI68_Phragmites/MapServer/</param-value> -->
 			
-            <!-- WISC Value -->
-			<!-- <param-value>http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/</param-value> -->
+            <!-- public Value -->
+			<param-value>http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/</param-value>
         </init-param>
     </servlet>
 	<servlet-mapping>
@@ -32,11 +32,9 @@
         <servlet-class>gov.usgs.ForceDownloadProxy</servlet-class>
         <init-param>
 			<param-name>forward-url</param-name>
-			<!-- EROS Value -->
+			<!-- internal url -->
 			<param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/rest/directories/arcgisoutput/GLRI68_Phragmites_MapServer/</param-value>
 
-			<!-- WISC Value -->
-			<!-- <param-value>http://igsarmewfsmap.er.usgs.gov/arcgisoutput/</param-value> -->
 			</init-param>
     </servlet>
 	<servlet-mapping>
