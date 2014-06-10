@@ -14,10 +14,10 @@
         <init-param>
             <param-name>forward-url</param-name>
 			<!-- internal url -->
-            <param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/services/GLRI68_Phragmites/MapServer/</param-value>
+            <!-- <param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/services/GLRI68_Phragmites/MapServer/</param-value> -->
 			
             <!-- public Value (not currently working b/c subdirectories are not mapped) -->
-			<!-- <param-value>http://cida.usgs.gov/ArcGIS/services/GLRI68_Phragmites/MapServer/</param-value> -->
+			<param-value>http://cida.usgs.gov/arcgis/services/GLRI68_Phragmites/MapServer/</param-value>
         </init-param>
     </servlet>
 	<servlet-mapping>
@@ -33,8 +33,10 @@
         <init-param>
 			<param-name>forward-url</param-name>
 			<!-- internal url -->
-			<param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/rest/directories/arcgisoutput/GLRI68_Phragmites_MapServer/</param-value>
-
+			<!-- <param-value>http://igskmncwfsmap.er.usgs.gov:6080/arcgis/rest/directories/arcgisoutput/GLRI68_Phragmites_MapServer/</param-value> -->
+			
+			<!-- public url -->
+			<param-value>http://cida.usgs.gov/arcgis/rest/directories/arcgisoutput/GLRI68_Phragmites_MapServer/</param-value>
 			</init-param>
     </servlet>
 	<servlet-mapping>
