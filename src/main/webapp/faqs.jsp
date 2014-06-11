@@ -136,7 +136,7 @@ and supervised remote sensing classification exercise and to perform an accuracy
 Satellite imagery came from multiple dates throughout the growing seasons of 2008-2010, and a total of 1,145 field sites 
 from 2010 and 2011 were used to train and validate remote sensing classification methods. Mapping efforts identified dense 
 stands that were larger than 0.2 ha (0.5 ac) and erred on the side of inclusion in order to identify as many areas potentially 
-infested by <i>Phragmites</i> as possible (Bourgeau-Chavez et al., in press).
+infested by <i>Phragmites</i> as possible (Bourgeau-Chavez el al. 2013).
 </p>
 <br />
 <a id="habitat-suitability-estimated"></a>
@@ -144,7 +144,7 @@ infested by <i>Phragmites</i> as possible (Bourgeau-Chavez et al., in press).
 <br />
 <p>
 A Geographic Information System (GIS) was used to sample environmental conditions and the newly developed 
-<i>Phragmites</i> map across the study area (Mazur et al. 2014).  Existing GIS data were gathered and processed to produce a set 
+<i>Phragmites</i> map across the study area (Carlson Mazur et al. 2014).  Existing GIS data were gathered and processed to produce a set 
 of 87 candidate variables describing environmental conditions.  These variables were hypothesized to directly 
 influence <i>Phragmites</i> distribution or to serve as surrogates for processes or conditions that are direct 
 influences based on a conceptual model of <i>Phragmites'</i> biological requirements.  The initial set of 87 
@@ -153,10 +153,13 @@ candidate variables was reduced to 15 for use as predictors of <i>Phragmites</i>
 a continuous index of habitat suitability which was reclassified to depict six categories of relative quality.
 </p>
 <br />
-<p><i>The Phragmites habitat suitability</i> map layer is a dataset published with the paper
-<a target="_blank" href="http://www.aquaticinvasions.net/2014/AI_2014_CarlsonMazur_etal.pdf">
-	Assessment of suitable habitat for Phragmites australis (common reed) in the Great Lakes coastal zone</a>,
-	which is available for download.  The <a href="http://cida.usgs.gov/glri/documents/Appendix_PhragAndHabSuitWithOffshoreByCountyv11dec2012.xlsx" taget="_blank">appendix</a> is also available.</p>
+<p>
+	The Phragmites habitat suitability map layer is a dataset published with the paper
+	<a target="_blank" href="http://www.aquaticinvasions.net/2014/AI_2014_CarlsonMazur_etal.pdf">Assessment of suitable habitat for <i>Phragmites australis</i> (common reed) in the Great Lakes coastal zone</a>,
+	which is available for download.
+	An <a target="_blank" href="http://cida.usgs.gov/glri/documents/CountyAppendix_CarlsonMazur2014.pdf">appendix</a>
+	that provides county-level summaries of current Phragmites extent, both offshore and total area in each county, is also available.
+</p>
 <br />
 <a id="what-environmental-conditions"></a>
 <h4>What environmental conditions most influence current <i>Phragmites</i> distribution at a basin-wide scale?</h4>
@@ -165,7 +168,7 @@ a continuous index of habitat suitability which was reclassified to depict six c
 <i>Phragmites</i> distribution was tied most closely with topography, proximity to development, soil conditions, 
 and road density.  In general, <i>Phragmites</i> in the Great Lakes coastal zone tends to prefer flatter areas 
 that are close to development.  Shallow or poorly drained soils and a relatively high road density are also 
-tied closely with <i>Phragmites</i> occurrence (Carlson Mazur et al., in review).
+tied closely with <i>Phragmites</i> occurrence (Carlson Mazur et al. 2014).
 </p>
 <br />
 <a id="data-to-construct-corridor"></a>
@@ -283,51 +286,38 @@ alternative means to simulate a reduced lake-level corridor was not available fo
 or northern Lake Huron.
 </p>
 <br />
-<a id="references"></a>
+<div id="references">
 <h4>References</h4>
-<br />
-<p>
-Martha L. Carlson Mazur, Kurt P. Kowalski and David Galbraith  2014.
-Assessment of suitable habitat for <i>Phragmites australis</i> (common reed) in the Great Lakes coastal zone.
-Aquatic Invasions (2014) Volume 9, Issue 1: 1-19
-</p>
-<br />
-<p>
-Anderson, R. P., A. T. Peterson, and S. L. Egbert.  2006.  Vegetation-index models predict areas vulnerable to 
-purple loosestrife (<i>Lythrum salicaria</i>) invasion in Kansas.  The Southwestern Naturalist 51(4):471-480.
-</p>
-<br />
-<p>
-Angel, J. R. and K. E. Kunkel.  2010.  The response of Great Lakes water levels to future climate scenarios 
-with an emphasis on Lake Michigan-Huron.  Journal of Great Lakes Research 36:51-58.
-</p>
-<br />
-<p>
-Bourgeau-Chavez, L. L., K. P. Kowalski, M. L. Carlson Mazur, K. A. Scarbrough, R. B. Powell, C. N. Brooks, 
-B. Huberty, L. K. Jenkins, E. C. Banda, D. M. Galbraith, Z. Laubach, and K. Riordan. <i>In press</i>.  
-Mapping invasive <i>Phragmites australis</i> in the coastal Great Lakes with ALOS PALSAR satellite 
-imagery for decision support.  Journal of Great Lakes Research special issue.
-</p>
-<br />
-<p>
-Carlson Mazur, M. L., K. P. Kowalski, and D. M. Galbraith. <i>In review</i>.  Habitat suitability for 
-<i>Phragmites australis</i> in the Laurentian Great Lakes.
-</p>
-<br />
-<p>
-Carlson, M. L., K. P. Kowalski, and D. A. Wilcox.  2009.  Promoting species establishment in a 
-<i>Phragmites</i>-dominated Great Lakes coastal wetland.  Natural Areas Journal 29(3):262-280.
-</p>
-<br />
-<p>
-Coutts, S. R., R. D. van Klinken, H. Yokomizo, and Y. M. Buckley.  2011.  What are the key drivers 
-of spread in invasive plants: dispersal, demography or landscape: and how can we use this knowledge 
-to aid management?  Biological Invasions 13:1649-1661.
-</p>
-<br />
-<p>
-Elith, J., M. Kearney, and S. Phillips.  2010.  The art of modeling range-shifting species.  
-Methods in Ecology and Evolution 1:330-342.
-</p>
-<br />
+<ul>
+<li>
+	Anderson, R. P., A. T. Peterson, and S. L. Egbert. 2006. Vegetation-index models predict areas vulnerable to purple loosestrife (<i>Lythrum salicaria</i>) invasion in Kansas.
+	<i>The Southwestern Naturalist</i> 51: 471-480. (doi: <a target="_blank" href="http://dx.doi.org/10.1894/0038-4909(2006)51[471:VMPAVT]2.0.CO;2">http://dx.doi.org/10.1894/0038-4909(2006)51[471:VMPAVT]2.0.CO;2</a>)
+</li>
+<li>
+	Angel, J. R. and K. E. Kunkel. 2010. The response of Great Lakes water levels to future climate scenarios with an emphasis on Lake Michigan-Huron.
+	<i>Journal of Great Lakes Research</i> 36: 51-58. (doi: <a target="_blank" href="http://dx.doi.org/10.1016/j.jglr.2009.09.006">http://dx.doi.org/10.1016/j.jglr.2009.09.006</a>)
+</li>
+<li>
+	Bourgeau-Chavez, L. L., K. P. Kowalski, M. L. Carlson Mazur, K. A. Scarbrough, R. B. Powell, C. N. Brooks, B. Huberty, L. K. Jenkins, E. C. Banda, D. M. Galbraith, Z. Laubach, and K. Riordan. 2013.
+	Mapping invasive <i>Phragmites australis</i> in the coastal Great Lakes with ALOS PALSAR satellite imagery for decision support.
+	<i>Journal of Great Lakes Research</i> 39: 65-77. (doi: <a target="_blank" href="http://dx.doi.org/10.1016/j.jglr.2012.11.001">http://dx.doi.org/10.1016/j.jglr.2012.11.001</a>)
+</li>
+<li>
+	Carlson, M. L., K. P. Kowalski, and D. A. Wilcox. 2009. Promoting species establishment in a <i>Phragmites</i>-dominated Great Lakes coastal wetland.
+	<i>Natural Areas Journal</i> 29:262-280. (doi: <a target="_blank" href="http://dx.doi.org/10.3375/043.029.0306">http://dx.doi.org/10.3375/043.029.0306</a>)
+</li>
+<li>
+	Carlson Mazur, M. L., K. P. Kowalski and D. Galbraith. 2014. Assessment of suitable habitat for <i>Phragmites australis</i> (common reed) in the Great Lakes coastal zone.
+	<i>Aquatic Invasions</i> 9: 1-19. (doi: <a target="_blank" href="http://dx.doi.org/10.3391/ai.2014.9.1.01">http://dx.doi.org/10.3391/ai.2014.9.1.01</a>)
+</li>
+<li>
+	Coutts, S. R., R. D. van Klinken, H. Yokomizo, and Y. M. Buckley. 2011. What are the key drivers of spread in invasive plants: dispersal, demography or landscape: and how can we use this knowledge to aid management?
+	<i>Biological Invasions</i> 13: 1649-1661. (doi: <a target="_blank" href="http://dx.doi.org/10.1007/s10530-010-9922-5">http://dx.doi.org/10.1007/s10530-010-9922-5</a>)
+</li>
+<li>
+	Elith, J., M. Kearney, and S. Phillips. 2010. The art of modeling range-shifting species.
+	<i>Methods in Ecology and Evolution</i> 1: 330-342. (doi: <a target="_blank" href="http://dx.doi.org/10.1111/j.2041-210X.2010.00036.x">http://dx.doi.org/10.1111/j.2041-210X.2010.00036.x</a>)
+</li>
+</ul>
+</div>
 </div>
