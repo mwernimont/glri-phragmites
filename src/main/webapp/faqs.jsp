@@ -291,7 +291,7 @@ or northern Lake Huron.
 <ul>
 <li>
 	Anderson, R. P., A. T. Peterson, and S. L. Egbert. 2006. Vegetation-index models predict areas vulnerable to purple loosestrife (<i>Lythrum salicaria</i>) invasion in Kansas.
-	<i>The Southwestern Naturalist</i> 51: 471-480. (doi: <a target="_blank" href="http://dx.doi.org/10.1894/0038-4909(2006)51[471:VMPAVT]2.0.CO;2">http://dx.doi.org/10.1894/0038-4909(2006)51[471:VMPAVT]2.0.CO;2</a>)
+	<i>The Southwestern Naturalist</i> 51: 471-480. (doi: <a target="_blank" href="http://dx.doi.org/10.1894/0038-4909(2006)51[471:VMPAVT]2.0.CO;2">http://dx.doi.org/10.1894/0038-4909(2006)51[471:VMPAVT]2.0.CO;2</a>)
 </li>
 <li>
 	Angel, J. R. and K. E. Kunkel. 2010. The response of Great Lakes water levels to future climate scenarios with an emphasis on Lake Michigan-Huron.
@@ -304,11 +304,11 @@ or northern Lake Huron.
 </li>
 <li>
 	Carlson, M. L., K. P. Kowalski, and D. A. Wilcox. 2009. Promoting species establishment in a <i>Phragmites</i>-dominated Great Lakes coastal wetland.
-	<i>Natural Areas Journal</i> 29:262-280. (doi: <a target="_blank" href="http://dx.doi.org/10.3375/043.029.0306">http://dx.doi.org/10.3375/043.029.0306</a>)
+	<i>Natural Areas Journal</i> 29:262-280. (doi: <a target="_blank" href="http://dx.doi.org/10.3375/043.029.0306">http://dx.doi.org/10.3375/043.029.0306</a>)
 </li>
 <li>
 	Carlson Mazur, M. L., K. P. Kowalski and D. Galbraith. 2014. Assessment of suitable habitat for <i>Phragmites australis</i> (common reed) in the Great Lakes coastal zone.
-	<i>Aquatic Invasions</i> 9: 1-19. (doi: <a target="_blank" href="http://dx.doi.org/10.3391/ai.2014.9.1.01">http://dx.doi.org/10.3391/ai.2014.9.1.01</a>)
+	<i>Aquatic Invasions</i> 9: 1-19. (doi: <a <a target="_blank" href="http://dx.doi.org/10.3391/ai.2014.9.1.01">http://dx.doi.org/10.3391/ai.2014.9.1.01</a>)
 </li>
 <li>
 	Coutts, S. R., R. D. van Klinken, H. Yokomizo, and Y. M. Buckley. 2011. What are the key drivers of spread in invasive plants: dispersal, demography or landscape: and how can we use this knowledge to aid management?
