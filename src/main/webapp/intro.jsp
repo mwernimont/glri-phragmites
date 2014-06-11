@@ -29,8 +29,8 @@
      <p><i>This cooperative research was made possible by the Great Lakes Restoration Initiative.</i></p>
      <div id="splash-content">
          <div id="splash-column1">
-             <div class="splash-highlight-boxes">
-                 <p style="font-size: xx-large">The GLRI <i>Phragmites</i> Decision Support Tool Mapper</p>
+             <div class="splash-highlight-box">
+                 <h1>The GLRI <i>Phragmites</i> Decision Support Tool Mapper</h1>
              </div>
              <div style="font-size: medium; margin-top: 10px;">
                  <p>The GLRI <i>Phragmites</i> Decision Support Tool (DST) Mapper is intended to provide resource managers with
@@ -55,9 +55,16 @@
          </div>
          <div id="splash-column2">
              <img src="images/splash_pic.png">
-             <br />
-             <div class="splash-highlight-boxes">
-                 <p style="font-size:large">All current browsers are supported. There is a known issue with Internet Explorer 7 and prior.</p>
+             <div class="splash-highlight-box">
+				 <h2>Resources</h2>
+				 <ul>
+					 <li><a target="_blank" href="http://dx.doi.org/10.1016/j.jglr.2012.11.001">Bourgeau-Chavez et al. (2013)</a></li>
+					 <li><a target="_blank" href="http://dx.doi.org/10.3391/ai.2014.9.1.01">Carlson Mazur et al. (2014)</a></li>
+					 <li><a target="_blank" href="http://cida.usgs.gov/glri/documents/CountyAppendix_CarlsonMazur2014.pdf">Supplemental appendix of county-level Phragmites area</a></li>
+				 </ul>
+             </div>
+             <div class="splash-highlight-box">
+                 <p>All current browsers are supported. There is a known issue with Internet Explorer 7 and prior.</p>
              </div>
          </div>
          <div style="clear:both;">

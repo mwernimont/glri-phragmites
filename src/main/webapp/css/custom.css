@@ -11,13 +11,21 @@
     margin-left : 2px;
     margin-right: 2px;
 }
-.splash-highlight-boxes {
+.splash-highlight-box {
     background-color: rgb(79, 98, 40);
-    color: white;
+    color: white; 
     border-radius: 1em;
-    padding: 15px;
+    padding: .4em; margin: .4em 0;
     text-align: center;
 }
+.splash-highlight-box h1 { font-size: 2.2em; font-weight: normal; }
+.splash-highlight-box h2 { font-size: 1.5em; font-weight: normal; }
+.splash-highlight-box h3, .splash-highlight-box p { font-size: 1.17em; font-weight: normal; }
+.splash-highlight-box a:link, .splash-highlight-box a:visited { color: #FaFFd0; background: transparent; } /*F8FFC2*/
+.splash-highlight-box a:hover { text-decoration: underline; }
+.splash-highlight-box ul { text-align: left; }
+.splash-highlight-box li { list-style: inside disc; list-style-type: disc; padding-left: 1.4em; text-indent: -1.4em; }
+
 #splash-column1 {
    display: inline-block;
    float: left;
@@ -72,3 +80,5 @@ ol.decimal-list li{
 fieldset.x-fieldset {
 	border: none;
 }
+
+#references li { margin: 1.4em .25em; }
