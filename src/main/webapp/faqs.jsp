@@ -131,7 +131,7 @@ Small patches of <i>Phragmites</i> lie within networks of riparian, wetland, and
 <p>
 Cooperative research between the USGS Great Lakes Science Center and Michigan Technical Research Institute (MTRI) led 
 to the development of a distribution map of invasive <i>Phragmites</i> along the U. S. side of the Great Lakes coastal 
-zone(10 km inland from the shoreline) .  MTRI scientists used satellite-based radar data and an extensive network of field sites to conduct an unsupervised 
+zone (10 km inland from the shoreline).  MTRI scientists used satellite-based radar data and an extensive network of field sites to conduct an unsupervised 
 and supervised remote sensing classification exercise and to perform an accuracy assessment of the resulting map.  
 Satellite imagery came from multiple dates throughout the growing seasons of 2008-2010, and a total of 1,145 field sites 
 from 2010 and 2011 were used to train and validate remote sensing classification methods. Mapping efforts identified dense 
@@ -154,10 +154,10 @@ a continuous index of habitat suitability which was reclassified to depict six c
 </p>
 <br />
 <p>
-	The Phragmites habitat suitability map layer is a dataset published with the paper
+	The Phragmites habitat suitability map layer is a dataset published with the paper
 	<a target="_blank" href="http://www.aquaticinvasions.net/2014/AI_2014_CarlsonMazur_etal.pdf">Assessment of suitable habitat for <i>Phragmites australis</i> (common reed) in the Great Lakes coastal zone</a>,
 	which is available for download.
-	An <a target="_blank" href="http://cida.usgs.gov/glri/documents/CountyAppendix_CarlsonMazur2014.pdf">appendix</a>
+	An <a target="_blank" href="http://cida.usgs.gov/glri/documents/CountyAppendix_CarlsonMazur2014.pdf">appendix</a>
 	that provides county-level summaries of current Phragmites extent, both offshore and total area in each county, is also available.
 </p>
 <br />
