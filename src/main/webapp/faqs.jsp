@@ -52,7 +52,7 @@ The DST is a map-based tool that consists of three integrated components: 1) a b
 <i>Phragmites</i> populations, 2) a habitat suitability index based on current environmental conditions, and 3) a map of 
 potential invasion pathways defined by corridor networks that are weighted by proximity to existing <i>Phragmites</i>.  
 Mapping existing invasive <i>Phragmites</i> utilized remotely sensed imagery and provided the basis for the other two components 
-of the DST (<a target="_blank" href=http://www.mtri.org/monitoring_phragmites.html>http://www.mtri.org/monitoring_phragmites.html</a>).  The habitat suitability index 
+of the DST (<a target="_blank" href="http://www.mtri.org/monitoring_phragmites.html">http://www.mtri.org/monitoring_phragmites.html</a>).  The habitat suitability index 
 is intended to provide land managers with a general estimation of relative vulnerability to future invasions based on 
 environmental conditions.  It maps the relative habitat quality of the landscape for <i>Phragmites</i> establishment and 
 is broken down into six different classes:  most suitable, more suitable, suitable, unsuitable, more unsuitable, and most 
