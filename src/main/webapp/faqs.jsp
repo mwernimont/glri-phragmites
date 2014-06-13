@@ -18,7 +18,7 @@
 <h4>What is <i>Phragmites</i>?  Why is it a problem?</h4>
 <br/>
 <p>
-	Although there are native <a target="_blank" href=http://www.invasivespeciesinfo.gov/aquatics/commonreed.shtml><i>Phragmites</i></a> types 
+	Although there are native <a target="_blank" href="http://www.invasivespeciesinfo.gov/aquatics/commonreed.shtml"><i>Phragmites</i></a> types 
 	endemic to North America, a highly invasive Eurasian subspecies 
 	began establishing itself here during the 1800s.  The invasive type can grow up to 5 m in height and form 
 	impenetrable stands that can quickly degrade large areas of highly productive coastal wetlands and shorelines.   
@@ -52,7 +52,7 @@ The DST is a map-based tool that consists of three integrated components: 1) a b
 <i>Phragmites</i> populations, 2) a habitat suitability index based on current environmental conditions, and 3) a map of 
 potential invasion pathways defined by corridor networks that are weighted by proximity to existing <i>Phragmites</i>.  
 Mapping existing invasive <i>Phragmites</i> utilized remotely sensed imagery and provided the basis for the other two components 
-of the DST (<a target="_blank" href=http://www.mtri.org/phragmites.html>http://www.mtri.org/phragmites.html</a>).  The habitat suitability index 
+of the DST (<a target="_blank" href="http://www.mtri.org/monitoring_phragmites.html">http://www.mtri.org/monitoring_phragmites.html</a>).  The habitat suitability index 
 is intended to provide land managers with a general estimation of relative vulnerability to future invasions based on 
 environmental conditions.  It maps the relative habitat quality of the landscape for <i>Phragmites</i> establishment and 
 is broken down into six different classes:  most suitable, more suitable, suitable, unsuitable, more unsuitable, and most 
