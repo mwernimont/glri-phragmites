@@ -18,7 +18,7 @@
 <h4>What is <i>Phragmites</i>?  Why is it a problem?</h4>
 <br/>
 <p>
-	Although there are native <a target="_blank" href=http://www.invasivespeciesinfo.gov/aquatics/commonreed.shtml><i>Phragmites</i></a> types 
+	Although there are native <a target="_blank" href="http://www.invasivespeciesinfo.gov/aquatics/commonreed.shtml"><i>Phragmites</i></a> types 
 	endemic to North America, a highly invasive Eurasian subspecies 
 	began establishing itself here during the 1800s.  The invasive type can grow up to 5 m in height and form 
 	impenetrable stands that can quickly degrade large areas of highly productive coastal wetlands and shorelines.   
