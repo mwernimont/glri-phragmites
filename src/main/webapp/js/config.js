@@ -279,7 +279,7 @@ GLRI.ui.helpContext = {
 					 'and the 1 m contour from a data base of historic soundings. ' +
 					 '<a id="help-link-contour-corridors" href="#water-level-fluctuations">[more info]</a></p><br />' +
                      '<p>For more information about this data set see its ' +
-                     '<a target="_blank" href="https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=9ff5138c-78d8-4c31-88dc-d7888406bfe3">' +
+                     '<a target="_blank" href="https://www.sciencebase.gov/catalog/item/5330984ee4b00b385d7675ef">' +
                      'metadata record</a>.</p>',
 			faq_link_id: 'help-link-contour-corridors'
 		},
@@ -290,7 +290,7 @@ GLRI.ui.helpContext = {
 			         'clarity, and the accompanying \'lidar availability\' layer shows where corridor extraction was limited by data availability. ' +
 			         '<a id="help-link-lidar-1m-reduction" href="#water-level-fluctuations">[more info]</a></p><br />' +
                      '<p>For more information about this data set see its ' +
-                     '<a target="_blank" href="https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=9ff5138c-78d8-4c31-88dc-d7888406bfe3">' +
+                     '<a target="_blank" href="https://www.sciencebase.gov/catalog/item/5330984ee4b00b385d7675ef">' +
                      'metadata record</a>.</p>',
 			faq_link_id: 'help-link-lidar-1m-reduction'
 		},
@@ -301,7 +301,7 @@ GLRI.ui.helpContext = {
 					 '\'lidar availability\' layer shows where corridor extraction was limited by data availability. ' +
 					 '<a id="help-link-lidar-50cm-reduction" href="#water-level-fluctuations">[more info]</a></p><br />' +
                      '<p>For more information about this data set see its ' +
-                     '<a target="_blank" href="https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=9ff5138c-78d8-4c31-88dc-d7888406bfe3">' +
+                     '<a target="_blank" href="https://www.sciencebase.gov/catalog/item/5330984ee4b00b385d7675ef">' +
                      'metadata record</a>.</p>',
 			faq_link_id: 'help-link-lidar-50cm-reduction'
 		},
@@ -311,7 +311,7 @@ GLRI.ui.helpContext = {
 			         'and are coded by distance to existing <i>Phragmites</i>. ' +
 			         '<a id="help-streams-wetlands-waterbodies" href="#data-to-construct-corridor">[more info]</a></p><br />' +
                      '<p>For more information about this data set see its ' +
-                     '<a target="_blank" href="https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=277034e7-cf3f-4f98-ad62-1280e526887a">' +
+                     '<a target="_blank" href="https://www.sciencebase.gov/catalog/item/530e5ca0e4b0929320b22a70">' +
                      'metadata record</a>.</p>',
 			id: 'habitat-layer-0',
 			event: 'click',
@@ -322,7 +322,7 @@ GLRI.ui.helpContext = {
 			content: '<p>The existing distribution of invasive <i>Phragmites</i> was mapped through the use of satellite imagery and ground truthing. ' +
                      '<a id="help-link-phragmites-stands" href="#how-map-was-developed">[more info]</a></p><br />' +
                      '<p>For more information about this data set see its ' +
-                     '<a target="_blank" href="https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=acd54f65-7de0-4772-9c7a-89fd437058f7">' +
+                     '<a target="_blank" href="https://www.sciencebase.gov/catalog/item/5330a885e4b00b385d76fa38">' +
                      'metadata record</a>.</p>',
 			faq_link_id: 'help-link-phragmites-stands',
 			id: 'habitat-layer-17',
@@ -334,7 +334,7 @@ GLRI.ui.helpContext = {
 			         'distribution and environmental conditions. ' +
 			         '<a id="help-link-phragmites-habitat" href="#habitat-suitability-estimated">[more info]</a></p><br />' +
                      '<p>For more information about this data set see its ' +
-                     '<a target="_blank" href="https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=e1ddf058-73a0-4978-b11d-8a889063441f">' +
+                     '<a target="_blank" href="https://www.sciencebase.gov/catalog/item/531e0780e4b04cb293ee78fc">' +
                      'metadata record</a>.</p>',
 			faq_link_id: 'help-link-phragmites-habitat',
 			id: 'habitat-layer-1',
@@ -346,7 +346,7 @@ GLRI.ui.helpContext = {
 				     'is defined by a 10 km inland buffer of the shoreline.  It also includes ' +
 				     'offshore islands where satellite imagery was available.</p><br />' +
                      '<p>For more information about this data see its ' +
-                     '<a target="_blank" href="https://cida.usgs.gov/glri/geonetwork/srv/en/metadata.show?uuid=33205905-ae6b-416f-9c22-b57a018691b3">' +
+                     '<a target="_blank" href="https://www.sciencebase.gov/catalog/item/5331a4d5e4b01b900eb675a1">' +
                      'metadata record</a>.</p>',
 		    id: 'habitat-layer-15',
 		    event: 'click'
