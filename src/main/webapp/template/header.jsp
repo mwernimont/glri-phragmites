@@ -3,7 +3,7 @@
 			     
 				<h1>US Geological Survey</h1><!-- Not actually visible unless printed -->
 				<div id="usgs-header-logo">
-					<a title="Link to the US Geological Survey main web page" href="http://www.usgs.gov">
+					<a title="Link to the US Geological Survey main web page" href="https://www.usgs.gov">
 						<img src="images/USGS_web_logo.gif" alt="USGS Logo"/>
 					</a>
 				</div>
@@ -14,7 +14,7 @@
 					<p id="printCommDate">
 						<script type="text/javascript">document.write(new Date().toLocaleString());</script>Wed Jul 22 15:17:15 2009
 					</p>
-					<p id="printCommPrintFrom">Printed From: <script type="text/javascript">document.write(document.location.href);</script>http://infotrek.er.usgs.gov/warp/</p>
+					<p id="printCommPrintFrom">Printed From: <script type="text/javascript">document.write(document.location.href);</script>http://cida.usgs.gov/glri/phragmites/</p>
 					<p>
 					  This print version of the page is optimized to print only the
 					  content portions of the web page your were viewing and is not
@@ -25,11 +25,11 @@
 				<div id="ccsa-area">
 					<h4 class="access-help">Top Level USGS Links</h4>
 					<br/>
-					<a title="Link to main USGS page" href="http://www.usgs.gov/">USGS Home</a>
+					<a title="Link to main USGS page" href="https://www.usgs.gov/">USGS Home</a>
 					<br/>
-					<a title="Link to main USGS contact page" href="http://www.usgs.gov/ask/index.html">Contact USGS</a>
+					<a title="Link to main USGS contact page" href="https://www.usgs.gov/ask/index.html">Contact USGS</a>
 					<br/>
-					<a title="Link to main USGS search (not publications search)" href="http://search.usgs.gov/">Search USGS</a>
+					<a title="Link to main USGS search (not publications search)" href="https://search.usgs.gov/">Search USGS</a>
 					<br/>
 				</div>
 			</div><!-- End content -->

@@ -8,7 +8,7 @@ GLRI.ui.map.XYZ_URL_POSTFIX = '${z}/${y}/${x}';
 
 // define urls for map server services
 GLRI.ui.map.baseMapServerUrlPublic = 'http://cida.usgs.gov/arcgis/services/GLRI68_Phragmites/MapServer';
-GLRI.ui.map.baseMapServerUrlInternal = 'http://igskmncwfsmap.er.usgs.gov:6080/arcgis/services/GLRI68_Phragmites/MapServer';
+GLRI.ui.map.baseMapServerUrlInternal = 'https://igskmncwfsmap.er.usgs.gov:6080/arcgis/services/GLRI68_Phragmites/MapServer';
 GLRI.ui.map.baseMapServerUrl = GLRI.ui.map.baseMapServerUrlPublic;
 GLRI.ui.map.baseWMSServiceUrl = GLRI.ui.map.baseMapServerUrl + '/WMSServer/';
 
@@ -31,18 +31,18 @@ GLRI.ui.getLegendHTML = function(url, layers/* string containing comma separated
 GLRI.ui.map.baseLayers = [
   {
 	  name: 'World Imagery',
-	  url: 'http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/' + GLRI.ui.map.XYZ_URL_POSTFIX,
+	  url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/' + GLRI.ui.map.XYZ_URL_POSTFIX,
 	  type: OpenLayers.Layer.XYZ,
       use_white: true
   },
   {
 		name: 'World Street Map',
-		url: 'http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/' + GLRI.ui.map.XYZ_URL_POSTFIX,
+		url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/' + GLRI.ui.map.XYZ_URL_POSTFIX,
 		type: OpenLayers.Layer.XYZ
   },
   {
     	name: "World Topo Map",
-        url: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
+        url: "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/"+GLRI.ui.map.XYZ_URL_POSTFIX,
         type: OpenLayers.Layer.XYZ
     },
     {
