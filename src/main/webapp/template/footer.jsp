@@ -13,7 +13,7 @@
 				<div id="page-info">
 					<p id="footer-doi-links">
 						<span class="vcard">
-							<a title="Link to the main DOI web site" href="http://www.doi.gov/" class="url fn org">U.S. Department of the Interior</a>
+							<a title="Link to the main DOI web site" href="https://www.doi.gov/" class="url fn org">U.S. Department of the Interior</a>
 							<span class="adr">
 								<span class="street-address">1849 C Street, N.W.</span><br/>
 								<span class="locality">Washington</span>, 
@@ -24,7 +24,7 @@
 						</span><!-- vcard -->
          				|
 						<span class="vcard">
-							<a title="Link to the main USGS web site" href="http://www.usgs.gov" class="url fn org">U.S. Geological Survey</a>
+							<a title="Link to the main USGS web site" href="https://www.usgs.gov" class="url fn org">U.S. Geological Survey</a>
 							<span class="adr">
 								<span class="post-office-box">Box 25286</span><br/>
 								<span class="locality">Denver</span>, 
@@ -41,11 +41,8 @@
 					<p id="footer-page-modified-info">Page Last modified: ${timestamp} (version ${project.version})</p>
 				</div><!-- /page-info -->
 				<div id="gov-buttons">
-					<a href="http://firstgov.gov/" title="link to the official US Government web portal">
-						<img alt="FirstGov button" src="http://infotrek.er.usgs.gov/docs/nawqa_www/nawqa_public_template/assets/footer_graphic_firstGov.jpg"/>
-					</a>
-					<a href="http://www.takepride.gov/" title="Link to Take Pride in America, a volunteer organization that helps to keep America's public lands beautiful.">
-						<img alt="Take Pride in America button" src="http://infotrek.er.usgs.gov/docs/nawqa_www/nawqa_public_template/assets/footer_graphic_takePride.jpg"/>
+					<a href="https://firstgov.gov/" title="link to the official US Government web portal">
+						<img alt="FirstGov button" src="https://cida.usgs.gov/usgs_vis_std/assets/footer_graphic_firstGov.jpg"/>
 					</a>
 				</div><!-- /gov-buttons -->
 			</div><!-- /content -->

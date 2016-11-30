@@ -60,7 +60,7 @@
 				 <ul>
 					 <li><a target="_blank" href="http://dx.doi.org/10.1016/j.jglr.2012.11.001">Bourgeau-Chavez et al. (2013)</a></li>
 					 <li><a target="_blank" href="http://dx.doi.org/10.3391/ai.2014.9.1.01">Carlson Mazur et al. (2014)</a></li>
-					 <li><a target="_blank" href="http://cida.usgs.gov/glri/documents/CountyAppendix_CarlsonMazur2014.pdf">Supplemental appendix of county-level Phragmites area</a></li>
+					 <li><a target="_blank" href="https://cida.usgs.gov/glri/documents/CountyAppendix_CarlsonMazur2014.pdf">Supplemental appendix of county-level Phragmites area</a></li>
 				 </ul>
              </div>
              <div class="splash-highlight-box">

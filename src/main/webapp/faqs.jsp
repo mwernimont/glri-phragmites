@@ -308,7 +308,7 @@ or northern Lake Huron.
 </li>
 <li>
 	Carlson Mazur, M. L., K. P. Kowalski and D. Galbraith. 2014. Assessment of suitable habitat for <i>Phragmites australis</i> (common reed) in the Great Lakes coastal zone.
-	<i>Aquatic Invasions</i> 9: 1-19. (doi: <a <a target="_blank" href="http://dx.doi.org/10.3391/ai.2014.9.1.01">http://dx.doi.org/10.3391/ai.2014.9.1.01</a>)
+	<i>Aquatic Invasions</i> 9: 1-19. (doi: <a target="_blank" href="http://dx.doi.org/10.3391/ai.2014.9.1.01">http://dx.doi.org/10.3391/ai.2014.9.1.01</a>)
 </li>
 <li>
 	Coutts, S. R., R. D. van Klinken, H. Yokomizo, and Y. M. Buckley. 2011. What are the key drivers of spread in invasive plants: dispersal, demography or landscape: and how can we use this knowledge to aid management?

@@ -50,7 +50,7 @@
 <!--End of meta tags--> 
 
 		<!-- USGS Consolidated Analytics -->
-		<script type="application/javascript" src="http://www.usgs.gov/scripts/analytics/usgs-analytics.js"></script>
+		<script type="application/javascript" src="https://www2.usgs.gov/scripts/analytics/usgs-analytics.js"></script>
 		
 		<!-- Google Analytics -->
 		<script>
