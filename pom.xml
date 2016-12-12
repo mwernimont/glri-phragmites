@@ -4,7 +4,7 @@
 	<artifactId>glri-phragmites-map</artifactId>
 	<packaging>war</packaging>
 	<name>GLRI Phragmites Map</name>
-	<version>0.0.18</version>
+	<version>0.0.19-SNAPSHOT</version>
 	<description>
 		The GLRI Phragmites Decision Support Tool (DST) Mapper is intended to provide resource managers
 		with information to strategically develop effective Phragmites control and invasion prevention 
@@ -59,7 +59,7 @@
 		<connection>scm:git:http://github.com/USGS-CIDA/glri-phragmites.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/USGS-CIDA/glri-phragmites.git</developerConnection>
 		<url>https://github.com/USGS-CIDA/glri-phragmites.git</url>
-	  <tag>glri-phragmites-map-0.0.18</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<distributionManagement>
