@@ -1,7 +1,7 @@
 <div class="intro">
     <div id="logos">
         <div id="glr_logo" class="intro-logo">
-            <a target="_blank" href="http://www.greatlakesrestoration.us/">
+            <a target="_blank" href="https://www.glri.us/">
                 <img alt="Great Lakes Restoration" src="images/GLRestoration.png" />
             </a>
         </div>
@@ -11,12 +11,12 @@
             </a>
         </div>
         <div id="mtri_logo" class="intro-logo">
-            <a target="_blank" href="http://www.mtri.org/phragmites.html">
+            <a target="_blank" href="http://www.mtri.org/monitoring_phragmites.html">
                 <img alt="Michigan Tech Research Institute" src="images/MTRI.png" />
             </a>
         </div>
         <div id="us_fish_logo" class="intro-logo">
-            <a target="_blank" href="http://www.fws.gov/glri/">
+            <a target="_blank" href="https://www.fws.gov/glri/">
                 <img alt="US Fish and Wildlife Service" src="images/USFWS.png" />
             </a>
         </div>
@@ -58,8 +58,8 @@
              <div class="splash-highlight-box">
 				 <h2>Resources</h2>
 				 <ul>
-					 <li><a target="_blank" href="http://dx.doi.org/10.1016/j.jglr.2012.11.001">Bourgeau-Chavez et al. (2013)</a></li>
-					 <li><a target="_blank" href="http://dx.doi.org/10.3391/ai.2014.9.1.01">Carlson Mazur et al. (2014)</a></li>
+					 <li><a target="_blank" href="https://dx.doi.org/10.1016/j.jglr.2012.11.001">Bourgeau-Chavez et al. (2013)</a></li>
+					 <li><a target="_blank" href="https://dx.doi.org/10.3391/ai.2014.9.1.01">Carlson Mazur et al. (2014)</a></li>
 					 <li><a target="_blank" href="https://cida.usgs.gov/glri/documents/CountyAppendix_CarlsonMazur2014.pdf">Supplemental appendix of county-level Phragmites area</a></li>
 				 </ul>
              </div>
